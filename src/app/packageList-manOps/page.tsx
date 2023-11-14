@@ -88,7 +88,7 @@ export default function packageMenu() {
       </div>
 
       {indeks === 0 ? (
-        <div className="ml-[280px] mt-[24px]">
+        <div className="flex justify-center lg:ml-[154px] mt-[24px]">
           <div className="max-h-[600px] overflow-y-auto no-scrollbar">
             <Assigned
               data={filteredProperties}
@@ -104,7 +104,7 @@ export default function packageMenu() {
           </div>
         </div>
       ) : (
-        <div className="ml-[280px] mt-[24px]">
+        <div className="flex justify-center lg:ml-[154px] mt-[24px]">
           <div className="max-h-[600px] overflow-y-auto no-scrollbar">
             <NotAssigned
               data={filteredProperties}

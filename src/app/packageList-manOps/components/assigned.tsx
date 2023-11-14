@@ -9,7 +9,7 @@ function Assigned({ data, header }: { data: any[]; header: any[] }) {
   };
 
   return (
-    <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw]">
+    <div className="w-[290px] mt-[23.54px] lg:mt-[30px] lg:w-[70vw] overflow-x-hidden">
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
           <tr>

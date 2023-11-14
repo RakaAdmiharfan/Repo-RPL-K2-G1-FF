@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { TbPackages } from "react-icons/tb";
+import { IoPeopleSharp } from "react-icons/io5";
+import { IoIosNotifications } from "react-icons/io";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -18,7 +21,7 @@ const Navbar = () => {
       <div className="bg-[#ffffff] w-full flex justify-between items-center fixed border-b border-black z-10">
         <div className="ml-[12px]">
           <Link href="/packageList-manOps">
-            <img src="/logo-rpl.png" alt="Logo" className="w-[83px] h-[60px]" />
+            <img src="/logo-rpl.png" alt="Logo" className="w-[70px] h-[60px]" />
           </Link>
         </div>
 
@@ -36,13 +39,22 @@ const Navbar = () => {
         >
           <ul>
             <li onClick={handleNav} className="p-4">
-              <Link href="/packageList-manOps">Package List</Link>
+              <Link href="/packageList-manOps" className="flex flex-row">
+                <TbPackages />
+                <p>Package List</p>
+              </Link>
             </li>
             <li onClick={handleNav} className="p-4">
-              <Link href="/crud-staf">Delivery Staff List</Link>
+              <Link href="/crud-staf" className="flex flex-row">
+                <IoPeopleSharp />
+                <p>Delivery Staff List</p>
+              </Link>
             </li>
             <li onClick={handleNav} className="p-4">
-              <Link href="/notification">Notification</Link>
+              <Link href="/notification" className="flex flex-row">
+                <IoIosNotifications />
+                <p>Notification</p>
+              </Link>
             </li>
           </ul>
         </div>

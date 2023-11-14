@@ -54,20 +54,20 @@ export default function StaffList() {
         <SideNav />
       </nav>
 
-      <div className="ml-[80px]">
-        <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[0px] lg:text-[48px] lg:mt-[70px] lg:mb-6">
+      <div>
+        <h2 className="flex justify-center text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[100px] lg:text-[48px] lg:mt-[70px] lg:mb-6">
           Delivery Staff List
         </h2>
 
-        <div className="ml-[5vw] lg:ml-[15.46vw] mt-[20px]">
-          <div className="flex rounded-[5px] lg:rounded-[8px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] bg-[#3D688E] text-white justify-center w-[119px] mb-[11px] px-[18px] py-[6px] lg:mb-[16px] lg:w-[10.26vw] lg:p-[10px]">
+        <div className="ml-[5vw] lg:ml-[18.56vw] mt-[20px] lg:mt-[44px]">
+          <div className="flex rounded-[5px] lg:rounded-[8px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] bg-[#3D688E] text-white justify-center w-[24vw] mb-[11px] px-[10px] py-[6px] lg:mb-[16px] lg:w-[10.26vw] lg:p-[10px]">
             <Link
               href={{
                 pathname: "/crud-staf/add-staf",
               }}
               className=""
             >
-              <h6 className="text-montserrat font-bold text-[12px] lg:text-[16px]">
+              <h6 className="text-montserrat font-bold text-[8px] lg:text-[16px]">
                 Add Staff
               </h6>
             </Link>
