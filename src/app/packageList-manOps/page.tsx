@@ -54,7 +54,7 @@ export default function packageMenu() {
         <Navbar />
       </nav>
       <nav>
-        <SideNav />
+        <SideNav active={1} />
       </nav>
 
       <span></span>

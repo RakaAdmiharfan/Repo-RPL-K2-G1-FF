@@ -15,7 +15,7 @@ export default function notification({
         <Navbar />
       </div>
       <div>
-        <SideNav />
+        <SideNav active={3} />
       </div>
 
       <h1 className="flex justify-center items-center text-[#3D688E] font-montserrat text-2xl lg:text-[48px] font-bold leading-normal tracking-wide mb-[30px] mt-[108px] lg:mt-[52px]">

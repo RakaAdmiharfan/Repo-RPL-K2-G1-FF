@@ -51,7 +51,7 @@ export default function StaffList() {
         <Navbar />
       </nav>
       <nav>
-        <SideNav />
+        <SideNav active={2} />
       </nav>
 
       <div>
