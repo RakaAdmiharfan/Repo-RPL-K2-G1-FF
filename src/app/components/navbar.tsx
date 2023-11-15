@@ -39,19 +39,28 @@ const Navbar = () => {
         >
           <ul>
             <li onClick={handleNav} className="p-4">
-              <Link href="/packageList-manOps" className="flex flex-row">
+              <Link
+                href="/packageList-manOps"
+                className="flex flex-row hover:text-blue-500 items-center"
+              >
                 <TbPackages />
                 <p>Package List</p>
               </Link>
             </li>
             <li onClick={handleNav} className="p-4">
-              <Link href="/crud-staf" className="flex flex-row">
+              <Link
+                href="/crud-staf"
+                className="flex flex-row hover:text-blue-500 items-center"
+              >
                 <IoPeopleSharp />
                 <p>Delivery Staff List</p>
               </Link>
             </li>
             <li onClick={handleNav} className="p-4">
-              <Link href="/notification" className="flex flex-row">
+              <Link
+                href="/notification"
+                className="flex flex-row hover:text-blue-500 items-center"
+              >
                 <IoIosNotifications />
                 <p>Notification</p>
               </Link>

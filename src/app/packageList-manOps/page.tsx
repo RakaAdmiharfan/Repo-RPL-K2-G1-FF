@@ -7,6 +7,7 @@ import Navbar from "../components/navbar";
 import SideNav from "../components/sidenav";
 import Assigned from "./components/assigned";
 import NotAssigned from "./components/notAssigned";
+import { FaRegUserCircle } from "react-icons/fa";
 // import axios from "axios";
 
 export default function packageMenu() {
@@ -57,9 +58,12 @@ export default function packageMenu() {
         <SideNav active={1} />
       </nav>
 
-      <span></span>
+      <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[100px] lg:mt-[70px] lg:text-[24px] gap-1">
+        <h1 className="text-[#3D688E]">Hi ManOps!</h1>
+        <FaRegUserCircle />
+      </div>
 
-      <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[100px] lg:text-[48px] lg:mt-[70px] lg:mb-6 justify-center">
+      <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[30px] lg:text-[48px] lg:mt-[20px] lg:mb-6 justify-center">
         Package List
       </h2>
 
