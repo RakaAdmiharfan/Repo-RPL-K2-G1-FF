@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { packageInfos } from "@/app/packageList-manOps/components/notAssigned";
+import { packageInfos } from "@/app/packageList-manOps/components/assigned";
 
 const DetailBox = () => {
   const [packageInfo, setPackage] = useState<any>({
@@ -17,53 +17,76 @@ const DetailBox = () => {
       <h1 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[0px] lg:text-[36px] lg:mt-[32px] lg:mb-6 justify-center">
         Detail
       </h1>
-      <div className="px-16">
-        <div className="flex flex-row justify-between">
-          <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
-            Id:
-          </p>
+      <div className="flex px-16">
+        <div className="flex flex-col w-1/2">
+          <div className="flex justify-between">
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              Id
+            </p>
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              :
+            </p>
+          </div>
+          <div className="flex justify-between">
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              Customer Name
+            </p>
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              :
+            </p>
+          </div>
+          <div className="flex justify-between">
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              Address
+            </p>
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              :
+            </p>
+          </div>
+          <div className="flex justify-between">
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              Phone Number
+            </p>
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              :
+            </p>
+          </div>
+          <div className="flex justify-between">
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              Flower Type
+            </p>
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              :
+            </p>
+          </div>
+          <div className="flex justify-between">
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              Customer Note
+            </p>
+            <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
+              :
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col items-end w-1/2 overflow-visible">
           <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
             2 {packageInfo.packageId}
-          </p>
-        </div>
-        <div className="flex flex-row justify-between">
-          <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
-            Customer Name:
           </p>
           <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
             Mahmud {packageInfo.namaPelanggan}
           </p>
-        </div>
-        <div className="flex flex-row justify-between">
-          <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
-            Address:
-          </p>
           <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
             jalan Tubis {packageInfo.alamatPengirim}
-          </p>
-        </div>
-        <div className="flex flex-row justify-between">
-          <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
-            Phone:
           </p>
           <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
             081212345678 {packageInfo.noTelp}
           </p>
-        </div>
-        <div className="flex flex-row justify-between">
-          <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
-            Flower Type:
-          </p>
           <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
             Mawar {packageInfo.jenisBunga}
           </p>
-        </div>
-        <div className="flex flex-row justify-between">
-          <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
-            Customer Note:
-          </p>
-          <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat">
-            Bunga dipaket dengan busa {packageInfo.catatanPelanggan}
+          <p className="text-[#3D688E] text-[24px] font-normal font-Montserrat text-right">
+            Bunga ditaro di pagar betis indonesia merdeka{" "}
+            {packageInfo.catatanPelanggan}
           </p>
         </div>
       </div>
