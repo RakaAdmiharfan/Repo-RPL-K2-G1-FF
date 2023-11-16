@@ -45,7 +45,7 @@ function Assigned({ data, header }: { data: any[]; header: any[] }) {
                 <td className="overflow-hidden w-auto h-auto py-[18.5px] text-[10px] lg:text-[20px] text-center">
                   <div>{packageInfo.statusPengiriman}</div>
                 </td>
-                <td className="flex justify-center w-auto h-auto py-[18.5px] align-middle items-end">
+                <td className="flex justify-center w-auto h-auto lg:py-[18.5px] py-[30px] align-middle items-center">
                   <Link
                     href={`/packageList-manOps/packageProblem/${packageInfo.packageId}`}
                     className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] w-[12.77vw] px-[14.29px] py-[4.76px] lg:w-[04.94vw] lg:px-[1px] lg:py-[5px] lg:rounded-[10px] justify-center bg-[#BC6161]"

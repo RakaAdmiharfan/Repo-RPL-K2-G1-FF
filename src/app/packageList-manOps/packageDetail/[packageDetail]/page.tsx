@@ -15,13 +15,13 @@ export default function packageDetail({
   };
 }) {
   return (
-    <div className="bg-[#EFF6FD] relative overflow-hidden w-full h-full flex-col flex pb-80">
+    <div className="bg-[#EFF6FD] relative overflow-hidden w-full h-full flex-col flex pb-36 lg:pb-80">
       <div className="">
         <Link href="/packageList-manOps">
           <img
             src="/arrow-left.svg"
             alt="back"
-            className="ml-[40px] mt-[40px] w-[38px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
+            className="ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
           />
         </Link>
       </div>
@@ -37,7 +37,7 @@ export default function packageDetail({
         <DetailBox />
       </div>
 
-      <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-20 lg:bottom-[-340px]">
+      <footer className="mt-[20px] lg:mt-[200px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
         <img src="/Footer.png" className="lg:w-[1620px]" />
       </footer>
     </div>

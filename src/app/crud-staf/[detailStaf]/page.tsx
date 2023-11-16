@@ -23,22 +23,22 @@ export default function crudPage({
   }, [pathname, searchParams]);
 
   return (
-    <div className="bg-[#EFF6FD] relative overflow-hidden w-full h-full flex-col flex pb-80">
+    <div className="bg-[#EFF6FD] relative overflow-hidden w-full h-full flex-col flex pb-36 lg:pb-80">
       <div className="">
         <Link href="/crud-staf">
           <img
             src="/arrow-left.svg"
             alt="back"
-            className="ml-[40px] mt-[40px] w-[38px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
+            className="ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
           />
         </Link>
       </div>
       <div className="title">
-        <h2 className="text-[#3D688E] text-[48px] font-bold font-Montserrat text-center mt-[40px]">
+        <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[30px] lg:text-[48px] lg:mt-[20px] lg:mb-6 justify-center">
           Delivery Staff Detail
         </h2>
       </div>
-      <div className="Box mt-[48px] ml-[240px]">
+      <div className="Box mt-[24px] lg:mt-[48px] lg:ml-[240px] flex justify-center">
         <EditFormComponent />
       </div>
       <div className="flex flex-row mt-[80px] items-center justify-center">
@@ -64,7 +64,7 @@ export default function crudPage({
           </button>
         </div>
       </div>
-      <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-20 lg:bottom-[-340px]">
+      <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
         <img src="/Footer.png" className="lg:w-[1620px]" />
       </footer>
     </div>

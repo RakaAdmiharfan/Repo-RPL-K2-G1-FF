@@ -54,7 +54,7 @@ export default function StaffList() {
         <SideNav active={2} />
       </nav>
 
-      <div>
+      <div className="lg:ml-8">
         <h2 className="flex justify-center text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[100px] lg:text-[48px] lg:mt-[70px] lg:mb-6">
           Delivery Staff List
         </h2>
