@@ -50,7 +50,7 @@ export default function packageMenu() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#EFF6FD] to-white relative overflow-hidden w-full h-full min-h-[100vh]">
+    <div className="flex flex-row bg-gradient-to-b from-[#EFF6FD] to-white relative overflow-hidden w-full h-full min-h-[100vh]">
       <nav className="lg:hidden">
         <Navbar />
       </nav>
@@ -58,65 +58,65 @@ export default function packageMenu() {
         <SideNav active={1} />
       </nav>
 
-      <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[100px] lg:mt-[70px] lg:text-[24px] gap-1">
-        <h1 className="text-[#3D688E]">Hi ManOps!</h1>
-        <FaRegUserCircle />
-      </div>
-
-      <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[30px] lg:text-[48px] lg:mt-[20px] lg:mb-6 justify-center">
-        Package List
-      </h2>
-
-      <div className="flex flex-row items-center justify-center mt-[42px]">
-        <div className="mr-[20px]">
-          <button
-            className="bg-[#D1E6F9] px-[26px] py-[6px] rounded-[5px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
-            onClick={() => setIndeks(0)}
-          >
-            <text className="text-black font-montserrat text-xs font-semibold leading-normal text-[12px] lg:text-[14px]">
-              Assigned
-            </text>
-          </button>
+      <div className="flex flex-col w-full h-screen overflow-auto">
+        <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[100px] lg:mt-[52px] lg:text-[24px] gap-1">
+          <h1 className="text-[#3D688E]">Hi ManOps!</h1>
+          <FaRegUserCircle />
         </div>
 
-        <div className="">
-          <button
-            className="bg-[#D1E6F9] px-[16px] py-[6px] rounded-[5px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
-            onClick={() => setIndeks(1)}
-          >
-            <text className="text-black font-montserrat text-xs font-semibold leading-normal text-[12px] lg:text-[14px]">
-              Not Assigned
-            </text>
-          </button>
-        </div>
-      </div>
+        <div className="flex flex-col justify-center items-center w-full">
+          <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[30px] lg:text-[48px] lg:mt-[14px] lg:mb-6">
+            Package List
+          </h2>
 
-      {indeks === 0 ? (
-        <div className="flex justify-center lg:ml-[154px] mt-[24px]">
-          <div className="max-h-[600px] overflow-y-auto no-scrollbar">
-            <Assigned
-              data={filteredProperties}
-              header={[
-                "ID",
-                "Nama Pelanggan",
-                "Alamat",
-                "Status",
-                "Check Problem",
-                "Package Detail",
-              ]}
-            />
+          <div className="flex flex-row items-center justify-center">
+            <div className="mr-[20px]">
+              <button
+                className="bg-[#D1E6F9] px-[26px] py-[6px] rounded-[5px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
+                onClick={() => setIndeks(0)}
+              >
+                <text className="text-black font-montserrat text-xs font-semibold leading-normal text-[12px] lg:text-[14px]">
+                  Assigned
+                </text>
+              </button>
+            </div>
+
+            <div className="">
+              <button
+                className="bg-[#D1E6F9] px-[16px] py-[6px] rounded-[5px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
+                onClick={() => setIndeks(1)}
+              >
+                <text className="text-black font-montserrat text-xs font-semibold leading-normal text-[12px] lg:text-[14px]">
+                  Not Assigned
+                </text>
+              </button>
+            </div>
           </div>
+
+          {indeks === 0 ? (
+            <div className="flex justify-center w-full mt-[20px]">
+              <Assigned
+                data={filteredProperties}
+                header={[
+                  "ID",
+                  "Nama Pelanggan",
+                  "Alamat",
+                  "Status",
+                  "Check Problem",
+                  "Package Detail",
+                ]}
+              />
+            </div>
+          ) : (
+            <div className="flex justify-center w-full mt-[20px]">
+              <NotAssigned
+                data={filteredProperties}
+                header={["ID", "Nama Pelanggan", "Alamat", "Assign"]}
+              />
+            </div>
+          )}
         </div>
-      ) : (
-        <div className="flex justify-center lg:ml-[154px] mt-[24px]">
-          <div className="max-h-[600px] overflow-y-auto no-scrollbar">
-            <NotAssigned
-              data={filteredProperties}
-              header={["ID", "Nama Pelanggan", "Alamat", "Assign"]}
-            />
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }

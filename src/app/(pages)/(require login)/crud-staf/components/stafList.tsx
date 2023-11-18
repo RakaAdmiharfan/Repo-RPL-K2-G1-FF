@@ -9,7 +9,7 @@ function StafList({ data, header }: { data: any[]; header: any[] }) {
   };
 
   return (
-    <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw]">
+    <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw] mx-auto">
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
           <tr>
@@ -33,16 +33,16 @@ function StafList({ data, header }: { data: any[]; header: any[] }) {
                 key={user.id}
                 className="border-b-[1px] border-black border-opacity-30"
               >
-                <td className="overflow-hidden w-auto h-auto py-[18.5px] text-[10px] lg:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
                   <div>{user.id}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[18.5px] text-[10px] lg:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
                   <div>{user.name}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[18.5px] text-[10px] lg:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
                   <div>{user.noTelp}</div>
                 </td>
-                <td className="flex justify-center w-auto h-auto py-[18.5px]">
+                <td className="flex justify-center w-auto h-auto py-[24px]">
                   <Link
                     onClick={() => handleClick(user)}
                     href={`/crud-staf/${user.id}`}
@@ -84,6 +84,116 @@ export const users = [
     noTelp: "987-654-3210",
     alamat: "456 Elm St, Town, Country",
     role: "admin",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
+  },
+  {
+    id: 3,
+    username: "user3",
+    password: "password3",
+    name: "User Three",
+    tanggallahir: "1995-10-25",
+    noTelp: "123-456-7890",
+    alamat: "789 Oak St, Village, Country",
+    role: "user",
   },
   {
     id: 3,
