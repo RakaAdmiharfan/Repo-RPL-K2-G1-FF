@@ -33,13 +33,13 @@ function StafList({ data, header }: { data: any[]; header: any[] }) {
                 key={user.id}
                 className="border-b-[1px] border-black border-opacity-30"
               >
-                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{user.id}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{user.name}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{user.noTelp}</div>
                 </td>
                 <td className="flex justify-center w-auto h-auto py-[24px]">

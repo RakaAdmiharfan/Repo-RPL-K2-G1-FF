@@ -15,7 +15,7 @@ export default function SideNav({ active }: { active: number }) {
           <img
             src="/logo-rpl.png"
             alt="Logo FF"
-            className="w-[150px] h-[130px] ml-6"
+            className="w-[150px] h-[150px] ml-6"
           />
 
           <div className="pl-8 pr-20 flex flex-col grow">

@@ -65,7 +65,7 @@ export default function packageMenu() {
         </div>
 
         <div className="flex flex-col justify-center items-center w-full">
-          <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[30px] lg:text-[48px] lg:mt-[14px] lg:mb-6">
+          <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[30px] lg:text-[48px] lg:mt-[14px] mb-6 lg:mb-6">
             Package List
           </h2>
 
@@ -94,7 +94,7 @@ export default function packageMenu() {
           </div>
 
           {indeks === 0 ? (
-            <div className="flex justify-center w-full mt-[20px]">
+            <div className="flex justify-center w-full mt-[20px] px-6 lg:px-0">
               <Assigned
                 data={filteredProperties}
                 header={[
@@ -108,7 +108,7 @@ export default function packageMenu() {
               />
             </div>
           ) : (
-            <div className="flex justify-center w-full mt-[20px]">
+            <div className="flex justify-center w-full mt-[20px] px-6 lg:px-0">
               <NotAssigned
                 data={filteredProperties}
                 header={["ID", "Nama Pelanggan", "Alamat", "Assign"]}
