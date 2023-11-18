@@ -38,7 +38,7 @@ export default function crudPage({
           Delivery Staff Detail
         </h2>
       </div>
-      <div className="Box mt-[24px] lg:mt-[48px] lg:ml-[240px] flex justify-center">
+      <div className="Box mt-[24px] lg:mt-[48px] flex justify-center">
         <EditFormComponent />
       </div>
       <div className="flex flex-row mt-[80px] items-center justify-center">

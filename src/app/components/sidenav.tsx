@@ -15,10 +15,10 @@ export default function SideNav({ active }: { active: number }) {
           <img
             src="/logo-rpl.png"
             alt="Logo FF"
-            className="w-[100px] h-[90px] ml-2"
+            className="w-[100px] h-[90px] ml-6"
           />
 
-          <div className="px-4 flex flex-col grow">
+          <div className="px-8 flex flex-col grow">
             <div className="flex flex-col gap-0 mb-12">
               <p className="font-bold text-black/40">Welcome</p>
               <p className="text-sm font-bold text-black">
@@ -34,7 +34,7 @@ export default function SideNav({ active }: { active: number }) {
               >
                 <Link
                   href="/packageList-manOps"
-                  className="flex flex-row items-center text-[24px] gap-1"
+                  className="flex flex-row items-center text-[28px] gap-1"
                 >
                   <TbPackages />
                   <p className="flex text-sm whitespace-nowrap">Package List</p>
@@ -47,7 +47,7 @@ export default function SideNav({ active }: { active: number }) {
               >
                 <Link
                   href="/crud-staf"
-                  className="flex flex-row items-center text-[24px] gap-1"
+                  className="flex flex-row items-center text-[28px] gap-1"
                 >
                   <IoPeopleSharp />
                   <p className="flex-1 text-sm whitespace-nowrap">Staff List</p>
@@ -60,7 +60,7 @@ export default function SideNav({ active }: { active: number }) {
               >
                 <Link
                   href="/notification"
-                  className="flex flex-row items-center text-[24px] gap-1"
+                  className="flex flex-row items-center text-[28px] gap-1"
                 >
                   <IoIosNotifications />
                   <p className="flex-1 text-sm whitespace-nowrap">
