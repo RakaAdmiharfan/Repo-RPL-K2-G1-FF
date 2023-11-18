@@ -3,9 +3,9 @@ import Link from "next/link";
 // Your client-side code here
 import React, { useState, useEffect } from "react";
 // import Search from "./components/search";
-import Navbar from "../components/navbar";
+import Navbar from "@/components/navbar";
 import StafList from "./components/stafList";
-import SideNav from "../components/sidenav";
+import SideNav from "@/components/sidenav";
 // import axios from "axios";
 
 export default function StaffList() {

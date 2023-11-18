@@ -1,6 +1,6 @@
 import NotificationBox from "./components/notificationBox";
-import Navbar from "../components/navbar";
-import SideNav from "../components/sidenav";
+import Navbar from "@/components/navbar";
+import SideNav from "@/components/sidenav";
 
 export default function notification({
   params,
