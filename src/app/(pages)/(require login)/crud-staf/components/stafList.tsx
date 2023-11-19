@@ -8,6 +8,8 @@ function StafList({ data, header }: { data: any[]; header: any[] }) {
     console.log(item);
   };
 
+  const spUsers = users.filter((user) => user.role === "SP");
+
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw] mx-auto">
       <table className="w-full">
@@ -27,7 +29,7 @@ function StafList({ data, header }: { data: any[]; header: any[] }) {
         </thead>
 
         <tbody>
-          {users.map((user) => {
+          {spUsers.map((user) => {
             return (
               <tr
                 key={user.id}
@@ -73,7 +75,7 @@ export const users = [
     tanggallahir: "1990-01-15",
     noTelp: "123-456-7890",
     alamat: "123 Main St, City, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 2,
@@ -83,7 +85,7 @@ export const users = [
     tanggallahir: "1985-05-20",
     noTelp: "987-654-3210",
     alamat: "456 Elm St, Town, Country",
-    role: "admin",
+    role: "MO",
   },
   {
     id: 3,
@@ -93,7 +95,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -103,7 +105,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -113,7 +115,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -123,7 +125,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -133,7 +135,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -143,7 +145,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -153,7 +155,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "MO",
   },
   {
     id: 3,
@@ -163,7 +165,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -173,7 +175,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "MO",
   },
   {
     id: 3,
@@ -183,7 +185,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -193,7 +195,7 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "SP",
   },
   {
     id: 3,
@@ -203,6 +205,6 @@ export const users = [
     tanggallahir: "1995-10-25",
     noTelp: "123-456-7890",
     alamat: "789 Oak St, Village, Country",
-    role: "user",
+    role: "MO",
   },
 ];
