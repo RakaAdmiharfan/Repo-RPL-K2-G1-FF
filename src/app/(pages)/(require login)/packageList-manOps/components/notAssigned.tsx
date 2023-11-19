@@ -33,16 +33,16 @@ function NotAssigned({ data, header }: { data: any[]; header: any[] }) {
                 key={packageInfo.packageId}
                 className="border-b-[1px] border-black border-opacity-30"
               >
-                <td className="overflow-hidden w-auto h-auto py-[18.5px] text-[10px] lg:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[32px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
                   <div>{packageInfo.packageId}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[18.5px] text-[10px] lg:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[32px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
                   <div>{packageInfo.namaPelanggan}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[18.5px] text-[10px] lg:text-[20px] text-center">
+                <td className="overflow-hidden w-auto h-auto py-[32px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
                   <div>{packageInfo.alamatPengirim}</div>
                 </td>
-                <td className="flex justify-center w-auto h-auto py-[18.5px] align-middle items-end">
+                <td className="flex justify-center w-auto h-auto py-[32px] align-middle items-end">
                   <Link
                     onClick={() => handleClick(packageInfo)}
                     href={`/packageList-manOps/availableStaff/${packageInfo.packageId}`}

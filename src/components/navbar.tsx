@@ -25,7 +25,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div onClick={handleNav} className="block sm:hidden z-40 mr-[20px]">
+        <div onClick={handleNav} className="block lg:hidden z-40 mr-[20px]">
           {nav ? (
             <AiOutlineClose size={20} style={{ color: `black` }} />
           ) : (
@@ -41,7 +41,7 @@ const Navbar = () => {
             <li onClick={handleNav} className="p-4">
               <Link
                 href="/packageList-manOps"
-                className="flex flex-row hover:text-blue-500 items-center"
+                className="flex flex-row hover:text-blue-500 items-center gap-2"
               >
                 <TbPackages />
                 <p>Package List</p>
@@ -50,7 +50,7 @@ const Navbar = () => {
             <li onClick={handleNav} className="p-4">
               <Link
                 href="/crud-staf"
-                className="flex flex-row hover:text-blue-500 items-center"
+                className="flex flex-row hover:text-blue-500 items-center gap-2"
               >
                 <IoPeopleSharp />
                 <p>Delivery Staff List</p>
@@ -59,7 +59,7 @@ const Navbar = () => {
             <li onClick={handleNav} className="p-4">
               <Link
                 href="/notification"
-                className="flex flex-row hover:text-blue-500 items-center"
+                className="flex flex-row hover:text-blue-500 items-center gap-2"
               >
                 <IoIosNotifications />
                 <p>Notification</p>

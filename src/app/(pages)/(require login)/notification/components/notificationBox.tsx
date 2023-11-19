@@ -22,7 +22,7 @@ const NotificationBox: React.FC<NotificationBoxProps> = ({
 
   return (
     <div className="flex justify-center items-center mb-3 ">
-      <div className="w-[306px] lg:w-[600px] h-[53px] lg:h-[100px] bg-slate-600 rounded-[5px] drop-shadow-2xl">
+      <div className="w-[306px] lg:w-[600px] h-[53px] lg:h-[100px] bg-[#335777] rounded-[5px] drop-shadow-2xl">
         <div className="flex flex-row">
           <div className="mt-[15px] ml-[10px] lg:mt-[40px] lg:ml-[15px]">
             <img src="bell.svg" className="relative" alt="bell"></img>
