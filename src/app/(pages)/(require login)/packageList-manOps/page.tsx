@@ -13,6 +13,9 @@ import { FaRegUserCircle } from "react-icons/fa";
 export default function packageMenu() {
   const [searchTerm, setSearchTerm] = useState("");
   const [dataProperties, setDataProperties] = useState<any>([]);
+  const [dataPackage, setDataPackage] = useState<any>([]);
+
+  // Filter properti berdasarkan paket yang staf pengiriman = null
 
   const filteredProperties = dataProperties.filter((property: any) =>
     property.nama_properti.toLowerCase().includes(searchTerm.toLowerCase())
@@ -96,7 +99,6 @@ export default function packageMenu() {
           {indeks === 0 ? (
             <div className="flex justify-center w-full mt-[20px] px-6 lg:px-0">
               <Assigned
-                data={filteredProperties}
                 header={[
                   "ID",
                   "Nama Pelanggan",
@@ -110,7 +112,6 @@ export default function packageMenu() {
           ) : (
             <div className="flex justify-center w-full mt-[20px] px-6 lg:px-0">
               <NotAssigned
-                data={filteredProperties}
                 header={["ID", "Nama Pelanggan", "Alamat", "Assign"]}
               />
             </div>

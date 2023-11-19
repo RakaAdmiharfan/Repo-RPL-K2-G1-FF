@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { packageInfos } from "@/app/packageList-manOps/components/assigned";
+import { packageInfos } from "../../../components/assigned";
 
 const DetailBox = () => {
   const [packageInfo, setPackage] = useState<any>({
@@ -13,7 +13,7 @@ const DetailBox = () => {
   });
 
   return (
-    <div className="bg-white w-[300px] lg:w-[600px] h-[270px] lg:h-[400px] rounded-[15px] drop-shadow-2xl">
+    <div className="bg-white w-[300px] lg:w-[600px] h-[270px] lg:h-full rounded-[15px] drop-shadow-2xl pb-6">
       <h1 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[12px] lg:text-[36px] lg:mt-[32px] mb-[12px] lg:mb-6 justify-center">
         Detail
       </h1>

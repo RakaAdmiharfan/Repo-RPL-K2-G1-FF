@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function Assigned({ data, header }: { data: any[]; header: any[] }) {
+function Assigned({ header }: { header: any[] }) {
   const handleClick = (item: any) => {
     console.log(item);
   };
+
+  const assignedPackages = packageInfos.filter(
+    (packageInfo) => packageInfo.stafPengirim !== ""
+  );
 
   return (
     <div className="w-[290px] md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[70vw] overflow-x-hidden mx-auto">
@@ -27,7 +31,7 @@ function Assigned({ data, header }: { data: any[]; header: any[] }) {
         </thead>
 
         <tbody>
-          {packageInfos.map((packageInfo) => {
+          {assignedPackages.map((packageInfo) => {
             return (
               <tr
                 key={packageInfo.packageId}
@@ -162,7 +166,7 @@ export const packageInfos = [
     hasUpdateStatus: false,
     report: "",
     proofOfDelivery: "",
-    stafPengirim: 4,
+    stafPengirim: "",
   },
   {
     packageId: "jkl012",
@@ -176,6 +180,6 @@ export const packageInfos = [
     hasUpdateStatus: false,
     report: "",
     proofOfDelivery: "",
-    stafPengirim: 4,
+    stafPengirim: "",
   },
 ];

@@ -9,29 +9,6 @@ import SideNav from "@/components/sidenav";
 // import axios from "axios";
 
 export default function StaffList() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [dataProperties, setDataProperties] = useState<any>([]);
-
-  const filteredProperties = dataProperties.filter((property: any) =>
-    property.nama_properti.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // Jumlah item per halaman
-
-  // Hitung jumlah halaman
-  //   const totalPages = Math.ceil(properties.length / itemsPerPage);
-
-  // Filter properti berdasarkan halaman saat ini
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  //   const displayedProperties = properties.slice(startIndex, endIndex);
-
-  // Fungsi untuk mengubah halaman
-  const handlePageChange = (page: React.SetStateAction<number>) => {
-    setCurrentPage(page);
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -73,13 +50,8 @@ export default function StaffList() {
               </Link>
             </div>
 
-            {/* <Search onSearch={setSearchTerm} /> */}
-
             <div className="overflow-y-auto no-scrollbar w-full">
-              <StafList
-                data={filteredProperties}
-                header={["ID", "Nama", "No.Telp", "Edit"]}
-              />
+              <StafList header={["ID", "Nama", "No.Telp", "Edit"]} />
               {/* <Pagination current={handlePageChange} totalPages={totalPages} /> */}
             </div>
           </div>

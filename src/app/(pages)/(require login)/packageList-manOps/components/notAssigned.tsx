@@ -3,10 +3,15 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-function NotAssigned({ data, header }: { data: any[]; header: any[] }) {
+function NotAssigned({ header }: { header: any[] }) {
   const handleClick = (item: any) => {
     console.log(item);
   };
+
+  const unassignedPackages = packageInfos.filter(
+    (packageInfo) =>
+      packageInfo.stafPengirim == null || packageInfo.stafPengirim === ""
+  );
 
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw]">
@@ -27,7 +32,7 @@ function NotAssigned({ data, header }: { data: any[]; header: any[] }) {
         </thead>
 
         <tbody>
-          {packageInfos.map((packageInfo) => {
+          {unassignedPackages.map((packageInfo) => {
             return (
               <tr
                 key={packageInfo.packageId}
@@ -95,8 +100,8 @@ export const packageInfos = [
     stafPengirim: 2,
   },
   {
-    packageId: "ghi789",
-    namaPelanggan: "Customer C",
+    packageId: "kntl",
+    namaPelanggan: "rkaa",
     alamatPengirim: "789 Elm St, City, Country",
     noTelp: "555-555-5555",
     jenisBunga: "Lilies",
@@ -106,11 +111,11 @@ export const packageInfos = [
     hasUpdateStatus: false,
     report: "",
     proofOfDelivery: "",
-    stafPengirim: 3,
+    stafPengirim: "",
   },
   {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
+    packageId: "meki",
+    namaPelanggan: "aupa D",
     alamatPengirim: "123 Oak St, City, Country",
     noTelp: "555-123-4567",
     jenisBunga: "Roses",
@@ -120,6 +125,6 @@ export const packageInfos = [
     hasUpdateStatus: false,
     report: "",
     proofOfDelivery: "",
-    stafPengirim: 4,
+    stafPengirim: "",
   },
 ];

@@ -1,181 +1,83 @@
 "use client";
-
 import Link from "next/link";
-import React, { useState } from "react";
+// Your client-side code here
+import React, { useState, useEffect } from "react";
+// import Search from "./components/search";
+import Navbar from "@/components/navbar";
+import SideNav from "@/components/sidenav";
+import AvailableStaff from "./components/availableStaf";
+import { FaRegUserCircle } from "react-icons/fa";
+// import axios from "axios";
 
-function AvailableStaff({ data, header }: { data: any[]; header: any[] }) {
-  const handleClick = (item: any) => {
-    console.log(item);
+export default function packageMenu() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [dataProperties, setDataProperties] = useState<any>([]);
+  const [dataPackage, setDataPackage] = useState<any>([]);
+
+  // Filter properti berdasarkan paket yang staf pengiriman = null
+
+  const filteredProperties = dataProperties.filter((property: any) =>
+    property.nama_properti.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const [indeks, setIndeks] = useState(0);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; // Jumlah item per halaman
+
+  // Hitung jumlah halaman
+  //   const totalPages = Math.ceil(properties.length / itemsPerPage);
+
+  // Filter properti berdasarkan halaman saat ini
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  //   const displayedProperties = properties.slice(startIndex, endIndex);
+
+  // Fungsi untuk mengubah halaman
+  const handlePageChange = (page: React.SetStateAction<number>) => {
+    setCurrentPage(page);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    // try {
+    //   const response = await axios.get("http://159.223.92.164:8080/api/v1/properti");
+    //   setDataProperties(response.data.propertiGetAllProperti);
+    // } catch (error) {
+    //   console.error("Terjadi kesalahan:", error);
+    // }
   };
 
   return (
-    <div className="w-[290px] md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[70vw] overflow-x-hidden mx-auto">
-      <table className="w-full">
-        <thead className="border-b-[1px] border-black">
-          <tr>
-            {header.map((item, idx) => {
-              return (
-                <th
-                  key={idx}
-                  className="w-auto h-auto font-montserrat font-semibold text-black text-center pb-[8px] text-[10px] lg:text-[16px] xl:text-[20px]"
-                >
-                  {item}
-                </th>
-              );
-            })}
-          </tr>
-        </thead>
+    <div className="flex flex-row bg-gradient-to-b from-[#EFF6FD] to-white relative overflow-hidden w-full h-full min-h-[100vh]">
+      <nav className="lg:hidden">
+        <Navbar />
+      </nav>
+      <nav>
+        <SideNav active={1} />
+      </nav>
 
-        <tbody>
-          {packageInfos.map((packageInfo) => {
-            return (
-              <tr
-                key={packageInfo.packageId}
-                className="border-b-[1px] border-black border-opacity-30"
-              >
-                <td className="overflow-hidden w-auto h-auto py-[36px] text-[10px] lg:text-[12px] xl:text-[20px] text-center">
-                  <div>{packageInfo.packageId}</div>
-                </td>
-                <td className="overflow-hidden w-auto h-auto py-[36px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
-                  <div>{packageInfo.namaPelanggan}</div>
-                </td>
-                <td className="overflow-hidden w-auto h-auto py-[36px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
-                  <div>{packageInfo.alamatPengirim}</div>
-                </td>
-                <td className="overflow-hidden w-auto h-auto py-[36px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
-                  <div>{packageInfo.statusPengiriman}</div>
-                </td>
-                <td className="flex justify-center w-auto h-auto lg:py-[36px] py-[42px] align-middle items-center">
-                  <Link
-                    href={`/packageList-manOps/packageProblem/${packageInfo.packageId}`}
-                    className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] md:w-[40px] w-[10vw] px-[14.29px] py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] lg:rounded-[10px] justify-center bg-[#BC6161]"
-                  >
-                    <h6 className="text-white text-montserrat text-semibold text-[8.574px] lg:text-[14px] xl-[18px]">
-                      Check
-                    </h6>
-                  </Link>
-                </td>
-                <td className="w-auto h-auto py-0">
-                  <div className="w-full flex justify-center">
-                    <Link
-                      onClick={() => handleClick(packageInfo)}
-                      href={`/packageList-manOps/packageDetail/${packageInfo.packageId}`}
-                    >
-                      <img
-                        src="/ArrowSquareOut.svg"
-                        className="w-[20px] lg:w-[40px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
-                      />
-                    </Link>
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="flex flex-col w-full h-screen overflow-auto">
+        <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[100px] lg:mt-[52px] lg:text-[24px] gap-1">
+          <h1 className="text-[#3D688E]">Hi ManOps!</h1>
+          <FaRegUserCircle />
+        </div>
+
+        <div className="flex flex-col justify-center items-center w-full">
+          <h2 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[30px] lg:text-[48px] lg:mt-[14px] mb-6 lg:mb-6">
+            Package List
+          </h2>
+
+          <div className="flex justify-center w-full mt-[20px] px-6 lg:px-0">
+            <AvailableStaff
+              header={["ID", "Nama Staff", "Capacity", "Assign"]}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-export default AvailableStaff;
-
-export const packageInfos = [
-  {
-    packageId: "abc123",
-    namaPelanggan: "Customer A",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-10",
-    statusPengiriman: "shipped",
-    hasUpdateStatus: true,
-    report: "Delivered on time",
-    proofOfDelivery: "https://example.com/delivery-proof/abc123.jpg",
-    stafPengirim: 1,
-  },
-  {
-    packageId: "def456",
-    namaPelanggan: "Customer B",
-    alamatPengirim: "456 Pine St, City, Country",
-    noTelp: "555-987-6543",
-    jenisBunga: "Tulips",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-12",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-  {
-    packageId: "ghi789",
-    namaPelanggan: "Customer C",
-    alamatPengirim: "789 Elm St, City, Country",
-    noTelp: "555-555-5555",
-    jenisBunga: "Lilies",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-14",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 3,
-  },
-  {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 4,
-  },
-  {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 4,
-  },
-  {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 4,
-  },
-  {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 4,
-  },
-];
