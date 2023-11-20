@@ -24,26 +24,6 @@ interface Values {
 export default function LoginForm() {
   const router = useRouter();
 
-  // const handleSubmit = async (val: Values) => {
-  //   // You can fetch the login data from your local JSON file
-  //   try {
-  //     const response = await fetch("pla"); // Adjust the path as needed
-  //     const loginData = await response.json();
-
-  //     const user = loginData.users.find((user) => user.username === val.username);
-
-  //     if (user && user.password === val.password) {
-  //       // Successful login
-  //       localStorage.setItem("token", "your_token_here"); // Store a token if needed
-  //       router.replace("/");
-  //     } else {
-  //       console.log("Invalid username or password");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const handleSubmit = async (val: Values) => {
     if (!localStorage) {
       return;
@@ -72,11 +52,8 @@ export default function LoginForm() {
       console.log(err);
     }
   };
-  
-  export default function AuthForm() {
-    const supabase = createClient()
 
-
+ 
   return (
     <div>
       <Formik
@@ -135,3 +112,25 @@ export default function LoginForm() {
     </div>
   );
 }
+
+
+
+// const handleSubmit = async (val: Values) => {
+  //   // You can fetch the login data from your local JSON file
+  //   try {
+  //     const response = await fetch("pla"); // Adjust the path as needed
+  //     const loginData = await response.json();
+
+  //     const user = loginData.users.find((user) => user.username === val.username);
+
+  //     if (user && user.password === val.password) {
+  //       // Successful login
+  //       localStorage.setItem("token", "your_token_here"); // Store a token if needed
+  //       router.replace("/");
+  //     } else {
+  //       console.log("Invalid username or password");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
