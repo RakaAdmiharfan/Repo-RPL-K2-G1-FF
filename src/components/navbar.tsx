@@ -25,7 +25,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div onClick={handleNav} className="block lg:hidden z-40 mr-[20px]">
+        <div onClick={handleNav} className="block xl:hidden z-40 mr-[20px]">
           {nav ? (
             <AiOutlineClose size={20} style={{ color: `black` }} />
           ) : (
@@ -33,15 +33,15 @@ const Navbar = () => {
           )}
         </div>
         <div
-          className={`sm:hidden absolute top-0 ${
+          className={`lg:hidden absolute top-0 ${
             nav ? "translate-x-0" : "translate-x-full"
-          } transition duration-300 right-0 bottom-0 flex justify-center items-center w-[80vw] h-screen bg-[#ffffff] text-center text-black border-l-[1px] border-black`}
+          } transition duration-300 right-0 bottom-0 flex justify-center items-center w-[80vw] md:w-[40vw] h-screen bg-[#ffffff] text-center text-black border-l-[1px] border-black`}
         >
           <ul>
             <li onClick={handleNav} className="p-4">
               <Link
                 href="/packageList-manOps"
-                className="flex flex-row hover:text-blue-500 items-center gap-2"
+                className="flex flex-row hover:text-blue-500 items-center gap-2 md:text-[20px]"
               >
                 <TbPackages />
                 <p>Package List</p>
@@ -50,7 +50,7 @@ const Navbar = () => {
             <li onClick={handleNav} className="p-4">
               <Link
                 href="/crud-staf"
-                className="flex flex-row hover:text-blue-500 items-center gap-2"
+                className="flex flex-row hover:text-blue-500 items-center gap-2 md:text-[20px]"
               >
                 <IoPeopleSharp />
                 <p>Delivery Staff List</p>
@@ -59,7 +59,7 @@ const Navbar = () => {
             <li onClick={handleNav} className="p-4">
               <Link
                 href="/notification"
-                className="flex flex-row hover:text-blue-500 items-center gap-2"
+                className="flex flex-row hover:text-blue-500 items-center gap-2 md:text-[20px]"
               >
                 <IoIosNotifications />
                 <p>Notification</p>
