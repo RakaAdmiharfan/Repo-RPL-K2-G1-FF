@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Montserrat, Poppins } from "next/font/google";
+import ToasterContext from "./context/ToasterContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable}`}>{children}</body>
+      <body className={`${montserrat.variable}`}>
+      <ToasterContext/>
+      {children}</body>
     </html>
   );
 }

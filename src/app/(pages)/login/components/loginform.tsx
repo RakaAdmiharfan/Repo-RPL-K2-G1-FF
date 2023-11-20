@@ -6,6 +6,15 @@ import PasswordInput from "./passwordinput";
 import { redirect } from "next/navigation";
 import { RedirectType } from "next/dist/client/components/redirect";
 import { useRouter } from "next/navigation";
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClient } from "@/utils/supabase/client";
+import { env } from "process";
+
+
+
+
 
 interface Values {
   username: string;
@@ -63,6 +72,10 @@ export default function LoginForm() {
       console.log(err);
     }
   };
+  
+  export default function AuthForm() {
+    const supabase = createClient()
+
 
   return (
     <div>
