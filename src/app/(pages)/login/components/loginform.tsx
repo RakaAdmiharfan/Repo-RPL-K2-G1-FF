@@ -12,10 +12,6 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { createClient } from "@/utils/supabase/client";
 import { env } from "process";
 
-
-
-
-
 interface Values {
   username: string;
   password: string;
@@ -32,7 +28,7 @@ export default function LoginForm() {
     const token = localStorage?.getItem("token");
 
     try {
-      const res = await fetch("http://localhost:8080/api/v1/login", {
+      const res = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
