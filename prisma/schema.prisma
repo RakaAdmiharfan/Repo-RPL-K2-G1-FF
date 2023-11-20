@@ -10,14 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Roles {
+  MANAGER
+  STAFF
+}
+
 model user {
   id Int @id
-  username String
+  username String @unique
   password String
   nama String
-  tanggalLahir DateTime
-  alamat String
-  role String
+  tanggalLahir DateTime?
+  alamat String?
+  role Roles
 }
 
 model capacity {

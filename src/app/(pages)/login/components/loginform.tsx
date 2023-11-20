@@ -11,6 +11,12 @@ import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { createClient } from "@/utils/supabase/client";
 import { env } from "process";
+import { signIn } from "next-auth/react";
+
+
+import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
+
 
 interface Values {
   username: string;
@@ -21,33 +27,58 @@ export default function LoginForm() {
   const router = useRouter();
 
   const handleSubmit = async (val: Values) => {
-    if (!localStorage) {
-      return;
-    }
-
-    const token = localStorage?.getItem("token");
-
     try {
-      const res = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(val),
+      console.log(val)
+      // Perform login authentication logic here
+      const res = await signIn("credentials", {
+        redirect: false,
+        username: val.username,
+        password: val.password,
+        callbackUrl: "/",
       });
-      const resJson = await res.json();
 
-      if (resJson.message === "already signed in") {
-        router.replace("/");
-      } else if (resJson.token) {
-        localStorage.setItem("token", resJson.token);
-
-        router.replace("/");
+      // print error if error
+      if (res?.error) {
+        toast.error("Invalid credentials");
+      } else {
+        toast.success("Login success");
+        router.push(""); // taro route
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error)
     }
   };
+
+
+
+  // const handleSubmit = async (val: Values) => {
+  //   if (!localStorage) {
+  //     return;
+  //   }
+
+  //   const token = localStorage?.getItem("token");
+
+  //   try {
+  //     const res = await fetch("http://localhost:3000/login", {
+  //       method: "POST",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify(val),
+  //     });
+  //     const resJson = await res.json();
+
+  //     if (resJson.message === "already signed in") {
+  //       router.replace("/");
+  //     } else if (resJson.token) {
+  //       localStorage.setItem("token", resJson.token);
+
+  //       router.replace("/");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
  
   return (
@@ -72,8 +103,8 @@ export default function LoginForm() {
             <Field
               src="/User.png"
               className="form-control w-[82.2vw] lg:w-[50vw] xl:w-[39.6vw] h-auto aspect-[296/28] lg:aspect-[760/48] rounded-[5px] lg:rounded-[15px] bg-[#E6EAF4] pl-[2.7vw] lg:pl-[1.25vw] text-[11px] sm:text-[15px] md:text-[18px] xl:text-[13px] lg:text-[11px]"
-              id="Username"
-              name="Username"
+              id="username"
+              name="username"
               placeholder="Username"
               aria-describedby="UsernameHelp"
             />

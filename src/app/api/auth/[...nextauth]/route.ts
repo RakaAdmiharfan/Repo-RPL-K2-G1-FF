@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
         credentials: {},
         authorize: async (credentials) => {
           const { username, password } = credentials as Credentials;
-  
+          
           if (!username) {
             throw new Error("Username tidak boleh kosong");
           }
@@ -59,12 +59,12 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
       jwt: async ({ token, user }) => {
         if (user && user.id) {
-          token.uid = user.id as string; // Assign user's id to token
+          token.uid = user.id as number; // Assign user's id to token
   
           // Get user's role
           const userData = await prisma.user.findUnique({
             where: {
-              id: user.id,
+              id: user.id as number,
             },
             select: {
               role: true,
@@ -82,16 +82,10 @@ export const authOptions: NextAuthOptions = {
         // Get user's data
         const userData = await prisma.user.findUnique({
           where: {
-            id: token.uid as string,
+            id: token.uid as number,
           },
           select: {
             id: true,
-            nim: true,
-            fullName: true,
-            role: true,
-            email: true,
-            imageURL: true,
-            kelompok: true,
           },
         });
   
