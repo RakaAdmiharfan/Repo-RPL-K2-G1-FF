@@ -1,12 +1,13 @@
 "use client";
 
+import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import supabase from "../../../../../config/supabase";
 
 function StafList({ header }: { header: any[] }) {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
+  const [dataItem, setDataItem] = useState<any[]>([]);
 
   const handleClick = (item: any) => {
     console.log(item);
@@ -14,24 +15,30 @@ function StafList({ header }: { header: any[] }) {
 
   useEffect(() => {
     const fetchStafPengiriman = async () => {
-      const { data, error } = await supabase.from("user").select("*");
+      try {
+        // const cookieStore = cookies()
+        // const supabase = createClient(cookieStore);
+        const supabase = createClient();
+        // const user = supabase.auth.getUser()
+        // console.log(user);
 
-      if (error) {
-        setFetchError(error.message);
-        setStafPengiriman(null);
-        console.log(error);
-      }
-      if (data) {
-        setFetchError(null);
-        setStafPengiriman(data);
-        console.log(data);
+        const { data: users, error } = await supabase.from("users").select();
+
+        if (users) {
+          setDataItem(users);
+        }
+
+        // console.log('Accounts:', accounts);
+        // console.log('Error:', error);
+      } catch (error: any) {
+        console.error("Error fetching data:", error.message);
       }
     };
 
     fetchStafPengiriman();
   }, []);
 
-  const spUsers = users.filter((user) => user.role === "SP");
+  const spUsers = dataItem.filter((user) => user.role === "SP");
 
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw] mx-auto">
@@ -62,7 +69,7 @@ function StafList({ header }: { header: any[] }) {
                   <div>{staf.id}</div>
                 </td>
                 <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
-                  <div>{staf.name}</div>
+                  <div>{staf.nama}</div>
                 </td>
                 <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{staf.alamat}</div>
