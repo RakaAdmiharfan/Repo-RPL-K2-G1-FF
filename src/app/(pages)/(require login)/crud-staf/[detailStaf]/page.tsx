@@ -39,31 +39,9 @@ export default function crudPage({
         </h2>
       </div>
       <div className="Box mt-[24px] lg:mt-[48px] flex justify-center">
-        <EditFormComponent />
+        <EditFormComponent id={params.detailStaf} />
       </div>
-      <div className="flex flex-row mt-[80px] items-center justify-center">
-        <div className="mr-[24px]">
-          <button
-            type="submit"
-            className="bg-[#3D688E] px-[26px] py-[6px] rounded-[5px] flex items-center justify-center"
-          >
-            <text className="text-white font-montserrat font-semibold leading-normal text-[12px] lg:text-[18px]">
-              Save
-            </text>
-          </button>
-        </div>
 
-        <div className="">
-          <button
-            type="submit"
-            className="bg-[#BC6161] px-[20px] py-[6px] rounded-[5px] flex items-center justify-center"
-          >
-            <text className="text-white font-montserrat text-xs font-semibold leading-normal text-[12px] lg:text-[18px]">
-              Delete
-            </text>
-          </button>
-        </div>
-      </div>
       <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
         <img src="/Footer.png" className="lg:w-[1620px]" />
       </footer>

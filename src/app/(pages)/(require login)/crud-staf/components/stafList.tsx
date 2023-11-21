@@ -16,20 +16,12 @@ function StafList({ header }: { header: any[] }) {
   useEffect(() => {
     const fetchStafPengiriman = async () => {
       try {
-        // const cookieStore = cookies()
-        // const supabase = createClient(cookieStore);
         const supabase = createClient();
-        // const user = supabase.auth.getUser()
-        // console.log(user);
+        const { data: user, error } = await supabase.from("user").select();
 
-        const { data: users, error } = await supabase.from("users").select();
-
-        if (users) {
-          setDataItem(users);
+        if (user) {
+          setDataItem(user);
         }
-
-        // console.log('Accounts:', accounts);
-        // console.log('Error:', error);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
@@ -38,7 +30,7 @@ function StafList({ header }: { header: any[] }) {
     fetchStafPengiriman();
   }, []);
 
-  const spUsers = dataItem.filter((user) => user.role === "SP");
+  const spUsers = dataItem.filter((user) => user.role === "MANAGER");
 
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw] mx-auto">
@@ -72,12 +64,12 @@ function StafList({ header }: { header: any[] }) {
                   <div>{staf.nama}</div>
                 </td>
                 <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
-                  <div>{staf.alamat}</div>
+                  <div>{staf.noTelp}</div>
                 </td>
                 <td className="flex justify-center w-auto h-auto py-[24px]">
                   <Link
                     onClick={() => handleClick(staf)}
-                    href={`/crud-staf/${staf.id}`}
+                    href={`/crud-staf/${staf.ID}`}
                     className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] w-[12.77vw] px-[14.29px] py-[4.76px] lg:w-[04.94vw] lg:px-[1px] lg:py-[5px] lg:rounded-[15px] justify-center border-[#6C88CD] border-[3px]"
                   >
                     <h6 className="text-[#6C88CD] text-montserrat text-semibold text-[8.574px] lg:text-[18px]">

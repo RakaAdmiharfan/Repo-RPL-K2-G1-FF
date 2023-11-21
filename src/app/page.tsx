@@ -8,7 +8,7 @@ export default function Page() {
       <h1 className="flex justify-center items-center text-[#3D688E] font-montserrat text-2xl lg:text-[48px] font-bold leading-normal tracking-wide mb-8">
         Choose Your Role!
       </h1>
-      <p className="flex flex-col text-[18px] font-semibold text-center w-[600px] mb-12 text-[#528BBE]">
+      <p className="flex flex-col text-[12px] lg:text-[18px] font-semibold text-center w-[80vw] lg:w-[600px] mb-12 text-[#528BBE]">
         Please select the role that you want to login with. Once you have
         selcted the user role, you will be redirected to the login page.
       </p>

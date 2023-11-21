@@ -7,7 +7,8 @@ interface InputBoxProps {
   name: string;
   label: string;
   placeholder?: string;
-  value?: string;
+  value?: any;
+  onChange?: any;
   as?: string;
 }
 
@@ -16,16 +17,16 @@ const InputBox: React.FC<InputBoxProps> = ({
   label,
   placeholder,
   value,
-  as,
+  onChange,
 }) => {
   return (
     <div className="relative mb-4 h-full">
-      <Field
+      <input
         type="text"
-        as={as}
         name={name}
         placeholder={placeholder}
         value={value}
+        onChange={onChange}
         className="bg-[#fff] flex w-full h-full focus:outline-none text-black text-[10px] lg:text-[20px] rounded-[5px] px-[10px] py-[6px] lg:rounded-[10px] lg:py-[10px] lg:px-[20px]"
       />
       <ErrorMessage
