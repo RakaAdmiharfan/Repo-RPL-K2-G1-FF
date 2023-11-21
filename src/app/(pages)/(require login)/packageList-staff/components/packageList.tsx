@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
-function packageList({ header }: { header: any[] }) {
+function PackageList({ header }: { header: any[] }) {
   const handleClick = (item: any) => {
     console.log(item);
   };
@@ -93,7 +93,7 @@ function packageList({ header }: { header: any[] }) {
   );
 }
 
-export default packageList;
+export default PackageList;
 
 export const packageInfos = [
   {

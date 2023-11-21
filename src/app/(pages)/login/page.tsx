@@ -1,16 +1,18 @@
-"use client";
 import Image from "next/image";
 import LoginForm from "./components/loginform";
 import UserButton from "./components/userButton";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import AOS from "aos";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { UserSession } from "@/components/userFetcher";
 import "aos/dist/aos.css";
 
-export default function Login() {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  });
+export default async function Login() {
+  const session = await getServerSession(authOptions);
+  const user = session?.user as UserSession;
+  const roleAccess = user.role;
 
   return (
     <div className="relative overflow-hidden flex flex-col md:flex-col lg:flex-col bg-white w-full h-screen pb-36 lg:pb-72">
@@ -23,7 +25,7 @@ export default function Login() {
         </h2>
       </div>
       <div className="flex ml-[26px] lg:ml-[260px] xl:ml-[470px]">
-        <LoginForm />
+        <LoginForm roleAccess={roleAccess} />
       </div>
       <footer className="mt-[93px] lg:mt-[200px] overflow-hidden absolute -bottom-10 lg:bottom-[-340px]">
         <img src="Footer.png" className="lg:w-[1620px]" />

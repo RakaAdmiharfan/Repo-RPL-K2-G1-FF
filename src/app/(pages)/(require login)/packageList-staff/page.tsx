@@ -5,38 +5,22 @@ import Navbar from "@/components/navbar";
 import SideNav from "@/components/sidenav";
 import ListPackae from "./components/listPackage";
 import { FaRegUserCircle } from "react-icons/fa";
+import PackageList from "./components/packageList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import { UserSession } from "@/components/userFetcher";
 import client from "@/app/lib/prismadb";
 
 export default async function packageStaff() {
   const session = await getServerSession(authOptions);
-  const user = session?.user?.id;
-  
-  useEffect(() => {
-    const fetchStafPengiriman = async () => {
-      try {
-        const supabase = createClient();
-        const { data: user, error } = await supabase.from("user").select();
-
-        if (user) {
-          setDataItem(user);
-        }
-      } catch (error: any) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-
-    fetchStafPengiriman();
-  }, []);
-
+  const user = session?.user as UserSession;
 
   if (!session) {
     redirect("/login");
   }
 
-  const roleAccess = user?.
+  const roleAccess = user.role === "STAFF";
 
   if (session && !roleAccess) {
     redirect("/");

@@ -5,7 +5,7 @@ import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/app/lib/prismadb";
-import { DefaultSession, DefaultUser } from 'next-auth'
+import { DefaultSession, DefaultUser } from "next-auth";
 
 interface Credentials {
   username: string;

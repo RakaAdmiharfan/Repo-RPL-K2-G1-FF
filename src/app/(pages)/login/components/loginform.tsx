@@ -1,36 +1,35 @@
 "use client";
-
 import { Formik, Field, Form, FormikHelpers } from "formik";
-
 import PasswordInput from "./passwordinput";
 import { redirect } from "next/navigation";
 import { RedirectType } from "next/dist/client/components/redirect";
 import { useRouter } from "next/navigation";
-import { Auth } from '@supabase/auth-ui-react'
-import { ThemeSupa } from '@supabase/auth-ui-shared'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@/utils/supabase/client";
 import { env } from "process";
 import { signIn } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { UserSession } from "@/components/userFetcher";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-
 
 interface Values {
   username: string;
   password: string;
 }
 
-export default async function LoginForm() {
-  const router = useRouter();
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
+interface LoginFormProps {
+  roleAccess: string;
+}
 
+export default async function LoginForm({ roleAccess }: LoginFormProps) {
+  const router = useRouter();
   const handleSubmit = async (val: Values) => {
     try {
-      console.log(val)
+      console.log(val);
       // Perform login authentication logic here
       const res = await signIn("credentials", {
         redirect: false,
@@ -44,14 +43,14 @@ export default async function LoginForm() {
         toast.error("Invalid credentials");
       } else {
         toast.success("Login success");
-        router.push(""); // taro route
+        if (roleAccess === "MANAGER") {
+          router.push("/packageList-manOps");
+        } else router.push("/packageList-staff");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
-
-
 
   // const handleSubmit = async (val: Values) => {
   //   if (!localStorage) {
@@ -82,7 +81,6 @@ export default async function LoginForm() {
   //   }
   // };
 
- 
   return (
     <div>
       <Formik
@@ -142,24 +140,22 @@ export default async function LoginForm() {
   );
 }
 
-
-
 // const handleSubmit = async (val: Values) => {
-  //   // You can fetch the login data from your local JSON file
-  //   try {
-  //     const response = await fetch("pla"); // Adjust the path as needed
-  //     const loginData = await response.json();
+//   // You can fetch the login data from your local JSON file
+//   try {
+//     const response = await fetch("pla"); // Adjust the path as needed
+//     const loginData = await response.json();
 
-  //     const user = loginData.users.find((user) => user.username === val.username);
+//     const user = loginData.users.find((user) => user.username === val.username);
 
-  //     if (user && user.password === val.password) {
-  //       // Successful login
-  //       localStorage.setItem("token", "your_token_here"); // Store a token if needed
-  //       router.replace("/");
-  //     } else {
-  //       console.log("Invalid username or password");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+//     if (user && user.password === val.password) {
+//       // Successful login
+//       localStorage.setItem("token", "your_token_here"); // Store a token if needed
+//       router.replace("/");
+//     } else {
+//       console.log("Invalid username or password");
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };

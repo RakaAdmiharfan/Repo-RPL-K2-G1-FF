@@ -3,50 +3,44 @@
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { useSession } from 'next-auth/react';
+import { useSession } from "next-auth/react";
 
-function ListPackage({header}: { header: any[]} ){
-    const [fetchError, setFetchError] = useState(null);
-    const [stafPengiriman, setStafPengiriman] = useState(null);
-    const [dataItem, setDataItem] = useState<any[]>([]);
+function ListPackage({ header }: { header: any[] }) {
+  const [fetchError, setFetchError] = useState(null);
+  const [stafPengiriman, setStafPengiriman] = useState(null);
+  const [dataItem, setDataItem] = useState<any[]>([]);
 
-    const handleClick = (item: any) => {
-        console.log(item);
-      };
+  const handleClick = (item: any) => {
+    console.log(item);
+  };
 
-    useEffect(()=> {
-        const fetchPackageList = async () => {
-            try {
-                const supabase = createClient();
-                const { data: packageInfos, error } = await supabase.from("packageInfo").select();
-                if (packageInfos) {
-                    setDataItem(packageInfos);
-                }
-            } catch (error: any) {
-                console.error("Error fetching data:", error.message);
-            }
-        };
+  useEffect(() => {
+    const fetchPackageList = async () => {
+      try {
+        const supabase = createClient();
+        const { data: packageInfos, error } = await supabase
+          .from("packageInfo")
+          .select();
+        if (packageInfos) {
+          setDataItem(packageInfos);
+        }
+      } catch (error: any) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
 
-        fetchPackageList();
-    }, []);  
-    
-    
-<<<<<<< Updated upstream
-    // const { data: session } = useSession();
-    // const userId = session.user.id;
+    fetchPackageList();
+  }, []);
 
-    // const assignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === userId)
-=======
-    const { data: session } = useSession();
-    const userId = session?.user?.id;
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
 
-    
+  const assignedPackages = dataItem.filter(
+    (packageInfo) => packageInfo.staffPengiriman === userId
+  );
 
-    const assignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === userId)
->>>>>>> Stashed changes
-
-    return (
-        <div className="md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[90vw] overflow-x-hidden mx-auto">
+  return (
+    <div className="md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[90vw] overflow-x-hidden mx-auto">
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
           <tr>
@@ -106,14 +100,14 @@ function ListPackage({header}: { header: any[]} ){
 
                 <td className="w-auto h-auto lg:py-[36px] py-[42px] align-middle items-center">
                   <div className="w-full flex justify-center">
-                  <Link
-                    href={`/packageList-manOps/packageProblem/${packageInfo.packageId}`}
-                    className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] md:w-[40px] w-[10vw] px-[14.29px] py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] lg:rounded-[10px] justify-center bg-[#67AEEE]"
-                  >
-                    <h6 className="text-white text-montserrat text-semibold text-[8.574px] lg:text-[14px] xl-[18px]">
-                      Open
-                    </h6>
-                  </Link>
+                    <Link
+                      href={`/packageList-manOps/packageProblem/${packageInfo.packageId}`}
+                      className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] md:w-[40px] w-[10vw] px-[14.29px] py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] lg:rounded-[10px] justify-center bg-[#67AEEE]"
+                    >
+                      <h6 className="text-white text-montserrat text-semibold text-[8.574px] lg:text-[14px] xl-[18px]">
+                        Open
+                      </h6>
+                    </Link>
                   </div>
                 </td>
               </tr>
@@ -121,8 +115,8 @@ function ListPackage({header}: { header: any[]} ){
           })}
         </tbody>
       </table>
-    </div> 
-    )
+    </div>
+  );
 }
 
 export default ListPackage;
