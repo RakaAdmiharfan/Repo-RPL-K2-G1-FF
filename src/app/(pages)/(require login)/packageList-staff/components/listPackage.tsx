@@ -31,10 +31,19 @@ function ListPackage({header}: { header: any[]} ){
     }, []);  
     
     
+<<<<<<< Updated upstream
     // const { data: session } = useSession();
     // const userId = session.user.id;
 
     // const assignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === userId)
+=======
+    const { data: session } = useSession();
+    const userId = session?.user?.id;
+
+    
+
+    const assignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === userId)
+>>>>>>> Stashed changes
 
     return (
         <div className="md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[90vw] overflow-x-hidden mx-auto">
