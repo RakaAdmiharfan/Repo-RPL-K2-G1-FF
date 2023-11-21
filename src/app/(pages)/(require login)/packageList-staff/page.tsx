@@ -22,7 +22,7 @@ export default async function packageStaff() {
   }
 
   const roleAccess = user.role === "STAFF";
-  const;
+  
 
   if (session && !roleAccess) {
     redirect("/");
