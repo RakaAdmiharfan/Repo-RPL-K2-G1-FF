@@ -15,12 +15,14 @@ import client from "@/app/lib/prismadb";
 export default async function packageStaff() {
   const session = await getServerSession(authOptions);
   const user = session?.user as UserSession;
+  const id = user.id;
 
   if (!session) {
     redirect("/login");
   }
 
   const roleAccess = user.role === "STAFF";
+  const;
 
   if (session && !roleAccess) {
     redirect("/");

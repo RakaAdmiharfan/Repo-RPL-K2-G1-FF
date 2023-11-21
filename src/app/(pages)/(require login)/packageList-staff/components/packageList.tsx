@@ -1,16 +1,42 @@
 "use client";
 
+import { createClient } from "@/utils/supabase/client";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
-function PackageList({ header }: { header: any[] }) {
+function PackageList({ header }: { header: any[] }, id: number) {
+  const [fetchError, setFetchError] = useState(null);
+  const [stafPengiriman, setStafPengiriman] = useState(null);
+  const [dataItem, setDataItem] = useState<any[]>([]);
+
   const handleClick = (item: any) => {
     console.log(item);
   };
 
-  const packages = packageInfos.filter(
-    (packageInfo) =>
-      packageInfo.stafPengirim == 2 || packageInfo.stafPengirim === "2"
+  useEffect(() => {
+    const fetchPackageList = async () => {
+      try {
+        const supabase = createClient();
+        const { data: packageInfos, error } = await supabase
+          .from("packageInfo")
+          .select();
+        if (packageInfos) {
+          setDataItem(packageInfos);
+        }
+      } catch (error: any) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    fetchPackageList();
+  }, []);
+
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
+
+  const assignedPackages = dataItem.filter(
+    (packageInfo) => packageInfo.staffPengiriman === userId
   );
 
   return (
@@ -32,7 +58,7 @@ function PackageList({ header }: { header: any[] }) {
         </thead>
 
         <tbody>
-          {packages.map((packageInfo) => {
+          {assignedPackages.map((packageInfo) => {
             return (
               <tr
                 key={packageInfo.packageId}
