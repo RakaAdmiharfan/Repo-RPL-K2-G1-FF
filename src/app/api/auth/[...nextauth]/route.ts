@@ -86,6 +86,14 @@ export const authOptions: NextAuthOptions = {
           },
           select: {
             id: true,
+            username: true,
+            nama: true,
+            tanggalLahir: true,
+            noTelp: true,
+            alamat: true,
+            role: true,
+            
+
           },
         });
   
