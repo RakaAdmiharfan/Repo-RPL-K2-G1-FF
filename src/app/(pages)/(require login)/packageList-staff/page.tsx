@@ -59,7 +59,7 @@ export default async function packageStaff() {
               "Jenis Bunga",
               "Catatan Pelanggan",
               "Change Status",
-              "Laporan",
+              "Laporan",  
               "Proof",
             ]}
             staffPengiriman={ID}
