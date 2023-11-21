@@ -15,12 +15,14 @@ enum Roles {
   STAFF
 }
 
+
 model user {
   id Int @id
   username String @unique
   password String
   nama String
-  tanggalLahir DateTime?
+  tanggalLahir DateTime
+  noTelp String?
   alamat String?
   role Roles
 }
@@ -38,9 +40,9 @@ model packageInfo {
   jenisBunga String
   catatanPelanggan String
   tanggalPengiriman DateTime
+  staffPengiriman Int
   statusPengiriman String
   hasUpdateStatus Boolean
   report String
   proof String
-  staffPengiriman Int
 }
