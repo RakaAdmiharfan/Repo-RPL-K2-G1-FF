@@ -12,7 +12,7 @@ import { env } from "process";
 import { signIn } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { UserSession } from "@/components/UserFetcher";
+import { UserSession } from "@/components/userFetcher";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 

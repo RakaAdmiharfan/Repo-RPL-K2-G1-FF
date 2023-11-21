@@ -1,16 +1,11 @@
 "use client";
 
 import { createClient } from "@/utils/supabase/client";
-//import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
-interface PackageListProps {
-  header: string[];
-  staffPengiriman: number; // Tambahkan properti staffPengiriman
-}
-
-const PackageList: React.FC<PackageListProps> = ({ header, staffPengiriman }) => {
+function PackageList({ header }: { header: any[] }, id: number) {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
@@ -37,11 +32,11 @@ const PackageList: React.FC<PackageListProps> = ({ header, staffPengiriman }) =>
     fetchPackageList();
   }, []);
 
-  // const { data: session } = useSession();
-  // const userId = session?.user?.id;
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
 
   const assignedPackages = dataItem.filter(
-    (packageInfo) => packageInfo.staffPengiriman === staffPengiriman
+    (packageInfo) => packageInfo.staffPengiriman === userId
   );
 
   return (

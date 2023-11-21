@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { UserSession } from "@/components/UserFetcher";
+import { UserSession } from "@/components/userFetcher";
 import "aos/dist/aos.css";
 
 export default async function Login() {
