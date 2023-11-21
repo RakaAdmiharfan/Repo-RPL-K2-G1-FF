@@ -3,26 +3,27 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import SideNav from "@/components/sidenav";
-import ListPackae from "./components/listPackage";
+import ListPackage from "./components/listPackage";
 import { FaRegUserCircle } from "react-icons/fa";
 import PackageList from "./components/packageList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import { UserSession } from "@/components/userFetcher";
+import { UserSession } from "@/components/UserFetcher";
 import client from "@/app/lib/prismadb";
 
 export default async function packageStaff() {
   const session = await getServerSession(authOptions);
   const user = session?.user as UserSession;
-  const id = user.id;
+  const ID = user.id;
+
+
 
   if (!session) {
     redirect("/login");
   }
 
   const roleAccess = user.role === "STAFF";
-  const;
 
   if (session && !roleAccess) {
     redirect("/");
@@ -61,6 +62,7 @@ export default async function packageStaff() {
               "Laporan",
               "Proof",
             ]}
+            staffPengiriman={ID}
           />
         </div>
       </div>
