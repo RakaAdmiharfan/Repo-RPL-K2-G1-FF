@@ -12,8 +12,8 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { createClient } from "@/utils/supabase/client";
 import { env } from "process";
 import { signIn } from "next-auth/react";
-
-
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -23,8 +23,10 @@ interface Values {
   password: string;
 }
 
-export default function LoginForm() {
+export default async function LoginForm() {
   const router = useRouter();
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
 
   const handleSubmit = async (val: Values) => {
     try {

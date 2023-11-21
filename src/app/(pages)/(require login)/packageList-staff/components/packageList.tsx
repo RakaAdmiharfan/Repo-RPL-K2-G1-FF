@@ -14,7 +14,7 @@ function packageList({ header }: { header: any[] }) {
   );
 
   return (
-    <div className="md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-full overflow-auto mx-auto">
+    <div className="mt-[23.54px] lg:mt-[30px] overflow-auto mx-auto">
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
           <tr>
@@ -22,7 +22,7 @@ function packageList({ header }: { header: any[] }) {
               return (
                 <th
                   key={idx}
-                  className="w-auto h-auto font-montserrat font-semibold text-black text-center pb-[8px] text-[10px] lg:text-[16px] xl:text-[20px]"
+                  className="w-auto lg:w-[300px] h-auto font-montserrat font-semibold text-black text-center pb-[8px] text-[10px] lg:text-[16px] xl:text-[20px]"
                 >
                   {item}
                 </th>
@@ -38,30 +38,30 @@ function packageList({ header }: { header: any[] }) {
                 key={packageInfo.packageId}
                 className="border-b-[1px] border-black border-opacity-30"
               >
-                <td className="overflow-hidden w-auto h-auto py-[36px] px-[20px] text-[10px] lg:text-[12px] xl:text-[20px] text-center ">
-                  <div>{packageInfo.packageId}</div>
+                <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[12px] xl:text-[20px] text-center ">
+                  <div className="">{packageInfo.packageId}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[36px] px-[20px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{packageInfo.namaPelanggan}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[36px] px-[20px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{packageInfo.alamatPengirim}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[36px] px-[20px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{packageInfo.noTelp}</div>
                 </td>
                 <td>
-                  <div className="overflow-hidden w-auto h-auto py-[36px] px-[20px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                  <div className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                     <div>{packageInfo.jenisBunga}</div>
                   </div>
                 </td>
                 <td>
-                  <div className="overflow-hidden w-auto h-auto py-[36px] px-[20px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                  <div className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                     <div>{packageInfo.catatanPelanggan}</div>
                   </div>
                 </td>
 
-                <td className="flex justify-center w-auto h-auto lg:py-[36px] px-[20px] py-[42px] align-middle items-center">
+                <td className="flex justify-center w-auto lg:w-[600px] h-auto lg:py-[36px] px-[20px] lg:px-20 py-[42px] align-middle items-center">
                   <Link
                     href={`/packageList-manOps/packageProblem/${packageInfo.packageId}`}
                     className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] md:w-[40px] w-[10vw] px-[14.29px] py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] lg:rounded-[10px] justify-center bg-[#67AEEE]"
@@ -72,7 +72,7 @@ function packageList({ header }: { header: any[] }) {
                   </Link>
                 </td>
 
-                <td className="w-auto h-auto lg:py-[36px] px-[20px] py-[42px] align-middle items-center">
+                <td className="w-auto lg:w-[600px] h-auto lg:py-[36px] px-[20px] lg:px-12 py-[42px] align-middle items-center">
                   <div className="w-full flex justify-center">
                     <Link
                       href={`/packageList-manOps/packageProblem/${packageInfo.packageId}`}
@@ -151,5 +151,61 @@ export const packageInfos = [
     report: "",
     proofOfDelivery: "",
     stafPengirim: "",
+  },
+  {
+    packageId: "kntl",
+    namaPelanggan: "rkaa",
+    alamatPengirim: "789 Elm St, City, Country",
+    noTelp: "555-555-5555",
+    jenisBunga: "Lilies",
+    catatanPelanggan: "Handle with care",
+    tanggalPengiriman: "2023-11-14",
+    statusPengiriman: "processing",
+    hasUpdateStatus: false,
+    report: "",
+    proofOfDelivery: "",
+    stafPengirim: 2,
+  },
+  {
+    packageId: "kntl",
+    namaPelanggan: "rkaa",
+    alamatPengirim: "789 Elm St, City, Country",
+    noTelp: "555-555-5555",
+    jenisBunga: "Lilies",
+    catatanPelanggan: "Handle with care",
+    tanggalPengiriman: "2023-11-14",
+    statusPengiriman: "processing",
+    hasUpdateStatus: false,
+    report: "",
+    proofOfDelivery: "",
+    stafPengirim: 2,
+  },
+  {
+    packageId: "kntl",
+    namaPelanggan: "rkaa",
+    alamatPengirim: "789 Elm St, City, Country",
+    noTelp: "555-555-5555",
+    jenisBunga: "Lilies",
+    catatanPelanggan: "Handle with care",
+    tanggalPengiriman: "2023-11-14",
+    statusPengiriman: "processing",
+    hasUpdateStatus: false,
+    report: "",
+    proofOfDelivery: "",
+    stafPengirim: 2,
+  },
+  {
+    packageId: "kntl",
+    namaPelanggan: "rkaa",
+    alamatPengirim: "789 Elm St, City, Country",
+    noTelp: "555-555-5555",
+    jenisBunga: "Lilies",
+    catatanPelanggan: "Handle with care",
+    tanggalPengiriman: "2023-11-14",
+    statusPengiriman: "processing",
+    hasUpdateStatus: false,
+    report: "",
+    proofOfDelivery: "",
+    stafPengirim: 2,
   },
 ];
