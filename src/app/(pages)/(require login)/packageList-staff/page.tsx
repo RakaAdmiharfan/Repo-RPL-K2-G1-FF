@@ -12,7 +12,25 @@ import client from "@/app/lib/prismadb";
 
 export default async function packageStaff() {
   const session = await getServerSession(authOptions);
-  const user = session?.user;
+  const user = session?.user?.id;
+  
+  useEffect(() => {
+    const fetchStafPengiriman = async () => {
+      try {
+        const supabase = createClient();
+        const { data: user, error } = await supabase.from("user").select();
+
+        if (user) {
+          setDataItem(user);
+        }
+      } catch (error: any) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    fetchStafPengiriman();
+  }, []);
+
 
   if (!session) {
     redirect("/login");
