@@ -20,7 +20,6 @@ export default async function packageStaff() {
   }
 
   const roleAccess = user.role === "STAFF";
-  
 
   if (session && !roleAccess) {
     redirect("/");
@@ -35,7 +34,7 @@ export default async function packageStaff() {
         <SideNav active={2} />
       </nav> */}
       <div className="flex flex-col w-full h-screen overflow-auto">
-        <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[120px] lg:mt-[100px] lg:text-[24px] gap-2">
+        <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[40px] lg:mt-[100px] lg:text-[24px] gap-2">
           <h1 className="text-[#3D688E]">Hi Staff!</h1>
           <FaRegUserCircle />
         </div>
@@ -46,7 +45,7 @@ export default async function packageStaff() {
           </h2>
         </div>
 
-        <div className="flex justify-center w-full px-6 lg:px-0">
+        <div className="flex justify-center w-full px-6 lg:px-6 no-scrollbar">
           <PackageList
             header={[
               "ID",
@@ -56,10 +55,10 @@ export default async function packageStaff() {
               "Jenis Bunga",
               "Catatan Pelanggan",
               "Change Status",
-              "Laporan",  
+              "Laporan",
               "Proof",
             ]}
-            staffPengiriman = {id}
+            staffPengiriman={id}
           />
         </div>
       </div>
