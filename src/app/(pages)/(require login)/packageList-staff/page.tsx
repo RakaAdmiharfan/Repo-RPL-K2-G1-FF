@@ -9,7 +9,7 @@ import PackageList from "./components/packageList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import { UserSession } from "@/components/userFetcher";
+import { UserSession } from "@/components/UserFetcher";
 import client from "@/app/lib/prismadb";
 
 interface idUserProps{

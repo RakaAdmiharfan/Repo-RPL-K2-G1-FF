@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import prisma from "@/app/lib/prismadb";
 
 interface PackageListProps {
   header: string[];
@@ -20,27 +21,28 @@ const PackageList: React.FC<PackageListProps> = ({ header, staffPengiriman }) =>
   };
 
   useEffect(() => {
-    const fetchPackageList = async () => {
+    const fetchCertainPackage = async () => {
       try {
-        const supabase = createClient();
-        const { data: packageInfos, error } = await supabase
-          .from("packageInfo")
-          .select();
-        if (packageInfos) {
-          setDataItem(packageInfos);
-        }
+        const res = await fetch("http://localhost:3000/api/certain-staff");
+        const res2 = await res.json();
+        setDataItem(res2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-
-    fetchPackageList();
+    console.log("hallo");
+    fetchCertainPackage();
   }, []);
+
+  //   fetchPackageList();
+  // }, []);
 
   // const { data: session } = useSession();
   // const userId = session?.user?.id;
 
   const assignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === staffPengiriman);
+
+
 
   return (
     <div className="mt-[23.54px] lg:mt-[30px] overflow-auto mx-auto">
