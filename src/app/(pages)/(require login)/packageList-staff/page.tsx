@@ -2,8 +2,6 @@ import Link from "next/link";
 // Your client-side code here
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
-import SideNav from "@/components/sidenav";
-import ListPackae from "./components/listPackage";
 import { FaRegUserCircle } from "react-icons/fa";
 import PackageList from "./components/packageList";
 import { getServerSession } from "next-auth";
@@ -11,10 +9,6 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { UserSession } from "@/components/UserFetcher";
 import client from "@/app/lib/prismadb";
-
-interface idUserProps{
-  id: number;
-}
 
 export default async function packageStaff() {
   const session = await getServerSession(authOptions);

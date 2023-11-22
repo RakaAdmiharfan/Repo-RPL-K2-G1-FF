@@ -3,11 +3,14 @@ import { NextResponse } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
-export async function GETCertainPackage(id : number) {
+// getting packageInfo based on packageInfo.staffPengiriman === 
+
+export async function GET() {
     const session = await getServerSession(authOptions);
 
     // route protection
     if (!session?.user) {
+        
         return NextResponse.json(
             {
                 message: "Minimal jangan shortcut-shortcut la",
@@ -15,6 +18,7 @@ export async function GETCertainPackage(id : number) {
             { status: 401 }
         );
     }
+    const id = session?.user?.id;
 
     const packageList = await prisma.packageInfo.findMany({
         where: {

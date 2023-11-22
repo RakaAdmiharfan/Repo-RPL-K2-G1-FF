@@ -34,16 +34,8 @@ const PackageList: React.FC<PackageListProps> = ({ header, staffPengiriman }) =>
     fetchCertainPackage();
   }, []);
 
-  //   fetchPackageList();
-  // }, []);
-
-  // const { data: session } = useSession();
-  // const userId = session?.user?.id;
-
-  const assignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === staffPengiriman);
-
-
-
+  const assignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === staffPengiriman)
+  
   return (
     <div className="mt-[23.54px] lg:mt-[30px] overflow-auto mx-auto">
       <table className="w-full">
@@ -70,13 +62,13 @@ const PackageList: React.FC<PackageListProps> = ({ header, staffPengiriman }) =>
                 className="border-b-[1px] border-black border-opacity-30"
               >
                 <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[12px] xl:text-[20px] text-center ">
-                  <div className="">{packageInfo.packageId}</div>
+                  <div className="">{packageInfo.packageID}</div>
                 </td>
                 <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{packageInfo.namaPelanggan}</div>
                 </td>
                 <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
-                  <div>{packageInfo.alamatPengirim}</div>
+                  <div>{packageInfo.alamatPengiriman}</div>
                 </td>
                 <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-20 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{packageInfo.noTelp}</div>
@@ -125,118 +117,3 @@ const PackageList: React.FC<PackageListProps> = ({ header, staffPengiriman }) =>
 }
 
 export default PackageList;
-
-export const packageInfos = [
-  {
-    packageId: "abc123",
-    namaPelanggan: "Customer A",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-10",
-    statusPengiriman: "shipped",
-    hasUpdateStatus: true,
-    report: "Delivered on time",
-    proofOfDelivery: "https://example.com/delivery-proof/abc123.jpg",
-    stafPengirim: 1,
-  },
-  {
-    packageId: "def456",
-    namaPelanggan: "Customer B",
-    alamatPengirim: "456 Pine St, City, Country",
-    noTelp: "555-987-6543",
-    jenisBunga: "Tulips",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-12",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-  {
-    packageId: "kntl",
-    namaPelanggan: "rkaa",
-    alamatPengirim: "789 Elm St, City, Country",
-    noTelp: "555-555-5555",
-    jenisBunga: "Lilies",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-14",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-  {
-    packageId: "meki",
-    namaPelanggan: "aupa D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: "",
-  },
-  {
-    packageId: "kntl",
-    namaPelanggan: "rkaa",
-    alamatPengirim: "789 Elm St, City, Country",
-    noTelp: "555-555-5555",
-    jenisBunga: "Lilies",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-14",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-  {
-    packageId: "kntl",
-    namaPelanggan: "rkaa",
-    alamatPengirim: "789 Elm St, City, Country",
-    noTelp: "555-555-5555",
-    jenisBunga: "Lilies",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-14",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-  {
-    packageId: "kntl",
-    namaPelanggan: "rkaa",
-    alamatPengirim: "789 Elm St, City, Country",
-    noTelp: "555-555-5555",
-    jenisBunga: "Lilies",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-14",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-  {
-    packageId: "kntl",
-    namaPelanggan: "rkaa",
-    alamatPengirim: "789 Elm St, City, Country",
-    noTelp: "555-555-5555",
-    jenisBunga: "Lilies",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-14",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-];
