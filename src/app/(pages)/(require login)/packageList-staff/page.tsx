@@ -12,6 +12,10 @@ import { redirect } from "next/navigation";
 import { UserSession } from "@/components/userFetcher";
 import client from "@/app/lib/prismadb";
 
+interface idUserProps{
+  id: number;
+}
+
 export default async function packageStaff() {
   const session = await getServerSession(authOptions);
   const user = session?.user as UserSession;
@@ -61,6 +65,7 @@ export default async function packageStaff() {
               "Laporan",  
               "Proof",
             ]}
+            staffPengiriman = {id}
           />
         </div>
       </div>

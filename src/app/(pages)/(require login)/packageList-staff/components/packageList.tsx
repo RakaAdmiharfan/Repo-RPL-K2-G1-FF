@@ -5,7 +5,12 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
-function PackageList({ header }: { header: any[] }, id: number) {
+interface PackageListProps {
+  header: string[];
+  staffPengiriman: number; // Tambahkan properti staffPengiriman
+}
+
+const PackageList: React.FC<PackageListProps> = ({ header, staffPengiriman }) => {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
@@ -32,12 +37,10 @@ function PackageList({ header }: { header: any[] }, id: number) {
     fetchPackageList();
   }, []);
 
-  const { data: session } = useSession();
-  const userId = session?.user?.id;
+  // const { data: session } = useSession();
+  // const userId = session?.user?.id;
 
-  const assignedPackages = dataItem.filter(
-    (packageInfo) => packageInfo.staffPengiriman === userId
-  );
+  const assignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === staffPengiriman);
 
   return (
     <div className="mt-[23.54px] lg:mt-[30px] overflow-auto mx-auto">
