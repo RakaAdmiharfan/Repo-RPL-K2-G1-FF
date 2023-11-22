@@ -6,20 +6,17 @@ import { getServerSession } from "next-auth";
 export async function GET() {
   const session = await getServerSession(authOptions);
 
-  // Route protection
+  // route protection
   if (!session?.user) {
     return NextResponse.json(
       {
-        message: "Minimal Login Dulu Lah",
+        message: "Minimal jangan shortcut-shortcut la",
       },
       { status: 401 }
     );
   }
 
-  const stafPengiriman = await prisma.user.findMany({
-    where: {
-      role: "STAFF",
-    },
-  });
-  return NextResponse.json(stafPengiriman);
+  const packageDetail = await prisma.packageInfo.findMany();
+
+  return NextResponse.json(packageDetail);
 }

@@ -38,10 +38,13 @@ const PackageList: React.FC<PackageListProps> = ({
     fetchCertainPackage();
   }, []);
 
+  console.log(dataItem);
+
   const assignedPackages = dataItem.filter(
     (packageInfo) => packageInfo.staffPengiriman === staffPengiriman
   );
 
+  console.log(assignedPackages);
   return (
     <div className="mt-[23.54px] lg:mt-[30px] overflow-auto mx-auto">
       <table className="w-full">

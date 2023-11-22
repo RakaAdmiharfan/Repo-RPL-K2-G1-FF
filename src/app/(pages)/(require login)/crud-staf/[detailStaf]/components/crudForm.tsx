@@ -21,6 +21,8 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const [alamat, setAlamat] = useState<any>("");
   const [tanggalLahir, setTanggalLahir] = useState<any>("");
 
+  console.log(id);
+
   useEffect(() => {
     const fetchDetailUser = async () => {
       try {

@@ -1,16 +1,42 @@
 "use client";
-import { useState } from "react";
-import { packageInfos } from "../../../components/assigned";
+import Link from "next/link";
+import prisma from "@/app/lib/prismadb";
+import { CiCamera } from "react-icons/ci";
+import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
 
-const DetailBox = () => {
-  const [packageInfo, setPackage] = useState<any>({
-    packageId: "",
-    namaPelanggan: "",
-    alamatPengirim: "",
-    noTelp: "",
-    jenisBunga: "",
-    catatanPelanggan: "",
-  });
+const DetailBox = ({ id }: { id: string }) => {
+  // const [packageInfo, setPackage] = useState<any>({
+  //   packageId: "",
+  //   namaPelanggan: "",
+  //   alamatPengirim: "",
+  //   noTelp: "",
+  //   jenisBunga: "",
+  //   catatanPelanggan: "",
+  // });
+
+  const [fetchError, setFetchError] = useState(null);
+  const [stafPengiriman, setStafPengiriman] = useState(null);
+  const [dataItem, setDataItem] = useState<any>([]);
+
+  console.log(id);
+
+  useEffect(() => {
+    const fetchStafList = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/package-detail/");
+        const res2 = await res.json();
+        setDataItem(res2);
+      } catch (error: any) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    console.log("hallo");
+    fetchStafList();
+  }, []);
+
+  console.log(dataItem);
+  console.log(id);
 
   return (
     <div className="bg-white w-[300px] lg:w-[600px] h-[270px] lg:h-full rounded-[15px] drop-shadow-2xl pb-6">
@@ -70,23 +96,22 @@ const DetailBox = () => {
         </div>
         <div className="flex flex-col items-end w-1/2 overflow-visible gap-2">
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            2 {packageInfo.packageId}
+            {dataItem.packageID}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            Mahmud {packageInfo.namaPelanggan}
+            {dataItem.namaPelanggan}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            jalan Tubis {packageInfo.alamatPengirim}
+            {dataItem.alamatPengiriman}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            081212345678 {packageInfo.noTelp}
+            {dataItem.noTelp}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            Mawar {packageInfo.jenisBunga}
+            {dataItem.jenisBunga}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat text-right">
-            Bunga ditaro di pagar betis indonesia merdeka{" "}
-            {packageInfo.catatanPelanggan}
+            {dataItem.catatanPelanggan}
           </p>
         </div>
       </div>

@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
-import { packageInfos } from "@/app/packageList-manOps/components/assigned";
 
-const StatusBox = () => {
+const StatusBox = ({ id }: { id: string }) => {
   const [packageInfo, setPackage] = useState<any>({
     statusPengiriman: "",
   });

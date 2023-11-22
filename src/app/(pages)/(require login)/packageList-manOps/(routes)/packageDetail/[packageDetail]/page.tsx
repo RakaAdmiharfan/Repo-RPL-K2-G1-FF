@@ -1,17 +1,13 @@
-"use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import StatusBox from "./components/statusBox";
 import DetailBox from "./components/detailBox";
 
-import { useRouter } from "next/router";
-import { usePathname, useSearchParams } from "next/navigation";
-
 export default function packageDetail({
   params,
 }: {
   params: {
-    detailPackage: string;
+    id: string;
   };
 }) {
   return (
@@ -30,11 +26,11 @@ export default function packageDetail({
       </h1>
 
       <div className="flex justify-center w-full mt-[24px]">
-        <StatusBox />
+        <StatusBox id={params.id} />
       </div>
 
       <div className="flex justify-center w-full mt-[24px]">
-        <DetailBox />
+        <DetailBox id={params.id} />
       </div>
 
       <footer className="mt-[20px] lg:mt-[200px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
