@@ -1,37 +1,33 @@
 "use client";
-
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import prisma from "@/app/lib/prismadb";
 
 function StafList({ header }: { header: any[] }) {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
-  const [dataItem, setDataItem] = useState<any[]>([]);
+  const [dataUser, setDataUser] = useState<any[]>([]);
 
   const handleClick = (item: any) => {
     console.log(item);
   };
 
   useEffect(() => {
-    const fetchStafPengiriman = async () => {
+    const fetchStafList = async () => {
       try {
-        const supabase = createClient();
-        const { data: user, error } = await supabase.from("user").select();
-
-        if (user) {
-          setDataItem(user);
-        }
+        const res = await fetch("http://localhost:3000/api/all-staf");
+        const res2 = await res.json();
+        setDataUser(res2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-
-    fetchStafPengiriman();
+    console.log("hallo");
+    fetchStafList();
   }, []);
 
-  const spUsers = dataItem.filter((user) => user.role === "MANAGER");
-
+  // console.log(dataItem);
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw] mx-auto">
       <table className="w-full">
@@ -51,7 +47,7 @@ function StafList({ header }: { header: any[] }) {
         </thead>
 
         <tbody>
-          {spUsers.map((staf) => {
+          {dataUser.map((staf) => {
             return (
               <tr
                 key={staf.id}
@@ -69,7 +65,7 @@ function StafList({ header }: { header: any[] }) {
                 <td className="flex justify-center w-auto h-auto py-[24px]">
                   <Link
                     onClick={() => handleClick(staf)}
-                    href={`/crud-staf/${staf.ID}`}
+                    href={`/crud-staf/${staf.id}`}
                     className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] w-[12.77vw] px-[14.29px] py-[4.76px] lg:w-[04.94vw] lg:px-[1px] lg:py-[5px] lg:rounded-[15px] justify-center border-[#6C88CD] border-[3px]"
                   >
                     <h6 className="text-[#6C88CD] text-montserrat text-semibold text-[8.574px] lg:text-[18px]">

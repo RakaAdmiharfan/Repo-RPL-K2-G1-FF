@@ -1,27 +1,10 @@
-"use client";
 import Link from "next/link";
 // Your client-side code here
-import React, { useState, useEffect } from "react";
-// import Search from "./components/search";
 import Navbar from "@/components/navbar";
 import StafList from "./components/stafList";
 import SideNav from "@/components/sidenav";
-// import axios from "axios";
 
 export default function StaffList() {
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    // try {
-    //   const response = await axios.get("http://159.223.92.164:8080/api/v1/properti");
-    //   setDataProperties(response.data.propertiGetAllProperti);
-    // } catch (error) {
-    //   console.error("Terjadi kesalahan:", error);
-    // }
-  };
-
   return (
     <div className="flex bg-gradient-to-b from-[#EFF6FD] to-white relative overflow-hidden w-full h-full min-h-[100vh]">
       <nav className="lg:hidden">
