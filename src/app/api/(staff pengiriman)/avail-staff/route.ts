@@ -56,3 +56,41 @@ export async function GET(){
 
     return NextResponse.json(availableStaff);
 }
+
+// import prisma from "@/app/lib/prismadb";
+// import { NextResponse } from "next/server";
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+// import { getServerSession } from "next-auth";
+
+// export async function GET() {
+//   // Fetch all users and their associated capacities
+//   const usersWithCapacities = await prisma.user.findMany({
+//     include: {
+//       staffCapacity: true, // Use the correct relation name
+//     },
+//   });
+
+//   // Fetch all package information
+//   const allPackages = await prisma.packageInfo.findMany();
+
+//   // Filter staff members who still have capacity
+//   const availableStaff = usersWithCapacities.filter((staff) => {
+//     const staffPackages = allPackages.filter(
+//       (packageInfo) => packageInfo.staffPengiriman === staff.id
+//     );
+
+//     const totalPackages = staffPackages.length;
+//     return totalPackages < staff.staffCapacity.dailyCapacity;
+//   });
+
+//   // Extract relevant information (id and name) from available staff
+//   const availableStaffInfo = availableStaff.map((staff) => ({
+//     id: staff.id,
+//     name: staff.nama,
+//   }));
+
+//   return NextResponse.json(availableStaffInfo);
+// }
+
+
+
