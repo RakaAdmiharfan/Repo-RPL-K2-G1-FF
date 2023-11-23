@@ -18,7 +18,7 @@ function NotAssigned({ header }: { header: any[] }) {
   useEffect(() => {
     const fetchUnassigned = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/package-unassigned");
+        const res = await fetch("http://localhost:3000/api/all-package");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {
@@ -28,7 +28,7 @@ function NotAssigned({ header }: { header: any[] }) {
     fetchUnassigned();
   }, []);
 
-  const unassignedPackages = dataItem;
+  const unassignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === null || packageInfo.staffPengiriman === "");
 
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw]">
@@ -87,61 +87,3 @@ function NotAssigned({ header }: { header: any[] }) {
 
 export default NotAssigned;
 
-export const packageInfos = [
-  {
-    packageId: "abc123",
-    namaPelanggan: "Customer A",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-10",
-    statusPengiriman: "shipped",
-    hasUpdateStatus: true,
-    report: "Delivered on time",
-    proofOfDelivery: "https://example.com/delivery-proof/abc123.jpg",
-    stafPengirim: 1,
-  },
-  {
-    packageId: "def456",
-    namaPelanggan: "Customer B",
-    alamatPengirim: "456 Pine St, City, Country",
-    noTelp: "555-987-6543",
-    jenisBunga: "Tulips",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-12",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-  {
-    packageId: "kntl",
-    namaPelanggan: "rkaa",
-    alamatPengirim: "789 Elm St, City, Country",
-    noTelp: "555-555-5555",
-    jenisBunga: "Lilies",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-14",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: "",
-  },
-  {
-    packageId: "meki",
-    namaPelanggan: "aupa D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: "",
-  },
-];

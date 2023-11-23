@@ -4,27 +4,21 @@ import prisma from "@/app/lib/prismadb";
 import { CiCamera } from "react-icons/ci";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
+import { Formik, Form, Field } from "formik";
+import { createClient } from "@/utils/supabase/client";
+import { useParams } from "next/navigation";
 
 const DetailBox = ({ id }: { id: string }) => {
-  // const [packageInfo, setPackage] = useState<any>({
-  //   packageId: "",
-  //   namaPelanggan: "",
-  //   alamatPengirim: "",
-  //   noTelp: "",
-  //   jenisBunga: "",
-  //   catatanPelanggan: "",
-  // });
-
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any>([]);
 
-  console.log(id);
-
+  
+  //console.log(packageDetail);
   useEffect(() => {
-    const fetchStafList = async () => {
+    const fetchPackageDetail = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/package-detail/");
+        const res = await fetch("http://localhost:3000/api/package-detail?");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {
@@ -32,11 +26,24 @@ const DetailBox = ({ id }: { id: string }) => {
       }
     };
     console.log("hallo");
-    fetchStafList();
+    fetchPackageDetail();
   }, []);
+  
+  //console.log(dataItem);
+  //console.log(id);
+  
+  const ID = useParams()
+  const packageDetail = ID.packageDetail
+  const selectedPackage = dataItem.filter(
+    (packageInfos) => packageInfos.packageId === packageDetail
+  );
 
+  
+
+  console.log(packageDetail);
+  console.log(selectedPackage);
+  console.log(dataItem[1]);
   console.log(dataItem);
-  console.log(id);
 
   return (
     <div className="bg-white w-[300px] lg:w-[600px] h-[270px] lg:h-full rounded-[15px] drop-shadow-2xl pb-6">
@@ -94,26 +101,31 @@ const DetailBox = ({ id }: { id: string }) => {
             </p>
           </div>
         </div>
+
+        {dataItem.map((packageInfo) => {
+          return (
+            
         <div className="flex flex-col items-end w-1/2 overflow-visible gap-2">
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {dataItem.packageID}
+            {packageInfo.packageID}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {dataItem.namaPelanggan}
+            {packageInfo.namaPelanggan}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {dataItem.alamatPengiriman}
+            {packageInfo.alamatPengiriman}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {dataItem.noTelp}
+            {packageInfo.noTelp}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {dataItem.jenisBunga}
+            {packageInfo.jenisBunga}
           </p>
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat text-right">
-            {dataItem.catatanPelanggan}
+            {packageInfo.catatanPelanggan}
           </p>
         </div>
+        )})}
       </div>
     </div>
   );

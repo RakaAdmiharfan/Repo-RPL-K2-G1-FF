@@ -16,11 +16,7 @@ export async function GET() {
     );
   }
 
-  const packageList = await prisma.packageInfo.findMany({
-    where: {
-      staffPengiriman: null,
-    }
-  })
+  const allPackage = await prisma.packageInfo.findMany()
 
-  return NextResponse.json(packageList);
+  return NextResponse.json(allPackage);
 }
