@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
 function AvailableStaff({ header }: { header: any[] }) {
@@ -11,9 +12,29 @@ function AvailableStaff({ header }: { header: any[] }) {
   const [dataPackage, setDataPackage] = useState<any[]>([]);
   const [dataStaff, setDataStaff] = useState<any[]>([]);
 
-  const handleSubmit = (id: number) => {
-    console.log(id);
+  const handleSubmit = async (sid: number, pid: number ) => {
+    // console.log(pid);
+    try {
+      const response = await fetch(`/api/assign-package/put?staffID=${sid}&packageID=${pid}`
+      , {
+        method : 'PUT'
+      
+      });
+      if (response.ok) {
+        // Handle success, update UI, dll.
+        console.log('PackageInfo updated successfully');
+      } else {
+        console.error('Error updating PackageInfo:', response.statusText);
+      }
+    }    
+    catch (error) {
+      console.error('Error updating PackageInfo:');
+    }
+  
   };
+
+  const ID = useParams()
+  const packageID = parseInt(ID.packageDetail)
 
   useEffect(() => {
     const fetchStafAvail = async () => {
@@ -35,6 +56,35 @@ function AvailableStaff({ header }: { header: any[] }) {
     console.log("hallo");
     fetchStafAvail();
   }, []);
+
+  // const handleAssign = async () => {
+  //   try {
+  //     const response = await fetch("http://localhost:3000/api/assign-package")
+      
+  //   }
+  // }
+
+  // const handleUpdatePackageInfo = async () => {
+  //   try {
+  //     const response = await fetch(`/api/put?staffID=${staffID}&packageID=${packageID}`, {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       // Optional: Add body data jika diperlukan
+  //       // body: JSON.stringify({ additionalData: 'value' }),
+  //     });
+
+  //     if (response.ok) {
+  //       // Handle success, update UI, dll.
+  //       console.log('PackageInfo updated successfully');
+  //     } else {
+  //       console.error('Error updating PackageInfo:', response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error updating PackageInfo:', error.message);
+  //   }
+  // };
 
   return (
     <div className="w-[290px] md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[70vw] overflow-x-hidden mx-auto">
@@ -72,7 +122,7 @@ function AvailableStaff({ header }: { header: any[] }) {
                 </td>
                 <td className="w-auto h-auto py-0">
                   <div className="w-full flex justify-center">
-                    <button onClick={() => handleSubmit(user.staffID)}>
+                    <button onClick={handleSubmit(user.staffID, packageID)}>
                       <IoIosAddCircleOutline className="text-[16px] lg:text-[32px]" />
                     </button>
                   </div>
