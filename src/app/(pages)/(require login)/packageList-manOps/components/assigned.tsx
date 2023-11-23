@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 function Assigned({ header }: { header: any[] }) {
   const handleClick = (item: any) => {
@@ -10,6 +10,7 @@ function Assigned({ header }: { header: any[] }) {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
+  const [showDeliveredOnly, setShowDeliveredOnly] = useState(false); // State for checkbox
 
   useEffect(() => {
     const fetchAssigned = async () => {
@@ -24,8 +25,31 @@ function Assigned({ header }: { header: any[] }) {
     fetchAssigned();
   }, []);
 
+  // Filter data based on status and checkbox state
+  const filteredData = useMemo(() => {
+    if (showDeliveredOnly) {
+      return dataItem.filter(
+        (packageInfo) => packageInfo.statusPengiriman === "Delivered"
+      );
+    } else {
+      return dataItem;
+    }
+  }, [dataItem, showDeliveredOnly]);
+
   return (
     <div className="w-[290px] md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[70vw] overflow-x-hidden mx-auto">
+      <div className="mb-4 ml-1 flex items-center">
+        {/* Checkbox for delivered packages */}
+        <label className="text-[12px] lg:text-[18px]">
+          <input
+            type="checkbox"
+            checked={showDeliveredOnly}
+            onChange={() => setShowDeliveredOnly(!showDeliveredOnly)}
+            className="text-[8px] lg:text-[24px] w-3 h-3 lg:w-4 lg:h-4"
+          />
+          Show Delivered Only
+        </label>
+      </div>
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
           <tr>
@@ -43,7 +67,7 @@ function Assigned({ header }: { header: any[] }) {
         </thead>
 
         <tbody>
-          {dataItem.map((packageInfo) => {
+          {filteredData.map((packageInfo) => {
             return (
               <tr
                 key={packageInfo.packageID}

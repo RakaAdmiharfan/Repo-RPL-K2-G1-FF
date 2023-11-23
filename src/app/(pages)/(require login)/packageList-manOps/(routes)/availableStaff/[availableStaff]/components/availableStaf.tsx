@@ -2,14 +2,17 @@
 
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 function AvailableStaff({ header }: { header: any[] }) {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataUser, setDataUser] = useState<any[]>([]);
+<<<<<<< Updated upstream
   const [dataPackage, setDataPackage] = useState<any[]>([]);
   const [dataStaff, setDataStaff] = useState<any[]>([]);
+=======
+>>>>>>> Stashed changes
 
   const handleClick = (item: any) => {
     console.log(item);
@@ -74,10 +77,7 @@ function AvailableStaff({ header }: { header: any[] }) {
                 <td className="w-auto h-auto py-0">
                   <div className="w-full flex justify-center">
                     <button onClick={() => handleClick(user)}>
-                      <img
-                        src="/ArrowSquareOut.svg"
-                        className="w-[20px] lg:w-[40px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
-                      />
+                      <IoIosAddCircleOutline className="text-[16px] lg:text-[32px]" />
                     </button>
                   </div>
                 </td>
@@ -91,4 +91,3 @@ function AvailableStaff({ header }: { header: any[] }) {
 }
 
 export default AvailableStaff;
-
