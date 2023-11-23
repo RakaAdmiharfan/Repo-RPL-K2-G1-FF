@@ -8,7 +8,9 @@ function AvailableStaff({ header }: { header: any[] }) {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataUser, setDataUser] = useState<any[]>([]);
-  
+  const [dataPackage, setDataPackage] = useState<any[]>([]);
+  const [dataStaff, setDataStaff] = useState<any[]>([]);
+
   const handleClick = (item: any) => {
     console.log(item);
   };
@@ -19,6 +21,14 @@ function AvailableStaff({ header }: { header: any[] }) {
         const res = await fetch("http://localhost:3000/api/avail-staff");
         const res2 = await res.json();
         setDataUser(res2);
+        const paket = await fetch("http://localhost:3000/api/all-package")
+        const paket2 = await res.json();
+        setDataPackage(paket2);
+
+        const staff = await fetch("http://localhost:3000/api/all-staff")
+        const staff2 = await res.json();
+        setDataStaff(staff2);
+
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
@@ -59,7 +69,7 @@ function AvailableStaff({ header }: { header: any[] }) {
                   <div>{user.Nama}</div>
                 </td>
                 <td className="overflow-hidden w-auto h-auto py-[36px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
-                  <div>{user.dailyCapacity}</div>
+                  <div>total paket/{user.dailyCapacity}</div>
                 </td>
                 <td className="w-auto h-auto py-0">
                   <div className="w-full flex justify-center">
