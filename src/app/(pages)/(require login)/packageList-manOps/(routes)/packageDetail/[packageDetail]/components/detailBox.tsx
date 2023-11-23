@@ -1,11 +1,6 @@
 "use client";
-import Link from "next/link";
-import prisma from "@/app/lib/prismadb";
-import { CiCamera } from "react-icons/ci";
-import { useRouter } from "next/router";
+
 import React, { useState, useEffect } from "react";
-import { Formik, Form, Field } from "formik";
-import { createClient } from "@/utils/supabase/client";
 import { useParams } from "next/navigation";
 
 const DetailBox = ({ id }: { id: string }) => {
@@ -13,7 +8,6 @@ const DetailBox = ({ id }: { id: string }) => {
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
 
-  
   //console.log(packageDetail);
   useEffect(() => {
     const fetchPackageDetail = async () => {
@@ -28,15 +22,23 @@ const DetailBox = ({ id }: { id: string }) => {
     console.log("hallo");
     fetchPackageDetail();
   }, []);
-  
-  const ID = useParams()
-  const packageDetail = ID.packageDetail
-  const selectedPackage = dataItem.filter(
-    (packageInfo) => packageInfo.packageID === parseInt(packageDetail) || packageInfo.packageID === ID
-  );
+
+  const { packageDetail } = useParams();
+
+  const selectedPackage = dataItem.filter((packageInfo) => {
+    const packageId = Array.isArray(packageDetail)
+      ? packageDetail[0]
+      : packageDetail;
+
+    return (
+      packageInfo.packageID === parseInt(packageId) ||
+      (Array.isArray(packageDetail) &&
+        packageInfo.packageID === parseInt(packageDetail[0]))
+    );
+  });
 
   return (
-    <div className="bg-white w-[300px] lg:w-[600px] h-[270px] lg:h-full rounded-[15px] drop-shadow-2xl pb-6">
+    <div className="bg-white w-[280px] lg:w-[600px] h-[270px] lg:h-full rounded-[15px] drop-shadow-2xl pb-12">
       <h1 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[12px] lg:text-[36px] lg:mt-[32px] mb-[12px] lg:mb-6 justify-center">
         Detail
       </h1>
@@ -94,28 +96,31 @@ const DetailBox = ({ id }: { id: string }) => {
 
         {selectedPackage.map((packageInfo) => {
           return (
-            
-        <div key={packageInfo.packageID} className="flex flex-col items-end w-1/2 overflow-visible gap-2">
-          <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {packageInfo.packageID}
-          </p>
-          <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {packageInfo.namaPelanggan}
-          </p>
-          <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {packageInfo.alamatPengiriman}
-          </p>
-          <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {packageInfo.noTelp}
-          </p>
-          <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
-            {packageInfo.jenisBunga}
-          </p>
-          <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat text-right">
-            {packageInfo.catatanPelanggan}
-          </p>
-        </div>
-        )})}
+            <div
+              key={packageInfo.packageID}
+              className="flex flex-col items-end w-1/2 overflow-visible gap-2"
+            >
+              <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
+                {packageInfo.packageID}
+              </p>
+              <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
+                {packageInfo.namaPelanggan}
+              </p>
+              <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
+                {packageInfo.alamatPengiriman}
+              </p>
+              <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
+                {packageInfo.noTelp}
+              </p>
+              <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
+                {packageInfo.jenisBunga}
+              </p>
+              <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat text-right">
+                {packageInfo.catatanPelanggan}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

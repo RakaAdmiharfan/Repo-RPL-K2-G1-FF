@@ -24,36 +24,45 @@ const StatusBox = ({ id }: { id: string }) => {
     console.log("hallo");
     fetchPackageDetail();
   }, []);
-  
-  const ID = useParams()
-  const packageDetail = ID.packageDetail
-  const selectedPackage = dataItem.filter(
-    (packageInfo) => packageInfo.packageID === parseInt(packageDetail) || packageInfo.packageID === ID
-  );
+
+  const { packageDetail } = useParams();
+  const selectedPackage = dataItem.filter((packageInfo) => {
+    const packageId = Array.isArray(packageDetail)
+      ? packageDetail[0]
+      : packageDetail;
+
+    return (
+      packageInfo.packageID === parseInt(packageId) ||
+      (Array.isArray(packageDetail) &&
+        packageInfo.packageID === parseInt(packageDetail[0]))
+    );
+  });
 
   return (
     <div>
-    {selectedPackage.map((packageInfo) => {
-      return (
-        <div key={packageInfo.packageID} className="bg-white w-[300px] lg:w-[600px] h-[280px] lg:h-[600px] rounded-[15px] drop-shadow-2xl">
-          <div className="flex justify-center mt-[25px] lg:mt-[80px]">
-            <img src="/paket.svg" className="w-[100px] lg:w-[200px]" />
+      {selectedPackage.map((packageInfo) => {
+        return (
+          <div
+            key={packageInfo.packageID}
+            className="bg-white w-[280px] lg:w-[600px] rounded-[15px] drop-shadow-2xl pt-6 pb-6"
+          >
+            <div className="flex justify-center">
+              <img src="/paket.svg" className="w-[100px] lg:w-[200px]" />
+            </div>
+            <h1 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[12px] lg:text-[36px] lg:mt-[32px] lg:mb-6 justify-center">
+              {packageInfo.statusPengiriman}
+            </h1>
+            <h2 className="text-[#3D688E] text-center font-montserrat font-regular text-[20px] mt-[12px] lg:text-[28px] lg:mt-[32px] justify-center">
+              Flower Package
+            </h2>
+            <h2 className="text-[#3D688E] text-center font-montserrat font-regular text-[20px] mt-[0px] lg:text-[28px] lg:mt-[4px] lg:mb-4 justify-center">
+              is {packageInfo.statusPengiriman}
+            </h2>
           </div>
-          <h1 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[12px] lg:text-[36px] lg:mt-[32px] lg:mb-6 justify-center">
-          {packageInfo.statusPengiriman}
-          </h1>
-          <h2 className="text-[#3D688E] text-center font-montserrat font-regular text-[20px] mt-[12px] lg:text-[28px] lg:mt-[32px] justify-center">
-            Flower Package
-          </h2>
-          <h2 className="text-[#3D688E] text-center font-montserrat font-regular text-[20px] mt-[0px] lg:text-[28px] lg:mt-[4px] lg:mb-4 justify-center">
-            is {packageInfo.statusPengiriman}
-          </h2>
-        </div>
-      
-      )})}
+        );
+      })}
     </div>
   );
 };
-
 
 export default StatusBox;

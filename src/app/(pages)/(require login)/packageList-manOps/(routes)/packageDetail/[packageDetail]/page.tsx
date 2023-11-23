@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import StatusBox from "./components/statusBox";
 import DetailBox from "./components/detailBox";
 import { usePathname, useSearchParams } from "next/navigation";
+import { IoArrowBack } from "react-icons/io5";
 
 export default function packageDetail({
   params,
@@ -13,7 +14,6 @@ export default function packageDetail({
     ID: string;
   };
 }) {
-
   const [searchTerm, setSearchTerm] = useState("");
   const pathname = usePathname();
   const searchParams = useSearchParams;
@@ -27,11 +27,7 @@ export default function packageDetail({
     <div className="bg-[#EFF6FD] relative overflow-hidden w-full h-full flex-col flex pb-36 lg:pb-80">
       <div className="">
         <Link href="/packageList-manOps">
-          <img
-            src="/arrow-left.svg"
-            alt="back"
-            className="ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
-          />
+          <IoArrowBack className="text-[40px] ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:text-blue-500 rounded-[15px]" />
         </Link>
       </div>
       <h1 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[0px] lg:text-[48px] lg:mt-[24px] lg:mb-6 justify-center">

@@ -2,8 +2,7 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import EditFormComponent from "./components/crudForm";
-
-import { useRouter } from "next/router";
+import { IoArrowBack } from "react-icons/io5";
 import { usePathname, useSearchParams } from "next/navigation";
 
 export default function crudPage({
@@ -26,11 +25,7 @@ export default function crudPage({
     <div className="bg-[#EFF6FD] relative overflow-hidden w-full h-full flex-col flex pb-36 lg:pb-80">
       <div className="">
         <Link href="/crud-staf">
-          <img
-            src="/arrow-left.svg"
-            alt="back"
-            className="ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
-          />
+          <IoArrowBack className="text-[40px] ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:text-blue-500 rounded-[15px]" />
         </Link>
       </div>
       <div className="title">

@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect, useMemo } from "react";
+import { PiArrowSquareOut } from "react-icons/pi";
 
 function Assigned({ header }: { header: any[] }) {
   const handleClick = (item: any) => {
@@ -101,10 +102,7 @@ function Assigned({ header }: { header: any[] }) {
                       onClick={() => handleClick(packageInfo)}
                       href={`/packageList-manOps/packageDetail/${packageInfo.packageID}`}
                     >
-                      <img
-                        src="/ArrowSquareOut.svg"
-                        className="w-[20px] lg:w-[40px] hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[15px]"
-                      />
+                      <PiArrowSquareOut className="text-[36px] hover:text-blue-400" />
                     </Link>
                   </div>
                 </td>

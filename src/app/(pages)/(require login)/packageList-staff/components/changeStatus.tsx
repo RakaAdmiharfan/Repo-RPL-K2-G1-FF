@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
-const ChangeStatus = () => {
+const ChangeStatus = (id: any) => {
   const [showPopup, setShowPopup] = useState(false);
-
+  console.log(id);
   return (
     <div className="relative">
       <button

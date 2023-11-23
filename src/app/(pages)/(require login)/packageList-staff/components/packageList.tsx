@@ -68,7 +68,7 @@ const PackageList: React.FC<PackageListProps> = ({
           {assignedPackages.map((packageInfo) => {
             return (
               <tr
-                key={packageInfo.packageId}
+                key={packageInfo.packageID}
                 className="border-b-[1px] border-black border-opacity-30"
               >
                 <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-5 text-[10px] lg:text-[12px] xl:text-[20px] text-center ">
@@ -92,14 +92,14 @@ const PackageList: React.FC<PackageListProps> = ({
 
                 <td className="w-auto lg:w-[600px] h-auto lg:py-[36px] px-[20px] lg:px-5 py-[42px] align-middle items-center">
                   <div className="w-full flex justify-center">
-                    <ChangeStatus />
+                    <ChangeStatus id={packageInfo.packageID} />
                   </div>
                 </td>
 
                 <td className="w-auto lg:w-[600px] h-auto lg:py-[36px] px-[20px] lg:px-5 py-[42px] align-middle items-center">
                   <div className="w-full flex justify-center">
                     <Link
-                      href={`/packageList-manOps/packageProblem/${packageInfo.packageId}`}
+                      href={`/packageList-staff/${packageInfo.packageID}`}
                       className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] md:w-[40px] w-[10vw] px-[14.29px] py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] lg:rounded-[10px] justify-center bg-[#67AEEE]"
                     >
                       <h6 className="text-white text-montserrat text-semibold text-[8.574px] lg:text-[14px] xl-[18px]">

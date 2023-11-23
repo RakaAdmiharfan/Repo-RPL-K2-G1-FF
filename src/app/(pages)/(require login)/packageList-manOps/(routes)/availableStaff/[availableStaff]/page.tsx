@@ -3,6 +3,9 @@ import Navbar from "@/components/navbar";
 import SideNav from "@/components/sidenav";
 import AvailableStaff from "./components/availableStaf";
 import { FaRegUserCircle } from "react-icons/fa";
+import Link from "next/link";
+import { IoArrowBack } from "react-icons/io5";
+
 // import axios from "axios";
 
 export default function packageMenu() {
@@ -16,6 +19,9 @@ export default function packageMenu() {
       </nav>
 
       <div className="flex flex-col w-full h-screen overflow-auto">
+        <Link href="/packageList-manOps">
+          <IoArrowBack className="text-[40px] ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:text-blue-500 rounded-[15px]" />
+        </Link>
         <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[100px] lg:mt-[52px] lg:text-[24px] gap-1">
           <h1 className="text-[#3D688E]">Hi ManOps!</h1>
           <FaRegUserCircle />
