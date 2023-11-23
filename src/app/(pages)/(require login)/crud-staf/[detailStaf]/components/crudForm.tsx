@@ -50,7 +50,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
       if (id == "add-staf") {
         //add
         const { data: users, error } = await supabase.from("user").insert({
-          id: indeks,
+          // id: indeks,
           username: username,
           password: password,
           nama: nama,
