@@ -10,8 +10,34 @@ export async function GET(){
 
     // Ambil semua data paket yang sedang diproses oleh setiap staf
     const allPackages = await prisma.packageInfo.findMany();
+    const staffIDToCount = 1; // Ganti dengan staffPengiriman yang ingin dihitung
+
+    const countPackageWithStaff = await prisma.packageInfo.count({
+      where: {
+        staffPengiriman: staffIDToCount,
+      },
+    });
+
+    // const userAndCapacity = await prisma.user.findMany({
+    //   select: {
+    //     capacity: true,
+    //     packageInfo: {
+    //       select: {
+    //         staffPengiriman: true,
+    //       },
+    //       where: {
+    //         staffPengiriman: {
+    //           not: null,
+    //         },
+    //       },
+    //     },
+    //   },
+    // });
+    
 
     const user = await prisma.user.findMany();
+
+
 
     // Filter staf yang masih memiliki kapasitas tersisa
     const availableStaff = allCapacities.filter((staff) => {
@@ -24,16 +50,9 @@ export async function GET(){
     })
 
     const availableStaffName = await prisma.user.findMany({
-        where: {
-          id: {
-            in: availableStaff.map((staff) => staff.staffID), // Filter berdasarkan staffID yang telah difilter
-          },
-        },
-        select: {
-          id: true,
-          nama: true,
-        },
-      });
+          
+    }
+    )
 
     return NextResponse.json(availableStaff);
 }
