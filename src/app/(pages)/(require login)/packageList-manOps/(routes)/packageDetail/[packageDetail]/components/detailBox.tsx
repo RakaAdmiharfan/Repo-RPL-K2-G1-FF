@@ -11,7 +11,7 @@ import { useParams } from "next/navigation";
 const DetailBox = ({ id }: { id: string }) => {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
-  const [dataItem, setDataItem] = useState<any>([]);
+  const [dataItem, setDataItem] = useState<any[]>([]);
 
   
   //console.log(packageDetail);
@@ -29,21 +29,11 @@ const DetailBox = ({ id }: { id: string }) => {
     fetchPackageDetail();
   }, []);
   
-  //console.log(dataItem);
-  //console.log(id);
-  
   const ID = useParams()
   const packageDetail = ID.packageDetail
   const selectedPackage = dataItem.filter(
-    (packageInfos) => packageInfos.packageId === packageDetail
+    (packageInfo) => packageInfo.packageID === parseInt(packageDetail) || packageInfo.packageID === ID
   );
-
-  
-
-  console.log(packageDetail);
-  console.log(selectedPackage);
-  console.log(dataItem[1]);
-  console.log(dataItem);
 
   return (
     <div className="bg-white w-[300px] lg:w-[600px] h-[270px] lg:h-full rounded-[15px] drop-shadow-2xl pb-6">
@@ -102,10 +92,10 @@ const DetailBox = ({ id }: { id: string }) => {
           </div>
         </div>
 
-        {dataItem.map((packageInfo) => {
+        {selectedPackage.map((packageInfo) => {
           return (
             
-        <div className="flex flex-col items-end w-1/2 overflow-visible gap-2">
+        <div key={packageInfo.packageID} className="flex flex-col items-end w-1/2 overflow-visible gap-2">
           <p className="text-[#3D688E] text-[14px] lg:text-[24px] font-normal font-Montserrat">
             {packageInfo.packageID}
           </p>
