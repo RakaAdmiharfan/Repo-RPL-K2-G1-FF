@@ -11,15 +11,26 @@ function AvailableStaff({ header }: { header: any[] }) {
   const [dataUser, setDataUser] = useState<any[]>([]);
   const [dataPackage, setDataPackage] = useState<any[]>([]);
   const [dataStaff, setDataStaff] = useState<any[]>([]);
-
+  
+  const ID = useParams()
+  console.log(ID);
+  const packageID = parseInt(ID.availableStaff)
+  console.log(packageID);
+  console.log(ID.packageDetail);
   const handleSubmit = async (sid: number, pid: number ) => {
     // console.log(pid);
     try {
-      const response = await fetch(`/api/assign-package/put?staffID=${sid}&packageID=${pid}`
-      , {
-        method : 'PUT'
-      
+      // const response = await fetch(
+      //   `${process.env.NEXT_PUBLIC_WEB_URL}/api/assign-package/${sid}/${pid}`,
+      //   {
+      //     method: "PATCH",
+      //   }
+      // )
+
+      const response = await fetch(`http://localhost:3000/api/assign-package/put?staffID=${sid}&packageID=${pid}`, {
+        method : 'PATCH',      
       });
+
       if (response.ok) {
         // Handle success, update UI, dll.
         console.log('PackageInfo updated successfully');
@@ -33,8 +44,6 @@ function AvailableStaff({ header }: { header: any[] }) {
   
   };
 
-  const ID = useParams()
-  const packageID = parseInt(ID.packageDetail)
 
   useEffect(() => {
     const fetchStafAvail = async () => {
@@ -42,13 +51,13 @@ function AvailableStaff({ header }: { header: any[] }) {
         const res = await fetch("http://localhost:3000/api/avail-staff");
         const res2 = await res.json();
         setDataUser(res2);
-        const paket = await fetch("http://localhost:3000/api/all-package");
-        const paket2 = await res.json();
-        setDataPackage(paket2);
+        // const paket = await fetch("http://localhost:3000/api/all-package");
+        // const paket2 = await res.json();
+        // setDataPackage(paket2);
 
-        const staff = await fetch("http://localhost:3000/api/all-staff");
-        const staff2 = await res.json();
-        setDataStaff(staff2);
+        // const staff = await fetch("http://localhost:3000/api/all-staff");
+        // const staff2 = await res.json();
+        // setDataStaff(staff2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
@@ -57,34 +66,6 @@ function AvailableStaff({ header }: { header: any[] }) {
     fetchStafAvail();
   }, []);
 
-  // const handleAssign = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:3000/api/assign-package")
-      
-  //   }
-  // }
-
-  // const handleUpdatePackageInfo = async () => {
-  //   try {
-  //     const response = await fetch(`/api/put?staffID=${staffID}&packageID=${packageID}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       // Optional: Add body data jika diperlukan
-  //       // body: JSON.stringify({ additionalData: 'value' }),
-  //     });
-
-  //     if (response.ok) {
-  //       // Handle success, update UI, dll.
-  //       console.log('PackageInfo updated successfully');
-  //     } else {
-  //       console.error('Error updating PackageInfo:', response.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error updating PackageInfo:', error.message);
-  //   }
-  // };
 
   return (
     <div className="w-[290px] md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[70vw] overflow-x-hidden mx-auto">
@@ -122,7 +103,7 @@ function AvailableStaff({ header }: { header: any[] }) {
                 </td>
                 <td className="w-auto h-auto py-0">
                   <div className="w-full flex justify-center">
-                    <button onClick={handleSubmit(user.staffID, packageID)}>
+                    <button onClick={() => handleSubmit(user.staffID, packageID)}>
                       <IoIosAddCircleOutline className="text-[16px] lg:text-[32px]" />
                     </button>
                   </div>

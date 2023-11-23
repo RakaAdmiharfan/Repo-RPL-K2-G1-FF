@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
-export async function PUT(req: any, {params}: {params: {staffID: number, packageID: number}}){
+export async function PATCH(req: any, {params}: {params: {staffID: number, packageID: number}}){
     const session = await getServerSession(authOptions);
     // Route protection
     if (!session?.user) {
@@ -15,7 +15,9 @@ export async function PUT(req: any, {params}: {params: {staffID: number, package
         );
     }
 
-    const { staffID, packageID } = params;
+    //const { staffID, packageID } = params;
+    const { staffID } = (params.staffID);
+    const { packageID} = (params.packageID);
 
     await prisma.packageInfo.update({
         where:{packageID},
