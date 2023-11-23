@@ -8,14 +8,11 @@ function AvailableStaff({ header }: { header: any[] }) {
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataUser, setDataUser] = useState<any[]>([]);
-<<<<<<< Updated upstream
   const [dataPackage, setDataPackage] = useState<any[]>([]);
   const [dataStaff, setDataStaff] = useState<any[]>([]);
-=======
->>>>>>> Stashed changes
 
-  const handleClick = (item: any) => {
-    console.log(item);
+  const handleSubmit = (id: number) => {
+    console.log(id);
   };
 
   useEffect(() => {
@@ -24,14 +21,13 @@ function AvailableStaff({ header }: { header: any[] }) {
         const res = await fetch("http://localhost:3000/api/avail-staff");
         const res2 = await res.json();
         setDataUser(res2);
-        const paket = await fetch("http://localhost:3000/api/all-package")
+        const paket = await fetch("http://localhost:3000/api/all-package");
         const paket2 = await res.json();
         setDataPackage(paket2);
 
-        const staff = await fetch("http://localhost:3000/api/all-staff")
+        const staff = await fetch("http://localhost:3000/api/all-staff");
         const staff2 = await res.json();
         setDataStaff(staff2);
-
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
@@ -76,7 +72,7 @@ function AvailableStaff({ header }: { header: any[] }) {
                 </td>
                 <td className="w-auto h-auto py-0">
                   <div className="w-full flex justify-center">
-                    <button onClick={() => handleClick(user)}>
+                    <button onClick={() => handleSubmit(user.staffID)}>
                       <IoIosAddCircleOutline className="text-[16px] lg:text-[32px]" />
                     </button>
                   </div>
