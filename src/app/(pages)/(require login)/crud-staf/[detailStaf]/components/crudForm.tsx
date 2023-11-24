@@ -30,7 +30,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
   useEffect(() => {
     const fetchStafList = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/all-staf");
+        const res = await fetch("http://localhost:3000/api/all-staf/${id}");
         const res2 = await res.json();
         setDataUser(res2);
         const largestID = res2.length
@@ -59,7 +59,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
         const res = await fetch("http://localhost:3000/api/create-staff", {
           method: "POST",
           body: JSON.stringify({
-            id: (largestID+1  ),
+            id: (largestID+1 ),
             username: username,
             password: password,
             nama: nama,
@@ -83,10 +83,32 @@ const EditFormComponent = ({ id }: { id: string }) => {
     }
     else if (isSave){
       try {
-        
-      } catch (error) {
-        console.log(error);
+        const idInt = parseInt(id)
+        const res = await fetch("http://localhost:3000/api/update-staf", {
+        method: "PATCH",
+        body: JSON.stringify({
+            id: idInt,
+            nama: nama,
+            noTelp: noTelp,
+            alamat: alamat,
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      if (res.status === 200) {
+        toast.success("Successfully Update Staff Info!");
+        setIsRegistered(false);
+      } else {
+        toast.error("Failed to update");
       }
+    }
+    catch(error){
+      console.log(error);
+    }
+    }
+    else{
+
     }
   }
         // const supabase = createClient();
@@ -222,10 +244,14 @@ const EditFormComponent = ({ id }: { id: string }) => {
           </div>
 
           <div className="Tanggal Lahir mb-[26px]">
-            <h5 className="text-poppins text-[11px] lg:text-[24px] font-bold mb-[8px] lg:mb-[26px]">
+            <h5 className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
+                id === "add-staf" ? "" : "hidden"
+              }`}>
               Tanggal Lahir
             </h5>
-            <div className="w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px]">
+            <div  className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
+                id === "add-staf" ? "" : "hidden"
+              }`}>
               <InputBox
                 name="Tanggal Lahir"
                 label="Tanggal Lahir"
