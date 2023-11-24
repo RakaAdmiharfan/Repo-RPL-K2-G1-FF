@@ -37,7 +37,7 @@ function StafList({ header }: { header: any[] }) {
               return (
                 <th
                   key={idx}
-                  className="w-auto h-auto font-montserrat font-semibold text-black text-center pb-[8px] text-[10px] lg:text-[20px]"
+                  className="w-[100px] h-auto font-montserrat font-semibold text-black text-center pb-[8px] text-[10px] lg:text-[20px]"
                 >
                   {item}
                 </th>
@@ -53,16 +53,25 @@ function StafList({ header }: { header: any[] }) {
                 key={staf.id}
                 className="border-b-[1px] border-black border-opacity-30"
               >
-                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-[100px] h-auto py-[24px] px-4 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{staf.id}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-[100px] h-auto py-[24px] px-4 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{staf.nama}</div>
                 </td>
-                <td className="overflow-hidden w-auto h-auto py-[24px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                <td className="overflow-hidden w-[100px] h-auto py-[24px] px-4 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                  <div>{staf.username}</div>
+                </td>
+                <td className="overflow-hidden w-[100px] h-auto py-[24px] px-4 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                  <div>{staf.tanggalLahir}</div>
+                </td>
+                <td className="overflow-hidden w-[100px] h-auto py-[24px] px-4 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                  <div>{staf.alamat}</div>
+                </td>
+                <td className="overflow-hidden w-[100px] h-auto py-[24px] px-4 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{staf.noTelp}</div>
                 </td>
-                <td className="flex justify-center w-auto h-auto py-[24px]">
+                <td className="flex justify-center w-[100px] h-auto py-[24px] px-4">
                   <Link
                     onClick={() => handleClick(staf)}
                     href={`/crud-staf/${staf.id}`}

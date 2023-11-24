@@ -30,10 +30,10 @@ const EditFormComponent = ({ id }: { id: string }) => {
   useEffect(() => {
     const fetchStafList = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/all-staf/${id}");
+        const res = await fetch("http://localhost:3000/api/all-staf/");
         const res2 = await res.json();
         setDataUser(res2);
-        const largestID = res2.length
+        const largestID = res2.length;
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
@@ -45,19 +45,19 @@ const EditFormComponent = ({ id }: { id: string }) => {
 
   console.log(dataUser);
   const userByID = dataUser.filter((staf) => staf.id === parseInt(id));
-  console.log(userByID);  
+  console.log(userByID);
 
   const handleSubmit = async () => {
-    if (id == "add-staf"){
+    if (id == "add-staf") {
       try {
         const res3 = await fetch("http://localhost:3000/api/all-users");
         const res4 = await res3.json();
         setDataUser(res4);
-        const largestID = res4.length
+        const largestID = res4.length;
         const res = await fetch("http://localhost:3000/api/create-staff", {
           method: "POST",
           body: JSON.stringify({
-            id: (largestID+1 ),
+            id: largestID + 1,
             username: username,
             password: password,
             nama: nama,
@@ -76,48 +76,45 @@ const EditFormComponent = ({ id }: { id: string }) => {
           toast.error("Failed to add");
         }
       } catch (error) {
-          console.log(error);
+        console.log(error);
       }
-    }
-    else{
-       if (isSave){
+    } else {
+      if (isSave) {
         try {
-          const idInt = parseInt(id)
+          const idInt = parseInt(id);
           const res = await fetch("http://localhost:3000/api/update-staf", {
-          method: "PATCH",
-          body: JSON.stringify({
+            method: "PATCH",
+            body: JSON.stringify({
               id: idInt,
               nama: nama,
               noTelp: noTelp,
               alamat: alamat,
-          }),
-          headers: {
-            "Content-Type": "application/json"
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          if (res.status === 200) {
+            toast.success("Successfully Update Staff Info!");
+            setIsRegistered(false);
+          } else {
+            toast.error("Failed to update");
           }
-        });
-        if (res.status === 200) {
-          toast.success("Successfully Update Staff Info!");
-          setIsRegistered(false);
-        } else {
-          toast.error("Failed to update");
+        } catch (error) {
+          console.log(error);
         }
-      }
-      catch(error){
-        console.log(error);
-      }
-      }
-      else{
-        console.log(isSave)
+      } else {
+        console.log(isSave);
         try {
-          const idInt = parseInt(id)
+          const idInt = parseInt(id);
           const res = await fetch("http://localhost:3000/api/delete-staff", {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              id: idInt
-            })
+              id: idInt,
+            }),
           });
           if (res.status === 200) {
             toast.success("Successfully Delete Staff!");
@@ -125,33 +122,35 @@ const EditFormComponent = ({ id }: { id: string }) => {
           } else {
             toast.error("Failed to delete");
           }
-        } 
-        catch (error) {
-            console.log(error);
+        } catch (error) {
+          console.log(error);
         }
       }
     }
-  }
-        // const supabase = createClient();
-      // if (id == "add-staf") {
-      //   //add
-      //   const { data: users, error } = await supabase.from("user").insert({
-      //     // id: indeks,
-      //     username: username,
-      //     password: password,
-      //     nama: nama,
-      //     noTelp: noTelp,
-      //     alamat: alamat,
-      //     tanggalLahir: tanggalLahir,
-      //   });
-      // } else {
-      //   if (isSave) {
-      //     //update
-      //     const { data: users, error } = await supabase.from("user").update({});
-      //   } else {
-      //     //delete
-      //   }
-      // }
+  };
+  // const supabase = createClient();
+  // if (id == "add-staf") {
+  //   //add
+  //   const { data: users, error } = await supabase.from("user").insert({
+  //     // id: indeks,
+  //     username: username,
+  //     password: password,
+  //     nama: nama,
+  //     noTelp: noTelp,
+  //     alamat: alamat,
+  //     tanggalLahir: tanggalLahir,
+  //   });
+  // } else {
+  //   if (isSave) {
+  //     //update
+  //     const { data: users, error } = await supabase.from("user").update({});
+  //   } else {
+  //     //delete
+  //   }
+  // }
+
+  console.log(userByID[0]?.nama);
+
   return (
     <Formik initialValues={user} onSubmit={handleSubmit}>
       {user && (
@@ -230,8 +229,15 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="Nama"
                 label="Nama"
-                placeholder={userByID[0]?.nama}
-                onChange={(e: any) => setNama(e.target.value)}
+                placeholder={userByID[0]?.nama || ""}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (e.target.value === null || e.target.value === "") {
+                    e.target.value = userByID[0]?.nama;
+                    setNama(e.target.value);
+                  } else {
+                    setNama(e.target.value);
+                  }
+                }}
               />
             </div>
           </div>
@@ -245,7 +251,14 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="No.Telp"
                 label="No.Telp"
                 placeholder={userByID[0]?.noTelp}
-                onChange={(e: any) => setNoTelp(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (e.target.value.trim() !== null) {
+                    setNoTelp(e.target.value);
+                  } else {
+                    // Handle the case when the input value is empty
+                    setNoTelp(userByID[0]?.noTelp);
+                  }
+                }}
               />
             </div>
           </div>
@@ -259,20 +272,31 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="Alamat"
                 label="Alamat"
                 placeholder={userByID[0]?.alamat}
-                onChange={(e: any) => setAlamat(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (e.target.value.trim() !== null) {
+                    setAlamat(e.target.value);
+                  } else {
+                    // Handle the case when the input value is empty
+                    setAlamat(userByID[0]?.alamat);
+                  }
+                }}
               />
             </div>
           </div>
 
           <div className="Tanggal Lahir mb-[26px]">
-            <h5 className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
+            <h5
+              className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
                 id === "add-staf" ? "" : "hidden"
-              }`}>
+              }`}
+            >
               Tanggal Lahir
             </h5>
-            <div  className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
+            <div
+              className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
                 id === "add-staf" ? "" : "hidden"
-              }`}>
+              }`}
+            >
               <InputBox
                 name="Tanggal Lahir"
                 label="Tanggal Lahir"
@@ -319,4 +343,3 @@ export default EditFormComponent;
 function setIsRegistered(arg0: boolean) {
   throw new Error("Function not implemented.");
 }
-

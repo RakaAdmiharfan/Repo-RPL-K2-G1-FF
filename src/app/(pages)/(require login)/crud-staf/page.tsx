@@ -34,7 +34,17 @@ export default function StaffList() {
             </div>
 
             <div className="overflow-y-auto no-scrollbar w-full">
-              <StafList header={["ID", "Nama", "No.Telp", "Edit"]} />
+              <StafList
+                header={[
+                  "ID",
+                  "Nama",
+                  "Username",
+                  "Tanggal Lahir",
+                  "Alamat",
+                  "No.Telp",
+                  "Edit",
+                ]}
+              />
               {/* <Pagination current={handlePageChange} totalPages={totalPages} /> */}
             </div>
           </div>
