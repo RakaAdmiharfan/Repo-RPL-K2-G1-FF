@@ -1,10 +1,53 @@
-// changeStatus.tsx
-import { useState } from "react";
+"use client";
+import { pid } from "process";
+import { useEffect, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import toast from "react-hot-toast";
+import { FLIGHT_PARAMETERS } from "next/dist/client/components/app-router-headers";
 
-const ChangeStatus = (id: any) => {
+
+const changeStatus = {
+  // packageID,
+  // status,
+
+}
+
+
+const ChangeStatus = ({ id }: { id: number }) => {
+  // const toastId = toast.loading("Loading...");
   const [showPopup, setShowPopup] = useState(false);
-  console.log(id);
+
+  const handleClickStatus = async (parameter: any) => {
+    console.log("KONTOL", parameter)
+    try {
+      const res = await fetch("http://localhost:3000/api/update-status", {
+        method: "PATCH",
+        body: JSON.stringify({
+          packageID: id,
+          newStatus: parameter,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.status === 200) {
+        toast.success("Successfully Change Status!");
+        setIsRegistered(false);
+      } else {
+        toast.error("Failed to change");
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+
+  }
+
+
+
+
+
   return (
     <div className="relative">
       <button
@@ -23,22 +66,22 @@ const ChangeStatus = (id: any) => {
               <h1 className="text-[14px] lg:text-[28px] font-bold text-[#67AEEE] mb-8">
                 Change Status
               </h1>
-              <button className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+              <button className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]" onClick={() => handleClickStatus("Delivered")}>
                 <h1 className="text-[10px] lg:text-[16px] font-semibold">
                   Delivered
                 </h1>
               </button>
-              <button className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+              <button className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]" onClick={() => handleClickStatus("Pick Up")}>
                 <h1 className="text-[10px] lg:text-[16px] font-semibold">
                   Pick-Up
                 </h1>
               </button>
-              <button className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+              <button className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]" onClick={() => handleClickStatus("On The Way")}>
                 <h1 className="text-[10px] lg:text-[16px] font-semibold">
                   On The Way
                 </h1>
               </button>
-              <button className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+              <button className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]" onClick={() => handleClickStatus("On Hold")}>
                 <h1 className="text-[10px] lg:text-[16px] font-semibold">
                   On Hold
                 </h1>
@@ -58,3 +101,7 @@ const ChangeStatus = (id: any) => {
 };
 
 export default ChangeStatus;
+function setIsRegistered(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+

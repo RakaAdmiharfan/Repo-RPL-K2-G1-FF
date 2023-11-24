@@ -4,7 +4,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
 // getting packageInfo based on packageInfo.staffPengiriman === 
-export async function PUT(req: any){
+export async function PATCH(req: any){
     const session = await getServerSession(authOptions);
 
     // route protection

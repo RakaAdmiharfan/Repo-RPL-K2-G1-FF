@@ -2,6 +2,7 @@ import { authOptions } from "../app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
 
 export interface UserSession {
+  password(hashedOldPassword: string, password: any): unknown;
   id: number;
   username: string;
   nama: string;
