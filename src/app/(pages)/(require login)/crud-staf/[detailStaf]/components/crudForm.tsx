@@ -45,9 +45,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
 
   console.log(dataUser);
   const userByID = dataUser.filter((staf) => staf.id === parseInt(id));
-  console.log(userByID);
-
-  
+  console.log(userByID);  
 
   const handleSubmit = async () => {
     if (id == "add-staf"){
@@ -81,34 +79,57 @@ const EditFormComponent = ({ id }: { id: string }) => {
           console.log(error);
       }
     }
-    else if (isSave){
-      try {
-        const idInt = parseInt(id)
-        const res = await fetch("http://localhost:3000/api/update-staf", {
-        method: "PATCH",
-        body: JSON.stringify({
-            id: idInt,
-            nama: nama,
-            noTelp: noTelp,
-            alamat: alamat,
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      if (res.status === 200) {
-        toast.success("Successfully Update Staff Info!");
-        setIsRegistered(false);
-      } else {
-        toast.error("Failed to update");
-      }
-    }
-    catch(error){
-      console.log(error);
-    }
-    }
     else{
-
+       if (isSave){
+        try {
+          const idInt = parseInt(id)
+          const res = await fetch("http://localhost:3000/api/update-staf", {
+          method: "PATCH",
+          body: JSON.stringify({
+              id: idInt,
+              nama: nama,
+              noTelp: noTelp,
+              alamat: alamat,
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        if (res.status === 200) {
+          toast.success("Successfully Update Staff Info!");
+          setIsRegistered(false);
+        } else {
+          toast.error("Failed to update");
+        }
+      }
+      catch(error){
+        console.log(error);
+      }
+      }
+      else{
+        console.log(isSave)
+        try {
+          const idInt = parseInt(id)
+          const res = await fetch("http://localhost:3000/api/delete-staff", {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: idInt
+            })
+          });
+          if (res.status === 200) {
+            toast.success("Successfully Delete Staff!");
+            setIsRegistered(false);
+          } else {
+            toast.error("Failed to delete");
+          }
+        } 
+        catch (error) {
+            console.log(error);
+        }
+      }
     }
   }
         // const supabase = createClient();
