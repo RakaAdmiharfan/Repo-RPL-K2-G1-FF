@@ -44,7 +44,7 @@ const ChangeStatus = ({ id }: { id: number }) => {
     <div className="relative">
       <button
         onClick={() => setShowPopup(true)}
-        className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] md:w-[40px] w-[10vw] px-[14.29px] py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] lg:rounded-[10px] justify-center bg-[#67AEEE]"
+        className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex md:w-[40px] w-[10vw] px-6 py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] rounded-[10px] justify-center bg-[#67AEEE]"
       >
         <h1 className="text-white text-montserrat text-semibold text-[8.574px] lg:text-[14px] xl-[18px]">
           Change
@@ -60,18 +60,10 @@ const ChangeStatus = ({ id }: { id: number }) => {
               </h1>
               <button
                 className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
-                onClick={() => handleClickStatus("Delivered")}
-              >
-                <h1 className="text-[10px] lg:text-[16px] font-semibold">
-                  Delivered
-                </h1>
-              </button>
-              <button
-                className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
                 onClick={() => handleClickStatus("Pick Up")}
               >
                 <h1 className="text-[10px] lg:text-[16px] font-semibold">
-                  Pick-Up
+                  Pick Up
                 </h1>
               </button>
               <button
@@ -80,6 +72,14 @@ const ChangeStatus = ({ id }: { id: number }) => {
               >
                 <h1 className="text-[10px] lg:text-[16px] font-semibold">
                   On The Way
+                </h1>
+              </button>
+              <button
+                className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
+                onClick={() => handleClickStatus("Delivered")}
+              >
+                <h1 className="text-[10px] lg:text-[16px] font-semibold">
+                  Delivered
                 </h1>
               </button>
               <button
@@ -96,7 +96,7 @@ const ChangeStatus = ({ id }: { id: number }) => {
                 setShowPopup(false);
                 window.location.reload(); // Refresh the page
               }}
-              className="flex items-center justify-center rounded-[50px] mt-4 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
+              className="flex items-center justify-center rounded-[50px] mt-4 hover:text-red-600"
             >
               <IoIosCloseCircleOutline className="text-[40px]" />
             </button>

@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { CiCamera } from "react-icons/ci";
 import ChangeStatus from "./changeStatus";
+import UploadProof from "./uploadProof";
 
 interface PackageListProps {
   header: string[];
@@ -105,7 +106,7 @@ const PackageList: React.FC<PackageListProps> = ({
                   <div className="w-full flex justify-center">
                     <Link
                       href={`/packageList-staff/${packageInfo.packageID}`}
-                      className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] md:w-[40px] w-[10vw] px-[14.29px] py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] lg:rounded-[10px] justify-center bg-[#67AEEE]"
+                      className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex md:w-[40px] w-[10vw] px-6 py-[6px] lg:w-[04.94vw] lg:px-[1px] lg:py-[6px] rounded-[10px] justify-center bg-[#67AEEE]"
                     >
                       <h6 className="text-white text-montserrat text-semibold text-[8.574px] lg:text-[14px] xl-[18px]">
                         Open
@@ -115,9 +116,7 @@ const PackageList: React.FC<PackageListProps> = ({
                 </td>
                 <td>
                   <div className="w-full flex justify-center">
-                    <button className="hover:text-blue-900 font-bold flex justify-center">
-                      <CiCamera className="text-[36px]" />
-                    </button>
+                    <UploadProof id={packageInfo.packageID} />
                   </div>
                 </td>
               </tr>
