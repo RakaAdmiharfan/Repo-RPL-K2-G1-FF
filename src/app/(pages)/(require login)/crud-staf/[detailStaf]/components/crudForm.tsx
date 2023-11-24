@@ -178,7 +178,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <button
                 onClick={() => setIsSave(true)}
                 type="submit"
-                className="bg-[#3D688E] px-[26px] py-[6px] rounded-[15px] flex items-center justify-center"
+                className="bg-[#3D688E] px-[26px] py-[6px] rounded-[15px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
               >
                 <text className="text-white font-montserrat font-semibold leading-normal text-[12px] lg:text-[18px]">
                   {id == "add-staf" ? "Create" : "Save"}
@@ -190,7 +190,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <button
                 onClick={() => setIsSave(false)}
                 type="submit"
-                className={`bg-[#BC6161] px-[20px] py-[6px] rounded-[15px] flex items-center justify-center ${
+                className={`bg-[#BC6161] px-[20px] py-[6px] rounded-[15px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] ${
                   id == "add-staf" ? "hidden" : "block"
                 }`}
               >

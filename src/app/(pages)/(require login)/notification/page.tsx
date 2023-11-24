@@ -30,7 +30,7 @@ export default async function notification() {
             <NotificationBox />
           </div>
         </div>
-        <button className="bg-green-800 px-4 py-1 lg:px-[26px] lg:py-[6px] rounded-[25px] flex items-center justify-center mt-8">
+        <button className="bg-green-800 px-4 py-1 lg:px-[26px] lg:py-[6px] rounded-[25px] flex items-center justify-center mt-8 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
           <h2 className="text-white font-semibold text-[10px] lg:text-[16px]">
             Mark As Read
           </h2>
