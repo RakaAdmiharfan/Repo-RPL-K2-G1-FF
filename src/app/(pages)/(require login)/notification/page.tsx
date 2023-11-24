@@ -6,11 +6,13 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { UserSession } from "@/components/UserFetcher";
 import client from "@/app/lib/prismadb";
+import MarkAsRead from "./components/markAsRead";
 
 export default async function notification() {
   const session = await getServerSession(authOptions);
   const user = session?.user as UserSession;
   const id = user.id;
+
 
   return (
     <div className="relative overflow-hidden flex flex-row md:flex-row lg:flex-row bg-blue-50 w-full h-screen pb-36 lg:pb-300">
@@ -30,11 +32,7 @@ export default async function notification() {
             <NotificationBox />
           </div>
         </div>
-        <button className="bg-green-800 px-4 py-1 lg:px-[26px] lg:py-[6px] rounded-[25px] flex items-center justify-center mt-8 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
-          <h2 className="text-white font-semibold text-[10px] lg:text-[16px]">
-            Mark As Read
-          </h2>
-        </button>
+        <MarkAsRead/>
         <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-20 lg:bottom-[-340px]">
           <img src="/Footer.png" className="lg:w-[1620px]" />
         </footer>

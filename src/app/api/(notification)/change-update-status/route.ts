@@ -4,7 +4,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
 // getting packageInfo based on packageInfo.staffPengiriman === 
-export async function PATCH(req: any){
+export async function PATCH(){
     const session = await getServerSession(authOptions);
 
     // route protection
@@ -16,18 +16,12 @@ export async function PATCH(req: any){
             { status: 401 }
         );
     }
-
-    const { packageID } = await req.json();
-
     
     const selectedPackage = await prisma.packageInfo.updateMany(
         {
-            where: {
-                packageID,
-            },
-            data: {
-                hasUpdateStatus: false,        
-            },
+        data: {
+            hasUpdateStatus: false,        
+        },
         }
     )
 

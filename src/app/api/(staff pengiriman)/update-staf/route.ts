@@ -18,7 +18,7 @@ export async function PATCH(req: any, res: any) {
   }
 
   const user = session?.user as UserSession;
-  const { username, new_password, nama, tanggalLahir, noTelp, alamat, role } = await req.json();
+  const { username, new_password, nama, tanggalLahir, noTelp, alamat, role } = req.body;
 
   // Validation
   if (!username || !nama || !tanggalLahir || !noTelp || !alamat || !role) {

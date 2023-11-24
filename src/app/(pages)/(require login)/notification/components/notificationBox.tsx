@@ -33,12 +33,13 @@ const NotificationBox = () => {
       fetchNotification();
     }, []);
 
-    
+
 
   const notificationPackages = dataItem.filter((packageInfo) => packageInfo.hasUpdateStatus === true)
     return (
       <>
-        {notificationPackages.map((packageInfo) => (
+        {notificationPackages.map((packageInfo) => {
+          return (
           <div key={packageInfo.packageID} className="flex justify-center items-center mb-3">
             <div className="w-[306px] lg:w-[600px] h-[53px] lg:h-[100px] bg-[#335777] rounded-[5px] drop-shadow-2xl">
               <div className="flex flex-row">
@@ -56,7 +57,9 @@ const NotificationBox = () => {
               </div>
             </div>
           </div>
-        ))}
+          )
+          })}
+
       </>
     );
 };
