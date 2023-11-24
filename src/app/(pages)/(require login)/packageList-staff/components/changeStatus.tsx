@@ -18,7 +18,6 @@ const ChangeStatus = ({ id }: { id: number }) => {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleClickStatus = async (parameter: any) => {
-    console.log("KONTOL", parameter)
     try {
       const res = await fetch("http://localhost:3000/api/update-status", {
         method: "PATCH",
