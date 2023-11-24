@@ -25,17 +25,21 @@ const EditFormComponent = ({ id }: { id: string }) => {
 
   console.log(id);
 
+  const largestID = 1;
+
   useEffect(() => {
     const fetchStafList = async () => {
       try {
         const res = await fetch("http://localhost:3000/api/all-staf");
         const res2 = await res.json();
         setDataUser(res2);
+        const largestID = res2.length
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
     console.log("hallo");
+    console.log(largestID);
     fetchStafList();
   }, []);
 
@@ -43,13 +47,19 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const userByID = dataUser.filter((staf) => staf.id === parseInt(id));
   console.log(userByID);
 
+  
+
   const handleSubmit = async () => {
     if (id == "add-staf"){
       try {
+        const res3 = await fetch("http://localhost:3000/api/all-users");
+        const res4 = await res3.json();
+        setDataUser(res4);
+        const largestID = res4.length
         const res = await fetch("http://localhost:3000/api/create-staff", {
           method: "POST",
           body: JSON.stringify({
-            id: indeks,
+            id: (largestID+1  ),
             username: username,
             password: password,
             nama: nama,
@@ -117,10 +127,9 @@ const EditFormComponent = ({ id }: { id: string }) => {
               }`}
             >
               <InputBox
-                name="username"
-                label="username"
-                placeholder=""
-                value = "10"
+                name="id"
+                label="id"
+                placeholder="Automatic"
                 onChange={(e: any) => setIndeks(e.target.value)}
               />
             </div>
