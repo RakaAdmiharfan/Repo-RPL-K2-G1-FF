@@ -4,7 +4,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import prisma from "@/app/lib/prismadb";
+import { useRouter } from "next/navigation";
 import { CiCamera } from "react-icons/ci";
 import ChangeStatus from "./changeStatus";
 
@@ -20,10 +20,13 @@ const PackageList: React.FC<PackageListProps> = ({
   const [fetchError, setFetchError] = useState(null);
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
+  const router = useRouter();
 
   const handleClick = (item: any) => {
     console.log(item);
   };
+
+  router.refresh;
 
   useEffect(() => {
     const fetchCertainPackage = async () => {
@@ -89,7 +92,9 @@ const PackageList: React.FC<PackageListProps> = ({
                 <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-5 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{packageInfo.catatanPelanggan}</div>
                 </td>
-
+                <td className="overflow-hidden w-auto lg:w-[600px] h-auto py-[36px] px-[20px] lg:px-5 text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                  <div>{packageInfo.statusPengiriman}</div>
+                </td>
                 <td className="w-auto lg:w-[600px] h-auto lg:py-[36px] px-[20px] lg:px-5 py-[42px] align-middle items-center">
                   <div className="w-full flex justify-center">
                     <ChangeStatus id={packageInfo.packageID} />

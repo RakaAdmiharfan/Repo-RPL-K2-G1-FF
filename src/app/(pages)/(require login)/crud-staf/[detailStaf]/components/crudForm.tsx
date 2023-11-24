@@ -20,29 +20,27 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const [noTelp, setNoTelp] = useState<any>("");
   const [alamat, setAlamat] = useState<any>("");
   const [tanggalLahir, setTanggalLahir] = useState<any>("");
+  const [dataUser, setDataUser] = useState<any[]>([]);
 
   console.log(id);
 
   useEffect(() => {
-    const fetchDetailUser = async () => {
+    const fetchStafList = async () => {
       try {
-        const supabase = createClient();
-        const { data: users, error } = await supabase
-          .from("user")
-          .select()
-          .eq("id", parseInt(id));
-
-        if (users) {
-          setUser(users);
-          console.log(user);
-        }
+        const res = await fetch("http://localhost:3000/api/all-staf");
+        const res2 = await res.json();
+        setDataUser(res2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-
-    fetchDetailUser();
+    console.log("hallo");
+    fetchStafList();
   }, []);
+
+  console.log(dataUser);
+  const userByID = dataUser.filter((staf) => staf.id === parseInt(id));
+  console.log(userByID);
 
   const handleSubmit = async () => {
     try {
@@ -76,46 +74,59 @@ const EditFormComponent = ({ id }: { id: string }) => {
       {user && (
         <Form>
           <div className="mb-[26px]">
-            <h5 className="text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold">
-              Staff ID
-            </h5>
-            <div className="w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px]">
-              <InputBox
-                name="Staff ID"
-                label="Staff ID"
-                placeholder="Staff ID"
-                value={user && user.id}
-                onChange={(e: any) => setIndeks(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="mb-[26px]">
-            <h5 className="text-poppins text-[11px] lg:text-[24px] font-bold  mb-[8px] lg:mb-[26px]">
+            <h5
+              className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
+                id === "add-staf" ? "" : "hidden"
+              }`}
+            >
               Username
             </h5>
-            <div className="w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px]">
+            <div
+              className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
+                id === "add-staf" ? "" : "hidden"
+              }`}
+            >
               <InputBox
                 name="username"
                 label="username"
-                placeholder="username"
-                value={user.username}
+                placeholder=""
                 onChange={(e: any) => setUsername(e.target.value)}
               />
             </div>
           </div>
 
           <div className="mb-[26px]">
-            <h5 className="text-poppins text-[11px] lg:text-[24px] font-bold  mb-[8px] lg:mb-[26px]">
+            <h5
+              className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
+                id === "add-staf" ? "" : "hidden"
+              }`}
+            >
               Password
+            </h5>
+            <div
+              className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
+                id === "add-staf" ? "" : "hidden"
+              }`}
+            >
+              <InputBox
+                name="Password"
+                label="Password"
+                placeholder=""
+                onChange={(e: any) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="mb-[26px]">
+            <h5 className="text-poppins text-[11px] lg:text-[24px] font-bold mb-[8px] lg:mb-[26px]">
+              Nama
             </h5>
             <div className="w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px]">
               <InputBox
-                name="username"
-                label="username"
-                placeholder="username"
-                value={user.password}
-                onChange={(e: any) => setPassword(e.target.value)}
+                name="Nama"
+                label="Nama"
+                placeholder={userByID[0]?.nama}
+                onChange={(e: any) => setNama(e.target.value)}
               />
             </div>
           </div>
@@ -128,8 +139,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="No.Telp"
                 label="No.Telp"
-                placeholder="No.Telp"
-                value={user.noTelp}
+                placeholder={userByID[0]?.noTelp}
                 onChange={(e: any) => setPassword(e.target.value)}
               />
             </div>
@@ -143,14 +153,13 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="Alamat"
                 label="Alamat"
-                placeholder="Alamat"
-                value={user.alamat}
+                placeholder={userByID[0]?.alamat}
                 onChange={(e: any) => setAlamat(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="Tanggal Lahir">
+          <div className="Tanggal Lahir mb-[26px]">
             <h5 className="text-poppins text-[11px] lg:text-[24px] font-bold mb-[8px] lg:mb-[26px]">
               Tanggal Lahir
             </h5>
@@ -158,8 +167,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="Tanggal Lahir"
                 label="Tanggal Lahir"
-                placeholder="Tanggal Lahir"
-                value={user.tanggalLahir}
+                placeholder={userByID[0]?.tanggalLahir}
                 onChange={(e: any) => setTanggalLahir(e.target.value)}
               />
             </div>

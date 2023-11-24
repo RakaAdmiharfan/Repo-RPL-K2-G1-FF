@@ -54,6 +54,7 @@ export default async function packageStaff() {
               "No.Telp",
               "Jenis Bunga",
               "Catatan Pelanggan",
+              "Status",
               "Change Status",
               "Laporan",
               "Proof",
