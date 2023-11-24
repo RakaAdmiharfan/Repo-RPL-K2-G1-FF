@@ -33,6 +33,8 @@ const NotificationBox = () => {
       fetchNotification();
     }, []);
 
+    
+
   const notificationPackages = dataItem.filter((packageInfo) => packageInfo.hasUpdateStatus === true)
     return (
       <>

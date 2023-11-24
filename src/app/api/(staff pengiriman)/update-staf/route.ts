@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { UserSession } from "@/components/UserFetcher";
-import { hash, compare } from "bcryptjs";
 
 export async function PATCH(req: any, res: any) {
   const session = await getServerSession(authOptions);
@@ -19,7 +18,7 @@ export async function PATCH(req: any, res: any) {
   }
 
   const user = session?.user as UserSession;
-  const { username, old_password, new_password, nama, tanggalLahir, noTelp, alamat, role } = req.body;
+  const { username, new_password, nama, tanggalLahir, noTelp, alamat, role } = await req.json();
 
   // Validation
   if (!username || !nama || !tanggalLahir || !noTelp || !alamat || !role) {
@@ -32,10 +31,6 @@ export async function PATCH(req: any, res: any) {
   }
 
   try {
-      // Hash the old password before updating
-      const hashedOldPassword = await hash(old_password, 12);
-      // Compare the entered old password with the hashed old password stored in the session
-      const passwordMatch = await compare(hashedOldPassword, user.password);
 
     if (!passwordMatch) {
       // Password is incorrect, handle accordingly

@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import toast from "react-hot-toast";
 
 function AvailableStaff({ header }: { header: any[] }) {
   const [fetchError, setFetchError] = useState(null);
@@ -17,29 +18,28 @@ function AvailableStaff({ header }: { header: any[] }) {
   const packageID = parseInt(ID.availableStaff)
   console.log(packageID);
   console.log(ID.packageDetail);
-  const handleSubmit = async (sid: number, pid: number ) => {
+
+  const handleSubmit = async (parameter1: any, parameter2 : any ) => {
     // console.log(pid);
     try {
-      // const response = await fetch(
-      //   `${process.env.NEXT_PUBLIC_WEB_URL}/api/assign-package/${sid}/${pid}`,
-      //   {
-      //     method: "PATCH",
-      //   }
-      // )
-
-      const response = await fetch(`http://localhost:3000/api/assign-package/put?staffID=${sid}&packageID=${pid}`, {
-        method : 'PATCH',      
+      const res = await fetch("http://localhost:3000/api/assign-package",{
+        method: "PATCH",
+        body: JSON.stringify({
+          pid: parameter1,
+          newSid: parameter2,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
-      if (response.ok) {
-        // Handle success, update UI, dll.
-        console.log('PackageInfo updated successfully');
+      if (res.status === 200) {
+        toast.success("Package Assigned!");
       } else {
-        console.error('Error updating PackageInfo:', response.statusText);
+        toast.error("Failed to assign");
       }
-    }    
-    catch (error) {
-      console.error('Error updating PackageInfo:');
+    } catch (error) {
+      console.log(error)
     }
   
   };
@@ -51,13 +51,6 @@ function AvailableStaff({ header }: { header: any[] }) {
         const res = await fetch("http://localhost:3000/api/avail-staff");
         const res2 = await res.json();
         setDataUser(res2);
-        // const paket = await fetch("http://localhost:3000/api/all-package");
-        // const paket2 = await res.json();
-        // setDataPackage(paket2);
-
-        // const staff = await fetch("http://localhost:3000/api/all-staff");
-        // const staff2 = await res.json();
-        // setDataStaff(staff2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
@@ -103,7 +96,7 @@ function AvailableStaff({ header }: { header: any[] }) {
                 </td>
                 <td className="w-auto h-auto py-0">
                   <div className="w-full flex justify-center">
-                    <button onClick={() => handleSubmit(user.staffID, packageID)}>
+                    <button onClick={() => handleSubmit(packageID, user.staffID)}>
                       <IoIosAddCircleOutline className="text-[16px] lg:text-[32px]" />
                     </button>
                   </div>

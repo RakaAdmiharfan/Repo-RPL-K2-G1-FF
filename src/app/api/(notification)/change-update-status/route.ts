@@ -3,9 +3,11 @@ import { NextResponse } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
+// getting packageInfo based on packageInfo.staffPengiriman === 
 export async function PATCH(req: any){
     const session = await getServerSession(authOptions);
-    // Route protection
+
+    // route protection
     if (!session?.user) {
         return NextResponse.json(
             {
@@ -15,16 +17,16 @@ export async function PATCH(req: any){
         );
     }
 
-    const {pid, newSid} = await req.json();
-    
+    const { packageID } = await req.json();
 
-    const selectedPackage = await prisma.packageInfo.update(
+    
+    const selectedPackage = await prisma.packageInfo.updateMany(
         {
             where: {
-                packageID: pid,
+                packageID,
             },
             data: {
-                staffPengiriman: newSid,        
+                hasUpdateStatus: false,        
             },
         }
     )
