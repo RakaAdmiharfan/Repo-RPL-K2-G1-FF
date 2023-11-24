@@ -24,21 +24,22 @@ import { MdReduceCapacity } from "react-icons/md";
 //   }
 
 export async function POST (req: NextRequest){
-    const { username, password, nama, tanggalLahir, noTelp, alamat, role } = await req.json();
+    const { id, username, password, nama, tanggalLahir, noTelp, alamat, role } = await req.json();
 
     const session = await getServerSession(authOptions);
 
-    const hashedPassword = await hash(password, 10);
+    const hashedPassword = await hash(password, 12);
 
     await prisma.user.create({
         data: {
+            id,
             username,
             password: hashedPassword,
             nama,
             tanggalLahir,
             noTelp,
             alamat,
-            role,
+            role: "STAFF",
         },
       });
 

@@ -8,6 +8,7 @@ import users from "../../components/stafList";
 import InputBox from "./inputBox";
 import { createClient } from "@/utils/supabase/client";
 import { hash } from "bcrypt";
+import toast from "react-hot-toast";
 
 const EditFormComponent = ({ id }: { id: string }) => {
   const [user, setUser] = useState<any>({});
@@ -43,36 +44,88 @@ const EditFormComponent = ({ id }: { id: string }) => {
   console.log(userByID);
 
   const handleSubmit = async () => {
-    try {
-      const supabase = createClient();
-      if (id == "add-staf") {
-        //add
-        const { data: users, error } = await supabase.from("user").insert({
-          // id: indeks,
-          username: username,
-          password: password,
-          nama: nama,
-          noTelp: noTelp,
-          alamat: alamat,
-          tanggalLahir: tanggalLahir,
+    if (id == "add-staf"){
+      try {
+        const res = await fetch("http://localhost:3000/api/create-staff", {
+          method: "POST",
+          body: JSON.stringify({
+            id: indeks,
+            username: username,
+            password: password,
+            nama: nama,
+            noTelp: noTelp,
+            alamat: alamat,
+            tanggalLahir: tanggalLahir,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
-      } else {
-        if (isSave) {
-          //update
-          const { data: users, error } = await supabase.from("user").update({});
+        if (res.status === 200) {
+          toast.success("Successfully Create New Staff!");
+          setIsRegistered(false);
         } else {
-          //delete
+          toast.error("Failed to add");
         }
+      } catch (error) {
+          console.log(error);
       }
-    } catch (error: any) {
-      console.error("Error fetching data:", error.message);
     }
-  };
-
+    else if (isSave){
+      try {
+        
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+        // const supabase = createClient();
+      // if (id == "add-staf") {
+      //   //add
+      //   const { data: users, error } = await supabase.from("user").insert({
+      //     // id: indeks,
+      //     username: username,
+      //     password: password,
+      //     nama: nama,
+      //     noTelp: noTelp,
+      //     alamat: alamat,
+      //     tanggalLahir: tanggalLahir,
+      //   });
+      // } else {
+      //   if (isSave) {
+      //     //update
+      //     const { data: users, error } = await supabase.from("user").update({});
+      //   } else {
+      //     //delete
+      //   }
+      // }
   return (
     <Formik initialValues={user} onSubmit={handleSubmit}>
       {user && (
         <Form>
+          <div className="mb-[26px]">
+            <h5
+              className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
+                id === "add-staf" ? "" : "hidden"
+              }`}
+            >
+              ID
+            </h5>
+            <div
+              className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
+                id === "add-staf" ? "" : "hidden"
+              }`}
+            >
+              <InputBox
+                name="username"
+                label="username"
+                placeholder=""
+                value = "10"
+                onChange={(e: any) => setIndeks(e.target.value)}
+              />
+            </div>
+          </div>
+
           <div className="mb-[26px]">
             <h5
               className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
@@ -140,7 +193,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="No.Telp"
                 label="No.Telp"
                 placeholder={userByID[0]?.noTelp}
-                onChange={(e: any) => setPassword(e.target.value)}
+                onChange={(e: any) => setNoTelp(e.target.value)}
               />
             </div>
           </div>
@@ -207,3 +260,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
 };
 
 export default EditFormComponent;
+function setIsRegistered(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+
