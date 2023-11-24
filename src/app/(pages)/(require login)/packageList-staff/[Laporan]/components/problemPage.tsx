@@ -3,27 +3,36 @@
 import Link from "next/link";
 import { IoArrowBack } from "react-icons/io5";
 import InputBox from "../../../crud-staf/[detailStaf]/components/inputBox";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import { Form, Formik } from "formik";
+import toast from "react-hot-toast";
 
 export default function ProblemPage({ id }: { id: number }) {
   const [Laporan, setLaporan] = useState("");
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const res = await fetch("http://localhost:3000/api/laporan", {
-      method: "POST",
+  const ID = useParams()
+  const packageID = parseInt(ID.Laporan)
+
+  const handleSubmit = async () => {
+    // e.preventDefault();
+    const res = await fetch("http://localhost:3000/api/package-report", {
+      method: "PATCH",
       body: JSON.stringify({
-        id: id,
+        pid: packageID,
         laporan: Laporan,
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
+    if (res.status === 200) {
+      toast.success("Report uploaded!");
+    } else {
+      toast.error("Failed to upload");
+    }
     const data = await res.json();
-    console.log(data);
-  };
+  };  
 
   return (
     <div className="bg-[#EFF6FD] relative overflow-hidden w-full h-screen lg:h-full flex-col flex pb-36 lg:pb-80">
@@ -55,7 +64,7 @@ export default function ProblemPage({ id }: { id: number }) {
       </div>
 
       <div className="flex justify-center mt-6 lg:mt-12">
-        <button className="bg-[#3D688E] px-6 lg:px-[26px] py-[6px] rounded-[15px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+        <button onClick={() => handleSubmit(packageID, Laporan )} className="bg-[#3D688E] px-6 lg:px-[26px] py-[6px] rounded-[15px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
           <text className="text-white font-montserrat font-semibold leading-normal text-[10px] lg:text-[18px]">
             Send
           </text>
