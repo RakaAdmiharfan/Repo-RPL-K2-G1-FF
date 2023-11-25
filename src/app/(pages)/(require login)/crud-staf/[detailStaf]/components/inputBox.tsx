@@ -1,7 +1,7 @@
 // InputField.js
 
 import React from "react";
-import { Field, ErrorMessage } from "Formik";
+import { Field, ErrorMessage } from "formik";
 
 interface InputBoxProps {
   name: string;

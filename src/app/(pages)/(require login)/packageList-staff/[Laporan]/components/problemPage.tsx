@@ -5,7 +5,7 @@ import { IoArrowBack } from "react-icons/io5";
 import InputBox from "../../../crud-staf/[detailStaf]/components/inputBox";
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import { Form, Formik } from "Formik";
+import { Form, formik } from "formik";
 import toast from "react-hot-toast";
 import Image from "next/image";
 
@@ -55,7 +55,7 @@ export default function ProblemPage({ id }: { id: number }) {
           <h2 className="text-black text-[12px] lg:text-[24px] font-bold mb-[8px] lg:mb-[14px]">
             Description
           </h2>
-          <Formik initialValues={{}} onSubmit={handleSubmit}>
+          <formik initialValues={{}} onSubmit={handleSubmit}>
             <Form className="w-[70vw] lg:w-[60vw] h-[80px] lg:h-[200px]">
               <InputBox
                 name="Problem Description"
@@ -65,7 +65,7 @@ export default function ProblemPage({ id }: { id: number }) {
                 as="textarea"
               />
             </Form>
-          </Formik>
+          </formik>
         </div>
       </div>
 
