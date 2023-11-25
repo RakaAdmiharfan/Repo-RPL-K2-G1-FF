@@ -61,7 +61,7 @@ export default function PackageProblem(packageInfos: any) {
               </div>
             </div>
             <footer className="mt-[140px] lg:mt-[240px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
-              <Image src="/Footer.png" className="w-screen" alt="hai" />
+              <Image src="/Footer.png" className="w-screen" alt="hai" width={100%}/>
             </footer>
           </div>
         );

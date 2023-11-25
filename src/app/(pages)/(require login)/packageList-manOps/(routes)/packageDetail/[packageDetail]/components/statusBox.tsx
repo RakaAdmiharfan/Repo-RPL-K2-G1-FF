@@ -58,6 +58,7 @@ const StatusBox = ({ id }: { id: string }) => {
                   src={packageInfo.proof}
                   className="w-[220px] lg:w-[380px"
                   alt="hai"
+                  width={100%}
                 />
               ) : packageInfo.statusPengiriman === "On Hold" ? (
                 <IoIosWarning className="text-red-600 text-[120px] lg:text-[228px]" />

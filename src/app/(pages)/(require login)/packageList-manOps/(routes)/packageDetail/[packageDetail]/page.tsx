@@ -31,7 +31,7 @@ export default function PackageDetail({
       </div>
 
       <footer className="mt-[20px] lg:mt-[200px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
-        <Image src="/Footer.png" className="w-screen" alt="Footer" />
+        <Image src="/Footer.png" className="w-screen" alt="Footer" width={100%}/>
       </footer>
     </div>
   );

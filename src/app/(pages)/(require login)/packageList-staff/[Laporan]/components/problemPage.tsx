@@ -81,7 +81,7 @@ export default function ProblemPage({ id }: { id: number }) {
       </div>
 
       <footer className="mt-[140px] lg:mt-[260px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
-        <Image src="/Footer.png" className="w-screen" alt="hai" />
+        <Image src="/Footer.png" className="w-screen" alt="hai" width={100%} />
       </footer>
     </div>
   );

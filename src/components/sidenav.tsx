@@ -16,6 +16,7 @@ export default function SideNav({ active }: { active: number }) {
           <Image
             src="/logo-rpl.png"
             alt="Logo FF"
+            width={100%}
             className="w-[150px] h-[150px] ml-6"
           />
 
