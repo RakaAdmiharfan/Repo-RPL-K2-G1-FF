@@ -193,7 +193,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="username"
                 label="username"
-                placeholder=""
+                placeholder="Username"
                 onChange={(e: any) => setUsername(e.target.value)}
               />
             </div>
@@ -215,7 +215,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="Password"
                 label="Password"
-                placeholder=""
+                placeholder="Password"
                 onChange={(e: any) => setPassword(e.target.value)}
               />
             </div>
@@ -229,7 +229,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="Nama"
                 label="Nama"
-                placeholder={userByID[0]?.nama || ""}
+                placeholder={userByID[0]?.nama || "Nama"}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (e.target.value === null || e.target.value === "") {
                     e.target.value = userByID[0]?.nama;
@@ -250,7 +250,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="No.Telp"
                 label="No.Telp"
-                placeholder={userByID[0]?.noTelp}
+                placeholder={userByID[0]?.noTelp || "No.Telp"}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (e.target.value.trim() !== null) {
                     setNoTelp(e.target.value);
@@ -271,7 +271,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="Alamat"
                 label="Alamat"
-                placeholder={userByID[0]?.alamat}
+                placeholder={userByID[0]?.alamat || "Alamat"}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (e.target.value.trim() !== null) {
                     setAlamat(e.target.value);
@@ -300,7 +300,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="Tanggal Lahir"
                 label="Tanggal Lahir"
-                placeholder={userByID[0]?.tanggalLahir}
+                placeholder={userByID[0]?.tanggalLahir || "Tanggal Lahir"}
                 onChange={(e: any) => setTanggalLahir(e.target.value)}
               />
             </div>
