@@ -15,6 +15,7 @@
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.38.4",
+    "@uploadthing/react": "^5.7.0",
     "aos": "^2.3.4",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
@@ -29,7 +30,8 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.20.0",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "uploadthing": "^5.7.4"
   },
   "devDependencies": {
     "@prisma/client": "^5.6.0",
