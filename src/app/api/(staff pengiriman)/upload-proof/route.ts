@@ -5,4 +5,28 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { MdReduceCapacity } from "react-icons/md";
 
-
+export async function PATCH(req: any) {
+    const session = await getServerSession(authOptions);
+  
+    // Route protection
+    if (!session?.user) {
+      return NextResponse.json(
+        {
+          message: "Minimal Login Dulu Lah",
+        },
+        { status: 401 }
+      );
+    }
+  
+    const { id, proof} = await req.json();
+    const packageInfo = await prisma.packageInfo.update({
+      where: {
+          packageID: id
+        },
+      data: {
+          proof: proof
+        },
+      });
+  
+    return NextResponse.json(packageInfo);
+    } 
