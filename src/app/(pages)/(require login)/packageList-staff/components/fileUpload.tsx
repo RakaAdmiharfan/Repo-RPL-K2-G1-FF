@@ -3,7 +3,7 @@
 import { X } from "lucide-react";
 import Image from "next/image";
 
-import { UploadDropzone } from "@/app/lib/uploadthing"
+import { UploadDropzone } from "@/app/lib/uploadthing";
 
 interface FileUploadProps {
   onChange: (url?: string) => void;
@@ -13,7 +13,7 @@ interface FileUploadProps {
 export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
   if (value) {
     return (
-      <div className="relative w-[20rem] aspect-square mx-auto">
+      <div className="relative w-12 lg:w-[20rem] aspect-square mx-auto">
         <Image
           src={value}
           fill

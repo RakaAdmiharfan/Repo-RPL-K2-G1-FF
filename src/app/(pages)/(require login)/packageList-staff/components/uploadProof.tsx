@@ -6,6 +6,7 @@ import { SingleImageDropzone } from "@/components/single-image-dropzone";
 import { IoClose } from "react-icons/io5";
 import { FileUpload } from "./fileUpload";
 import toast from "react-hot-toast";
+import { url } from "inspector";
 
 const UploadProof = ({ id }: { id: number }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -58,7 +59,7 @@ const UploadProof = ({ id }: { id: number }) => {
             >
               <IoClose className="text-[20px] hover:text-red-600 text-end" />
             </button>
-            <div className="flex flex-col justify-center items-center pt-3 gap-1 pb-6 px-5 lg:px-20 lg:pb-6  ">
+            <div className="flex flex-col justify-center items-center pt-3 gap-1 pb-6 px-4 lg:px-20 lg:pb-6  ">
               <div className="flex flex-col items-center mb-2">
                 <h1 className="text-[18px] lg:text-[28px] font-bold text-[#67AEEE]">
                   Upload Image
@@ -70,6 +71,12 @@ const UploadProof = ({ id }: { id: number }) => {
                   value={imageUrl}
                   endpoint="proofImage"
                 />
+                <button
+                  onClick={() => handleClickUpload(imageUrl)}
+                  className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] text-[10px] lg:text-[16px] font-semibold"
+                >
+                  Upload
+                </button>
               </div>
             </div>
           </div>
@@ -83,4 +90,3 @@ export default UploadProof;
 function setIsRegistered(arg0: boolean) {
   throw new Error("Function not implemented.");
 }
-
