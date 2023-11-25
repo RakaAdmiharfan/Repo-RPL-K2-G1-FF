@@ -1,26 +1,15 @@
-"use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
 import EditFormComponent from "./components/crudForm";
 import { IoArrowBack } from "react-icons/io5";
-import { usePathname, useSearchParams } from "next/navigation";
+import Image from "next/image";
 
-export default function crudPage({
+export default function CrudPage({
   params,
 }: {
   params: {
     detailStaf: string;
   };
 }) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const pathname = usePathname();
-  const searchParams = useSearchParams;
-
-  useEffect(() => {
-    const url = `${pathname}?${searchParams}`;
-    console.log(url);
-  }, [pathname, searchParams]);
-
   return (
     <div className="bg-[#EFF6FD] relative overflow-hidden w-full lg:h-full h-screen flex-col flex pb-36 lg:pb-80">
       <div className="">
@@ -38,7 +27,7 @@ export default function crudPage({
       </div>
 
       <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
-        <img src="/Footer.png" className="lg:w-[1620px]" />
+        <Image src="/Footer.png" className="lg:w-[1620px]" alt="Footer" />
       </footer>
     </div>
   );

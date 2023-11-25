@@ -7,7 +7,7 @@ import Assigned from "./components/assigned";
 import NotAssigned from "./components/notAssigned";
 import { FaRegUserCircle } from "react-icons/fa";
 
-export default function packageMenu() {
+export default function PackageMenu() {
   const [indeks, setIndeks] = useState(0);
 
   return (
@@ -60,6 +60,7 @@ export default function packageMenu() {
                 header={[
                   "ID",
                   "Nama Pelanggan",
+                  "ID Staff",
                   "Alamat",
                   "Status",
                   "Check Problem",

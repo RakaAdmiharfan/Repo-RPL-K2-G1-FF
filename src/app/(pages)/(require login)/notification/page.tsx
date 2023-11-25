@@ -6,6 +6,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { UserSession } from "@/components/UserFetcher";
 import MarkAsRead from "./components/markAsRead";
+import Image from "next/image";
 
 export default async function notification() {
   const session = await getServerSession(authOptions);
@@ -42,7 +43,7 @@ export default async function notification() {
         </div>
         <MarkAsRead />
         <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-20 lg:bottom-[-340px]">
-          <img src="/Footer.png" className="lg:w-[1620px]" />
+          <Image src="/Footer.png" className="lg:w-[1620px]" alt="Footer" />
         </footer>
       </div>
     </div>

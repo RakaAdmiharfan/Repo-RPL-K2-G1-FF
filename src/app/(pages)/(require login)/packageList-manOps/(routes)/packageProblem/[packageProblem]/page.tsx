@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { useParams } from "next/navigation";
 
-export default function packageProblem(packageInfos: any) {
+export default function PackageProblem(packageInfos: any) {
   const [dataItem, setDataItem] = useState<any[]>([]);
+  const { packageProblem } = useParams();
 
   useEffect(() => {
     const fetchPackageProblem = async () => {
@@ -19,8 +20,6 @@ export default function packageProblem(packageInfos: any) {
     };
     fetchPackageProblem();
   }, []);
-
-  const { packageProblem } = useParams();
 
   const selectedPackage = dataItem.filter((packageInfo) => {
     const packageId = Array.isArray(packageProblem)
