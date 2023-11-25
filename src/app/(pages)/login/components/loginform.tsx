@@ -51,35 +51,7 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
     }
   };
 
-  // const handleSubmit = async (val: Values) => {
-  //   if (!localStorage) {
-  //     return;
-  //   }
-
-  //   const token = localStorage?.getItem("token");
-
-  //   try {
-  //     const res = await fetch("http://localhost:3000/login", {
-  //       method: "POST",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify(val),
-  //     });
-  //     const resJson = await res.json();
-
-  //     if (resJson.message === "already signed in") {
-  //       router.replace("/");
-  //     } else if (resJson.token) {
-  //       localStorage.setItem("token", resJson.token);
-
-  //       router.replace("/");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
+  
   return (
     <div>
       <Formik
@@ -87,13 +59,13 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
         onSubmit={(
           values: Values,
           { setSubmitting }: FormikHelpers<Values>
-        ) => {
-          setTimeout(() => {
-            handleSubmit(values);
-            setSubmitting(false);
-          });
-        }}
-      >
+          ) => {
+            setTimeout(() => {
+              handleSubmit(values);
+              setSubmitting(false);
+            });
+          }}
+          >
         <Form>
           <div className="mb-[10px] sm:mb-[15px] md:mb-[20px] xl:mb-[20px] lg:mb-[15px] text-poppins flex flex-col">
             <text className="font-medium text-[12px] sm:text-[15px] md:text-[18px] xl:text-[16px] lg:text-[20px] mb-[10px] sm:mb-[13px] md:mb-[15px] xl:mb-[20px] lg:mb-[15px] text-poppins">
@@ -106,7 +78,7 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
               name="username"
               placeholder="Username"
               aria-describedby="UsernameHelp"
-            />
+              />
           </div>
 
           <div className="mb-[27px] sm:mb-[25px] md:mb-[30px] xl:mb-[35px] lg:mb-[25px] text-poppins flex flex-col">
@@ -120,14 +92,14 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
               name="password"
               placeholder="Password"
               component={PasswordInput}
-            />
+              />
           </div>
 
           <div className="">
             <button
               type="submit"
               className="bg-[#67AEEE] px-[16px] py-[6px] rounded-[5px] flex items-center justify-center hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
-            >
+              >
               <text className="text-white font-montserrat text-xs font-semibold leading-normal text-[12px] lg:text-[14px]">
                 Log In
               </text>
@@ -140,21 +112,50 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
 }
 
 // const handleSubmit = async (val: Values) => {
-//   // You can fetch the login data from your local JSON file
-//   try {
-//     const response = await fetch("pla"); // Adjust the path as needed
-//     const loginData = await response.json();
-
-//     const user = loginData.users.find((user) => user.username === val.username);
-
-//     if (user && user.password === val.password) {
-//       // Successful login
-//       localStorage.setItem("token", "your_token_here"); // Store a token if needed
-//       router.replace("/");
-//     } else {
-//       console.log("Invalid username or password");
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+  //   // You can fetch the login data from your local JSON file
+  //   try {
+    //     const response = await fetch("pla"); // Adjust the path as needed
+    //     const loginData = await response.json();
+    
+    //     const user = loginData.users.find((user) => user.username === val.username);
+    
+    //     if (user && user.password === val.password) {
+      //       // Successful login
+      //       localStorage.setItem("token", "your_token_here"); // Store a token if needed
+      //       router.replace("/");
+      //     } else {
+        //       console.log("Invalid username or password");
+        //     }
+        //   } catch (err) {
+          //     console.log(err);
+          //   }
+          // };
+          
+          // const handleSubmit = async (val: Values) => {
+          //   if (!localStorage) {
+          //     return;
+          //   }
+          
+          //   const token = localStorage?.getItem("token");
+          
+          //   try {
+          //     const res = await fetch("http://localhost:3000/login", {
+          //       method: "POST",
+          //       headers: {
+          //         Authorization: `Bearer ${token}`,
+          //       },
+          //       body: JSON.stringify(val),
+          //     });
+          //     const resJson = await res.json();
+          
+          //     if (resJson.message === "already signed in") {
+          //       router.replace("/");
+          //     } else if (resJson.token) {
+          //       localStorage.setItem("token", resJson.token);
+          
+          //       router.replace("/");
+          //     }
+          //   } catch (err) {
+          //     console.log(err);
+          //   }
+          // };

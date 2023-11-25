@@ -82,7 +82,7 @@ export default function UserButton() {
           className="mt-[12px] text-[#3D688E] font-semibold text-[14px] lg:text-[24px]"
           style={{ color: buttonStylesOps.iconColor }}
         >
-          Ops Manager
+          Operational Manager
         </p>
       </button>
     </div>
