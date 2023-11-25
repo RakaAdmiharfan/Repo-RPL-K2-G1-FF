@@ -13,15 +13,15 @@ const UploadProof = ({ id }: { id: number }) => {
   const [imageUrl, setImageUrl] = useState<string>("");
 
   const handleClick = async () => {};
-  console.log(id);
+  
 
-  const handleClickUpload = async (url: any) => {
+  const handleClickSend = async (url: any) => {
     try {
       const res = await fetch("http://localhost:3000/api/upload-proof", {
         method: "PATCH",
         body: JSON.stringify({
           packageID: id,
-          UploadProof: url,
+          proof: url,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -72,10 +72,10 @@ const UploadProof = ({ id }: { id: number }) => {
                   endpoint="proofImage"
                 />
                 <button
-                  onClick={() => handleClickUpload(imageUrl)}
+                  onClick={() => handleClickSend(imageUrl)}
                   className="flex justify-center items-center mt-2 mb-2 text-white bg-[#67AEEE] rounded-[20px] w-full h-10 hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] text-[10px] lg:text-[16px] font-semibold"
                 >
-                  Upload
+                  Send
                 </button>
               </div>
             </div>

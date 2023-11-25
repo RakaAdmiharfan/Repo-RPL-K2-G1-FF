@@ -18,10 +18,10 @@ export async function PATCH(req: any) {
       );
     }
   
-    const { id, proof} = await req.json();
+    const { packageID, proof} = await req.json();
     const packageInfo = await prisma.packageInfo.update({
       where: {
-          packageID: id
+          packageID: packageID 
         },
       data: {
           proof: proof
