@@ -59,8 +59,8 @@ export default function PackageProblem(packageInfos: any) {
                 </div>
               </div>
             </div>
-            <footer className="mt-[140px] lg:mt-[240px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
-              <img src="/Footer.png" className="lg:w-[1620px]" />
+            <footer className="mt-[140px] lg:mt-[240px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
+              <img src="/Footer.png" className="w-screen" />
             </footer>
           </div>
         );

@@ -30,8 +30,8 @@ export default function PackageDetail({
         <DetailBox id={params.ID} />
       </div>
 
-      <footer className="mt-[20px] lg:mt-[200px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
-        <Image src="/Footer.png" className="w-screen" alt="Footer" />
+      <footer className="mt-[20px] lg:mt-[200px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
+        <img src="/Footer.png" className="w-screen" alt="Footer" />
       </footer>
     </div>
   );

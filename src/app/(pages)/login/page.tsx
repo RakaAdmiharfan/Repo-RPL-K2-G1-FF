@@ -1,5 +1,4 @@
 import LoginForm from "./components/loginform";
-import React, { useEffect } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { UserSession } from "@/components/UserFetcher";
@@ -20,11 +19,11 @@ export default async function Login() {
           Please fill out the form below
         </h2>
       </div>
-      <div className="flex ml-[26px] lg:ml-[260px] xl:ml-[470px]">
+      <div className="flex justify-center mt-3">
         <LoginForm roleAccess={roleAccess} />
       </div>
-      <footer className="mt-[93px] lg:mt-[200px] overflow-hidden absolute -bottom-10 lg:bottom-[-340px]">
-        <img src="Footer.png" className="lg:w-[1620px]" />
+      <footer className="mt-[93px] lg:mt-[200px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
+        <img src="Footer.png" className="w-screen" alt="Footer" />
       </footer>
     </div>
   );

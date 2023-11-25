@@ -26,8 +26,8 @@ export default function CrudPage({
         <EditFormComponent id={params.detailStaf} />
       </div>
 
-      <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
-        <Image src="/Footer.png" className="lg:w-[1620px]" alt="Footer" />
+      <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
+        <img src="/Footer.png" className="w-screen" alt="Footer" />
       </footer>
     </div>
   );
