@@ -2,6 +2,7 @@ import Link from "next/link";
 import { TbPackages } from "react-icons/tb";
 import { IoPeopleSharp } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
+import Image from "next/image";
 
 interface SideNav {
   active: number;
@@ -12,7 +13,7 @@ export default function SideNav({ active }: { active: number }) {
     <div>
       <aside className=" top-0 left-0 z-100 h-screen transition-transform -translate-x-full lg:translate-x-0 hidden lg:block">
         <div className="pt-[20px] pb-[30px] flex flex-col min-w-[150px] shadow-navbar h-screen bg-white border-r-2">
-          <img
+          <Image
             src="/logo-rpl.png"
             alt="Logo FF"
             className="w-[150px] h-[150px] ml-6"

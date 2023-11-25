@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { CiCamera } from "react-icons/ci";
-import { FaCloudUploadAlt } from "react-icons/fa";
-import { SingleImageDropzone } from "@/components/single-image-dropzone";
 import { IoClose } from "react-icons/io5";
 import { FileUpload } from "./fileUpload";
 import toast from "react-hot-toast";
@@ -13,7 +11,6 @@ const UploadProof = ({ id }: { id: number }) => {
   const [imageUrl, setImageUrl] = useState<string>("");
 
   const handleClick = async () => {};
-  
 
   const handleClickSend = async (url: any) => {
     try {
