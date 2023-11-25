@@ -1,9 +1,5 @@
-import Image from "next/image";
 import LoginForm from "./components/loginform";
-import UserButton from "./components/userButton";
-import Link from "next/link";
 import React, { useEffect } from "react";
-import AOS from "aos";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { UserSession } from "@/components/UserFetcher";
