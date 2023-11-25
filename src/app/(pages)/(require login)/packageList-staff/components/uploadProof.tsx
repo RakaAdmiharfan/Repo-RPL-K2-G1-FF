@@ -5,6 +5,7 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { SingleImageDropzone } from "@/components/single-image-dropzone";
 import { IoClose } from "react-icons/io5";
 import { FileUpload } from "./fileUpload";
+import toast from "react-hot-toast";
 
 const UploadProof = ({ id }: { id: number }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -12,6 +13,30 @@ const UploadProof = ({ id }: { id: number }) => {
 
   const handleClick = async () => {};
   console.log(id);
+
+  const handleClickUpload = async (url: any) => {
+    try {
+      const res = await fetch("http://localhost:3000/api/upload-proof", {
+        method: "PATCH",
+        body: JSON.stringify({
+          packageID: id,
+          UploadProof: url,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.status === 200) {
+        toast.success("Successfully Upload Proof!");
+        setIsRegistered(false);
+      } else {
+        toast.error("Failed to upload");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="relative">
@@ -55,3 +80,7 @@ const UploadProof = ({ id }: { id: number }) => {
 };
 
 export default UploadProof;
+function setIsRegistered(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+
