@@ -1,11 +1,8 @@
 "use client";
 
-import { createClient } from "@/utils/supabase/client";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { CiCamera } from "react-icons/ci";
 import ChangeStatus from "./changeStatus";
 import UploadProof from "./uploadProof";
 

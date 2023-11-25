@@ -22,7 +22,7 @@ export default function crudPage({
   }, [pathname, searchParams]);
 
   return (
-    <div className="bg-[#EFF6FD] relative overflow-hidden w-full h-full flex-col flex pb-36 lg:pb-80">
+    <div className="bg-[#EFF6FD] relative overflow-hidden w-full lg:h-full h-screen flex-col flex pb-36 lg:pb-80">
       <div className="">
         <Link href="/crud-staf">
           <IoArrowBack className="text-[40px] ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:text-blue-500 rounded-[15px]" />

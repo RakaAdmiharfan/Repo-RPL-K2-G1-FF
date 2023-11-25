@@ -2,17 +2,11 @@
 
 import { Formik, Form, Field } from "formik";
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/router";
-import users from "../../components/stafList";
 import InputBox from "./inputBox";
-import { createClient } from "@/utils/supabase/client";
-import { hash } from "bcrypt";
 import toast from "react-hot-toast";
 
 const EditFormComponent = ({ id }: { id: string }) => {
   const [user, setUser] = useState<any>({});
-  const [saveData, setSaveData] = useState<any>(null);
   const [isSave, setIsSave] = useState<boolean>(false);
   const [indeks, setIndeks] = useState<any>(0);
   const [username, setUsername] = useState<any>("");
@@ -22,6 +16,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const [alamat, setAlamat] = useState<any>("");
   const [tanggalLahir, setTanggalLahir] = useState<any>("");
   const [dataUser, setDataUser] = useState<any[]>([]);
+  const [largest, setLargest] = useState<any>(0);
 
   console.log(id);
 
@@ -34,6 +29,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
         const res2 = await res.json();
         setDataUser(res2);
         const largestID = res2.length;
+        setLargest(largestID + 1);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
@@ -103,6 +99,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
         } catch (error) {
           console.log(error);
         }
+        console.log(alamat);
       } else {
         console.log(isSave);
         try {
@@ -171,7 +168,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
               <InputBox
                 name="id"
                 label="id"
-                placeholder="Automatic"
+                placeholder={(largestID + 1).toString() || "ID"}
                 onChange={(e: any) => setIndeks(e.target.value)}
               />
             </div>

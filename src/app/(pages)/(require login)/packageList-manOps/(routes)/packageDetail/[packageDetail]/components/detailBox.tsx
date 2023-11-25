@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 
 const DetailBox = ({ id }: { id: string }) => {
-  const [fetchError, setFetchError] = useState(null);
-  const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
 
   //console.log(packageDetail);
@@ -38,7 +36,7 @@ const DetailBox = ({ id }: { id: string }) => {
   });
 
   return (
-    <div className="bg-white w-[280px] lg:w-[600px] h-[270px] lg:h-full rounded-[15px] drop-shadow-2xl pb-12">
+    <div className="bg-white w-[280px] lg:w-[600px] h-[290px] lg:h-full rounded-[15px] drop-shadow-2xl pb-12">
       <h1 className="text-[#3D688E] text-center font-montserrat font-bold text-[24px] mt-[12px] lg:text-[36px] lg:mt-[32px] mb-[12px] lg:mb-6 justify-center">
         Detail
       </h1>

@@ -18,18 +18,43 @@ export async function PATCH(req: any) {
   }
 
   const { id, nama, noTelp, alamat } = await req.json();
-  const stafPengiriman = await prisma.user.update({
+
+  const stafPengiriman = await prisma.user.findUnique({
     where: {
-        id: id
+      id,
+    },
+  });
+
+  if (nama != null && nama != "" && nama != undefined) {
+    const stafPengiriman = await prisma.user.update({
+      where: {
+        id,
       },
-    data: {
-        nama,
-        noTelp, 
-        alamat,
+      data: {
+        nama: nama,
       },
     });
+  }
+  if (noTelp != null && noTelp != "" && noTelp != undefined) {
+    const stafPengiriman = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        noTelp: noTelp,
+      },
+    });
+  }
+  if (alamat != null && alamat != "" && alamat != undefined) {
+    const stafPengiriman = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        alamat: alamat,
+      },
+    });
+  }
 
   return NextResponse.json(stafPengiriman);
-  } 
-
-
+}

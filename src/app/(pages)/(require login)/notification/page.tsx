@@ -5,14 +5,22 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { UserSession } from "@/components/UserFetcher";
-import client from "@/app/lib/prismadb";
 import MarkAsRead from "./components/markAsRead";
 
 export default async function notification() {
   const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/login");
+  }
   const user = session?.user as UserSession;
   const id = user.id;
 
+  const roleAccess = user.role === "MANAGER";
+
+  if (session && !roleAccess) {
+    redirect("/");
+  }
 
   return (
     <div className="relative overflow-hidden flex flex-row md:flex-row lg:flex-row bg-blue-50 w-full h-screen pb-36 lg:pb-300">
@@ -32,7 +40,7 @@ export default async function notification() {
             <NotificationBox />
           </div>
         </div>
-        <MarkAsRead/>
+        <MarkAsRead />
         <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute -bottom-20 lg:bottom-[-340px]">
           <img src="/Footer.png" className="lg:w-[1620px]" />
         </footer>

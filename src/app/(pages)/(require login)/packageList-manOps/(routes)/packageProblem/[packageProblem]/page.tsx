@@ -5,9 +5,6 @@ import { IoArrowBack } from "react-icons/io5";
 import { useParams } from "next/navigation";
 
 export default function packageProblem(packageInfos: any) {
-
-  const [fetchError, setFetchError] = useState(null);
-  const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
 
   useEffect(() => {
@@ -39,10 +36,12 @@ export default function packageProblem(packageInfos: any) {
 
   return (
     <div>
-
       {selectedPackage.map((packageInfo) => {
-        return(
-          <div key={packageInfo.packageID} className="bg-[#EFF6FD] relative overflow-hidden w-full h-screen lg:h-fit pb-40 lg:pb-80">
+        return (
+          <div
+            key={packageInfo.packageID}
+            className="bg-[#EFF6FD] relative overflow-hidden w-full h-screen lg:h-screen pb-40 lg:pb-80"
+          >
             <Link href="/packageList-manOps">
               <IoArrowBack className="text-[40px] ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:text-blue-500 rounded-[15px]" />
             </Link>
@@ -65,9 +64,8 @@ export default function packageProblem(packageInfos: any) {
               <img src="/Footer.png" className="lg:w-[1620px]" />
             </footer>
           </div>
-        )
-      }
-        )}
+        );
+      })}
     </div>
   );
 }

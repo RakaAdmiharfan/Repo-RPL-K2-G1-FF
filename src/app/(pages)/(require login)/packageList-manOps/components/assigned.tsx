@@ -7,9 +7,6 @@ function Assigned({ header }: { header: any[] }) {
   const handleClick = (item: any) => {
     console.log(item);
   };
-
-  const [fetchError, setFetchError] = useState(null);
-  const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
   const [showDeliveredOnly, setShowDeliveredOnly] = useState(false); // State for checkbox
 
@@ -81,6 +78,9 @@ function Assigned({ header }: { header: any[] }) {
                   <div>{packageInfo.namaPelanggan}</div>
                 </td>
                 <td className="overflow-hidden w-auto h-auto py-[36px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
+                  <div>{packageInfo.staffPengiriman}</div>
+                </td>
+                <td className="overflow-hidden w-auto h-auto py-[36px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
                   <div>{packageInfo.alamatPengiriman}</div>
                 </td>
                 <td className="overflow-hidden w-auto h-auto py-[36px] text-[10px] lg:text-[16px] xl:text-[20px] text-center">
@@ -102,7 +102,7 @@ function Assigned({ header }: { header: any[] }) {
                       onClick={() => handleClick(packageInfo)}
                       href={`/packageList-manOps/packageDetail/${packageInfo.packageID}`}
                     >
-                      <PiArrowSquareOut className="text-[36px] hover:text-blue-400" />
+                      <PiArrowSquareOut className="text-[24px] lg:text-[36px] hover:text-blue-400" />
                     </Link>
                   </div>
                 </td>

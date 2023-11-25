@@ -34,16 +34,13 @@ export default function packageDetail({
         Package Detail
       </h1>
 
-      <div className="flex justify-center w-full mt-[24px]">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-3 mt-6">
         <StatusBox id={params.ID} />
-      </div>
-
-      <div className="flex justify-center w-full mt-[24px]">
         <DetailBox id={params.ID} />
       </div>
 
       <footer className="mt-[20px] lg:mt-[200px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
-        <img src="/Footer.png" className="lg:w-[1620px]" />
+        <img src="/Footer.png" className="w-screen" />
       </footer>
     </div>
   );

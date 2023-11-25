@@ -1,9 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import prisma from "@/app/lib/prismadb";
-import { CiCamera } from "react-icons/ci";
-import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 
 function NotAssigned({ header }: { header: any[] }) {
@@ -11,8 +8,6 @@ function NotAssigned({ header }: { header: any[] }) {
     console.log(item);
   };
 
-  const [fetchError, setFetchError] = useState(null);
-  const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
 
   useEffect(() => {
@@ -28,7 +23,10 @@ function NotAssigned({ header }: { header: any[] }) {
     fetchUnassigned();
   }, []);
 
-  const unassignedPackages = dataItem.filter((packageInfo) => packageInfo.staffPengiriman === null || packageInfo.staffPengiriman === "");
+  const unassignedPackages = dataItem.filter(
+    (packageInfo) =>
+      packageInfo.staffPengiriman === null || packageInfo.staffPengiriman === ""
+  );
 
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw]">
@@ -86,4 +84,3 @@ function NotAssigned({ header }: { header: any[] }) {
 }
 
 export default NotAssigned;
-

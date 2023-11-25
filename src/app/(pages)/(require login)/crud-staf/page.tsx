@@ -3,8 +3,25 @@ import Link from "next/link";
 import Navbar from "@/components/navbar";
 import StafList from "./components/stafList";
 import SideNav from "@/components/sidenav";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+import { UserSession } from "@/components/UserFetcher";
 
-export default function StaffList() {
+export default async function StaffList() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/login");
+  }
+  const user = session?.user as UserSession;
+  const id = user.id;
+
+  const roleAccess = user.role === "MANAGER";
+
+  if (session && !roleAccess) {
+    redirect("/");
+  }
   return (
     <div className="flex bg-gradient-to-b from-[#EFF6FD] to-white relative overflow-hidden w-full h-full min-h-[100vh]">
       <nav className="lg:hidden">

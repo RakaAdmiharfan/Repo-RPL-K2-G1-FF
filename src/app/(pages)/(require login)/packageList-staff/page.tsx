@@ -8,16 +8,15 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { UserSession } from "@/components/UserFetcher";
-import client from "@/app/lib/prismadb";
 
 export default async function packageStaff() {
   const session = await getServerSession(authOptions);
-  const user = session?.user as UserSession;
-  const id = user.id;
 
   if (!session) {
     redirect("/login");
   }
+  const user = session?.user as UserSession;
+  const id = user.id;
 
   const roleAccess = user.role === "STAFF";
 
@@ -27,12 +26,6 @@ export default async function packageStaff() {
 
   return (
     <div className="flex flex-row bg-gradient-to-b from-[#EFF6FD] to-white relative overflow-hidden w-full h-full min-h-[100vh]">
-      {/* <nav className="lg:hidden">
-        <Navbar />
-      </nav>
-      <nav>
-        <SideNav active={2} />
-      </nav> */}
       <div className="flex flex-col w-full h-screen overflow-auto">
         <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[40px] lg:mt-[100px] lg:text-[24px] gap-2">
           <h1 className="text-[#3D688E]">Hi Staff!</h1>
