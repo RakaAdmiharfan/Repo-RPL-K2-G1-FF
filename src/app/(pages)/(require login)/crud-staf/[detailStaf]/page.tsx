@@ -27,7 +27,7 @@ export default function CrudPage({
       </div>
 
       <footer className="mt-[140px] lg:mt-[200px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
-        <img src="/Footer.png" className="w-screen" alt="Footer" />
+        <Image src="/Footer.png" className="w-screen" alt="Footer" />
       </footer>
     </div>
   );

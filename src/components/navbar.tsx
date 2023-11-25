@@ -22,7 +22,11 @@ const Navbar = () => {
       <div className="bg-[#ffffff] w-full flex justify-between items-center fixed border-b border-black z-10">
         <div className="ml-[12px]">
           <Link href="/packageList-manOps">
-            <img src="/logo-rpl.png" alt="Logo" className="w-[70px] h-[60px]" />
+            <Image
+              src="/logo-rpl.png"
+              alt="Logo"
+              className="w-[70px] h-[60px]"
+            />
           </Link>
         </div>
 

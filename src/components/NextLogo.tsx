@@ -3,7 +3,7 @@ export default function NextLogo() {
     <svg
       aria-label="Next.js logotype"
       height="68"
-      role="img"
+      role="Image"
       viewBox="0 0 394 79"
       width="100"
     >
@@ -42,5 +42,5 @@ export default function NextLogo() {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
