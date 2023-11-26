@@ -1,6 +1,6 @@
 "use client";
 
-import { formik, Form, Field } from "formik";
+import { Formik, Form, Field } from "Formik";
 import React, { useEffect, useState } from "react";
 import InputBox from "./inputBox";
 import toast from "react-hot-toast";
@@ -149,7 +149,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
   console.log(userByID[0]?.nama);
 
   return (
-    <formik initialValues={user} onSubmit={handleSubmit}>
+    <Formik initialValues={user} onSubmit={handleSubmit}>
       {user && (
         <Form>
           <div className="mb-[26px]">
@@ -332,7 +332,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
           </div>
         </Form>
       )}
-    </formik>
+    </Formik>
   );
 };
 

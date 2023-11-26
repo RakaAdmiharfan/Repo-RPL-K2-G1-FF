@@ -1,5 +1,5 @@
 "use client";
-import { formik, Field, Form, formikHelpers } from "formik";
+import { Formik, Field, Form, FormikHelpers } from "Formik";
 import PasswordInput from "./passwordinput";
 import { redirect } from "next/navigation";
 import { RedirectType } from "next/dist/client/components/redirect";
@@ -82,11 +82,11 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
 
   return (
     <div>
-      <formik
+      <Formik
         initialValues={{ username: "", password: "" }}
         onSubmit={(
           values: Values,
-          { setSubmitting }: formikHelpers<Values>
+          { setSubmitting }: FormikHelpers<Values>
         ) => {
           setTimeout(() => {
             handleSubmit(values);
@@ -134,7 +134,7 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
             </button>
           </div>
         </Form>
-      </formik>
+      </Formik>
     </div>
   );
 }
