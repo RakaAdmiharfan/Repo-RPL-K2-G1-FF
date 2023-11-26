@@ -32,43 +32,13 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
         toast.error("Invalid credentials");
       } else {
         toast.success("Login success");
-        if (roleAccess === "MANAGER") {
-          router.push("/packageList-manOps");
-        } else router.push("/packageList-staff");
+        console.log(res);
+        router.refresh();
       }
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const handleSubmit = async (val: Values) => {
-  //   if (!localStorage) {
-  //     return;
-  //   }
-
-  //   const token = localStorage?.getItem("token");
-
-  //   try {
-  //     const res = await fetch("http://localhost:3000/login", {
-  //       method: "POST",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify(val),
-  //     });
-  //     const resJson = await res.json();
-
-  //     if (resJson.message === "already signed in") {
-  //       router.replace("/");
-  //     } else if (resJson.token) {
-  //       localStorage.setItem("token", resJson.token);
-
-  //       router.replace("/");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   return (
     <div>
@@ -128,23 +98,3 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
     </div>
   );
 }
-
-// const handleSubmit = async (val: Values) => {
-//   // You can fetch the login data from your local JSON file
-//   try {
-//     const response = await fetch("pla"); // Adjust the path as needed
-//     const loginData = await response.json();
-
-//     const user = loginData.users.find((user) => user.username === val.username);
-
-//     if (user && user.password === val.password) {
-//       // Successful login
-//       localStorage.setItem("token", "your_token_here"); // Store a token if needed
-//       router.replace("/");
-//     } else {
-//       console.log("Invalid username or password");
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
