@@ -29,7 +29,7 @@ const PackageList: React.FC<PackageListProps> = ({
   useEffect(() => {
     const fetchCertainPackage = async () => {
       try {
-        const res = await fetch("api/certain-staff");
+        const res = await fetch("/api/certain-staff");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {
