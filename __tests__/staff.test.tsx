@@ -7,9 +7,6 @@ import {
   act,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import LoginForm from "@/app/(pages)/login/components/loginform";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 describe("StafList component", () => {
   it("renders table headers correctly", () => {
     const headers: string[] = ["ID", "Name", "Username", "Birth Date", "Address", "Phone", "Actions"];
