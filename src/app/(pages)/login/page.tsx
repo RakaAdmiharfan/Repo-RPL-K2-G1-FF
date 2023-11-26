@@ -2,7 +2,6 @@ import LoginForm from "./components/loginform";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { UserSession } from "@/components/UserFetcher";
-import Image from "next/image";
 import "aos/dist/aos.css";
 
 export default async function Login() {
@@ -24,7 +23,7 @@ export default async function Login() {
         <LoginForm roleAccess={roleAccess} />
       </div>
       <footer className="mt-[93px] lg:mt-[200px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
-        <Image src="Footer.png" className="w-screen" alt="Footer" width={100%}  />
+        <Image src="Footer.png" className="w-screen" alt="Footer" />
       </footer>
     </div>
   );

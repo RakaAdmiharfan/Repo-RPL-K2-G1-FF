@@ -19,7 +19,6 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
           fill
           alt="Upload"
           className="object-cover w-full h-full"
-          width={100%}
         />
         <button
           className="absolute w-7 aspect-square rounded-full bg-red-500 text-white flex justify-center items-center -right-2 -top-2"

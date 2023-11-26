@@ -25,7 +25,6 @@ const Navbar = () => {
             <Image
               src="/logo-rpl.png"
               alt="Logo"
-              width={100%}
               className="w-[70px] h-[60px]"
             />
           </Link>
