@@ -78,7 +78,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
       if (isSave) {
         try {
           const idInt = parseInt(id);
-          const res = await fetch("api/update-staf", {
+          const res = await fetch("/api/update-staf", {
             method: "PATCH",
             body: JSON.stringify({
               id: idInt,
@@ -125,26 +125,6 @@ const EditFormComponent = ({ id }: { id: string }) => {
       }
     }
   };
-  // const supabase = createClient();
-  // if (id == "add-staf") {
-  //   //add
-  //   const { data: users, error } = await supabase.from("user").insert({
-  //     // id: indeks,
-  //     username: username,
-  //     password: password,
-  //     nama: nama,
-  //     noTelp: noTelp,
-  //     alamat: alamat,
-  //     tanggalLahir: tanggalLahir,
-  //   });
-  // } else {
-  //   if (isSave) {
-  //     //update
-  //     const { data: users, error } = await supabase.from("user").update({});
-  //   } else {
-  //     //delete
-  //   }
-  // }
 
   console.log(userByID[0]?.nama);
 
