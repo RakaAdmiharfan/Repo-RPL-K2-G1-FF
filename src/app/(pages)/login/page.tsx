@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 export default async function Login() {
   const session = await getServerSession(authOptions);
   const user = session?.user as UserSession;
-  const roleAccess = user.role;
+  const roleAccess = user?.role;
 
   return (
     <div className="relative overflow-hidden flex flex-col md:flex-col lg:flex-col bg-white w-full h-screen pb-36 lg:pb-72">

@@ -1,18 +1,8 @@
 "use client";
 import { Formik, Field, Form, FormikHelpers } from "formik";
 import PasswordInput from "./passwordinput";
-import { redirect } from "next/navigation";
-import { RedirectType } from "next/dist/client/components/redirect";
 import { useRouter } from "next/navigation";
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { createClient } from "@/utils/supabase/client";
-import { env } from "process";
 import { signIn } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
 interface Values {
