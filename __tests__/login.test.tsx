@@ -61,7 +61,7 @@ import {
     });
   
     it("displays error message on invalid form submission", async () => {
-      render(<LoginForm />);
+      render(<LoginForm roleAccess={""} />);
   
       const submitButton = screen.getByRole("button", { name: "Login" });
       await act(async () => {
