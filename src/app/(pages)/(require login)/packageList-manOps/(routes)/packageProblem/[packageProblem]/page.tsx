@@ -3,7 +3,6 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { useParams } from "next/navigation";
-import Image from "next/image";
 
 export default function PackageProblem(packageInfos: any) {
   const [dataItem, setDataItem] = useState<any[]>([]);
