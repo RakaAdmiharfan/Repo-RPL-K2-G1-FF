@@ -18,7 +18,7 @@ const ChangeStatus = ({ id }: { id: number }) => {
 
   const handleClickStatus = async (parameter: any) => {
     try {
-      const res = await fetch("http://localhost:3000/api/update-status", {
+      const res = await fetch("/api/update-status", {
         method: "PATCH",
         body: JSON.stringify({
           packageID: id,

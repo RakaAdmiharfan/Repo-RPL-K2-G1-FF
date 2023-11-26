@@ -16,7 +16,7 @@ function AvailableStaff({ header }: { header: any[] }) {
   const handleSubmit = async (parameter1: any, parameter2: any) => {
     // console.log(pid);
     try {
-      const res = await fetch("http://localhost:3000/api/assign-package", {
+      const res = await fetch("/api/assign-package", {
         method: "PATCH",
         body: JSON.stringify({
           pid: parameter1,
@@ -40,7 +40,7 @@ function AvailableStaff({ header }: { header: any[] }) {
   useEffect(() => {
     const fetchStafAvail = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/avail-staff");
+        const res = await fetch("/api/avail-staff");
         const res2 = await res.json();
         setDataUser(res2);
       } catch (error: any) {

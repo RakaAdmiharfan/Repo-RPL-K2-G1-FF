@@ -17,7 +17,7 @@ const NotificationBox = () => {
   useEffect(() => {
     const fetchNotification = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/update-notif");
+        const res = await fetch("/api/update-notif");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {

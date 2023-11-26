@@ -25,7 +25,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
   useEffect(() => {
     const fetchStafList = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/all-staf/");
+        const res = await fetch("/api/all-staf/");
         const res2 = await res.json();
         setDataUser(res2);
         const largestID = res2.length;
@@ -46,11 +46,11 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const handleSubmit = async () => {
     if (id == "add-staf") {
       try {
-        const res3 = await fetch("http://localhost:3000/api/all-users");
+        const res3 = await fetch("/api/all-users");
         const res4 = await res3.json();
         setDataUser(res4);
         const largestID = res4.length;
-        const res = await fetch("http://localhost:3000/api/create-staff", {
+        const res = await fetch("/api/create-staff", {
           method: "POST",
           body: JSON.stringify({
             id: largestID + 1,
@@ -78,7 +78,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
       if (isSave) {
         try {
           const idInt = parseInt(id);
-          const res = await fetch("http://localhost:3000/api/update-staf", {
+          const res = await fetch("api/update-staf", {
             method: "PATCH",
             body: JSON.stringify({
               id: idInt,
@@ -104,7 +104,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
         console.log(isSave);
         try {
           const idInt = parseInt(id);
-          const res = await fetch("http://localhost:3000/api/delete-staff", {
+          const res = await fetch("/api/delete-staff", {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",

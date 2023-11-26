@@ -13,7 +13,7 @@ function NotAssigned({ header }: { header: any[] }) {
   useEffect(() => {
     const fetchUnassigned = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/all-package");
+        const res = await fetch("/api/all-package");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {

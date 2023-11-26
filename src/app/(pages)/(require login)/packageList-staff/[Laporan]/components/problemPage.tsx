@@ -21,7 +21,7 @@ export default function ProblemPage({ id }: { id: number }) {
 
   const handleSubmit = async (req1: any, req2: any) => {
     // e.preventDefault();
-    const res = await fetch("http://localhost:3000/api/package-report", {
+    const res = await fetch("/api/package-report", {
       method: "PATCH",
       body: JSON.stringify({
         pid: req1,

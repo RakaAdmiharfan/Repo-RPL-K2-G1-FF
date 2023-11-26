@@ -13,7 +13,7 @@ function Assigned({ header }: { header: any[] }) {
   useEffect(() => {
     const fetchAssigned = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/package-assigned");
+        const res = await fetch("/api/package-assigned");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {

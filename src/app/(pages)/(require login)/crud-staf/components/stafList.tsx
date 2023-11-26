@@ -12,7 +12,7 @@ function StafList({ header }: { header: any[] }) {
   useEffect(() => {
     const fetchStafList = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/all-staf");
+        const res = await fetch("/api/all-staf");
         const res2 = await res.json();
         setDataUser(res2);
       } catch (error: any) {

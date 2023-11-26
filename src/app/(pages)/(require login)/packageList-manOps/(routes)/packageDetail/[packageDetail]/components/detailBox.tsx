@@ -10,7 +10,7 @@ const DetailBox = ({ id }: { id: string }) => {
   useEffect(() => {
     const fetchPackageDetail = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/package-detail?");
+        const res = await fetch("/api/package-detail?");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {

@@ -14,7 +14,7 @@ const UploadProof = ({ id }: { id: number }) => {
 
   const handleClickSend = async (url: any) => {
     try {
-      const res = await fetch("http://localhost:3000/api/upload-proof", {
+      const res = await fetch("/api/upload-proof", {
         method: "PATCH",
         body: JSON.stringify({
           packageID: id,
