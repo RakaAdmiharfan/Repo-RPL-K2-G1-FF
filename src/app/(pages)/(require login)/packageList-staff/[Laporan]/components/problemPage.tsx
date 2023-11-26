@@ -5,9 +5,8 @@ import { IoArrowBack } from "react-icons/io5";
 import InputBox from "../../../crud-staf/[detailStaf]/components/inputBox";
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import { Form, Formik } from "Formik";
+import { Form, Formik } from "formik";
 import toast from "react-hot-toast";
-import Image from "next/image";
 
 export default function ProblemPage({ id }: { id: number }) {
   const [Laporan, setLaporan] = useState("");
@@ -81,7 +80,7 @@ export default function ProblemPage({ id }: { id: number }) {
       </div>
 
       <footer className="mt-[140px] lg:mt-[260px] overflow-hidden absolute -bottom-16 lg:bottom-[-340px]">
-        <Image src="/Footer.png" className="w-screen" alt="hai" />
+        <img src="/Footer.png" className="w-screen" />
       </footer>
     </div>
   );

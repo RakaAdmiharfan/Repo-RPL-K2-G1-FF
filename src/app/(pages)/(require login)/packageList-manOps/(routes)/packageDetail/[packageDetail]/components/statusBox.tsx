@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { MdDeliveryDining } from "react-icons/md";
 import { PiPackage } from "react-icons/pi";
 import { IoIosWarning } from "react-icons/io";
-import Image from "next/image";
 
 const StatusBox = ({ id }: { id: string }) => {
   const [packageInfo, setPackage] = useState<any>({
@@ -54,10 +53,9 @@ const StatusBox = ({ id }: { id: string }) => {
             <div className="flex justify-center">
               {packageInfo.statusPengiriman === "Delivered" &&
               packageInfo.proof !== "" ? (
-                <Image
+                <img
                   src={packageInfo.proof}
                   className="w-[220px] lg:w-[380px"
-                  alt="hai"
                 />
               ) : packageInfo.statusPengiriman === "On Hold" ? (
                 <IoIosWarning className="text-red-600 text-[120px] lg:text-[228px]" />

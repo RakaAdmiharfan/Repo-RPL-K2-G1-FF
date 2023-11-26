@@ -1,5 +1,5 @@
 "use client";
-import { Formik, Field, Form, FormikHelpers } from "Formik";
+import { Formik, Field, Form, FormikHelpers } from "formik";
 import PasswordInput from "./passwordinput";
 import { redirect } from "next/navigation";
 import { RedirectType } from "next/dist/client/components/redirect";

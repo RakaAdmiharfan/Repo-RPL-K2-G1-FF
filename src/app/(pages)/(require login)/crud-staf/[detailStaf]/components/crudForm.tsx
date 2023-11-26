@@ -1,6 +1,6 @@
 "use client";
 
-import { Formik, Form, Field } from "Formik";
+import { Formik, Form, Field } from "formik";
 import React, { useEffect, useState } from "react";
 import InputBox from "./inputBox";
 import toast from "react-hot-toast";

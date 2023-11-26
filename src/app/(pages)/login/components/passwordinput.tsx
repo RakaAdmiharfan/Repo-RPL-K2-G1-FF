@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Field, ErrorMessage } from "Formik";
+import { Field, ErrorMessage } from "formik";
 
 function PasswordInput({ field, form, ...props }: any) {
   const [showPassword, setShowPassword] = useState(false);

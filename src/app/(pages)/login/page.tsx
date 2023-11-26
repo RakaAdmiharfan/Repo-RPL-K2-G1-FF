@@ -23,7 +23,7 @@ export default async function Login() {
         <LoginForm roleAccess={roleAccess} />
       </div>
       <footer className="mt-[93px] lg:mt-[200px] overflow-hidden absolute bottom-[-80px] md:bottom-[-160px] lg:bottom-[-180px] xl:bottom-[-340px]">
-        <Image src="Footer.png" className="w-screen" alt="Footer" />
+        <img src="Footer.png" className="w-screen" alt="Footer" />
       </footer>
     </div>
   );
