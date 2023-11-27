@@ -21,6 +21,22 @@ Buka [http://localhost:3000](http://localhost:3000) dengan browser anda untuk me
 
 ## Daftar Use Case dan Penangggung Jawab
 
+| Use Case | Deskripsi | NIM Penanggung Jawab | Nama Penanggung Jawab |
+| --------- | ---------- | -------------------- | --------------------- |
+| UC01 | Login | 18219xxx | Dwiki Hared |
+| UC02 | Mengelola akun staf pengiriman | 18221094 | Raka Admiharfan Fatihah |
+| UC03 | Meng-assign paket | 18221156 | Fredrick Runie Taslim |
+| UC04 | Melihat daftar paket yang sedang dikirim | 18221170 | Amjad Adhie Prasetyo |
+| UC05 | Melihat daftar paket yang belum dikirim | 18221170 | Amjad Adhie Prasetyo |
+| UC06 | Melihat notifikasi perubahan status paket dan masalah | 18221060 | Auvarifqi Putra Diandra |
+| UC07 | Melihat riwayat pengiriman | 18221094 | Raka Admiharfan Fatihah |
+| UC08 | Menampilkan daftar paket yang harus diantar | 18221156 | Fredrick Runie Taslim |
+| UC09 | Merubah status paket | 18221094 | Raka Admiharfan Fatihah |
+| UC10 | Mengunggah foto pengiriman | 18221060 | Auvarifqi Putra Diandra |
+| UC11 | Menerima laporan masalah | 18219xxx | Dwiki Hared |
+| UC12 | Mengunggah laporan masalah | 18221170 | Amjad Adhie Prasetyo |
+
+Disclaimer: Kami mengerjakan semua fungsionalitas secara bersama-sama
 
 ## Daftar Layar-Layar Aplikasi Flora Finder
 ### Layar Manajer Operasional
@@ -104,8 +120,7 @@ Buka [http://localhost:3000](http://localhost:3000) dengan browser anda untuk me
 | staffID: number |
 | dailyCapacity: number |
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+

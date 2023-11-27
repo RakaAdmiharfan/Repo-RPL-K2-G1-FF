@@ -15,8 +15,6 @@ const PackageList: React.FC<PackageListProps> = ({
   header,
   staffPengiriman,
 }) => {
-  const [fetchError, setFetchError] = useState(null);
-  const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
   const router = useRouter();
 
