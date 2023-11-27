@@ -27,21 +27,21 @@ function Assigned({ header }: { header: any[] }) {
   }, []);
 
   // Filter data based on status and checkbox state
-  const filteredData = useMemo(() => {
-    if (showDeliveredOnly) {
-      return dataItem.filter(
-        (packageInfo) => packageInfo.statusPengiriman === "Delivered"
-      );
-    } else if (search && search != "") {
-      return dataItem.filter((item: any) =>
-        Object.values(item).some((value: any) =>
-          String(value).toLowerCase().includes(search.toLowerCase())
-        )
-      );
-    } else {
-      return dataItem;
-    }
-  }, [dataItem, showDeliveredOnly, search]);
+  // const filteredData = useMemo(() => {
+  //   if (showDeliveredOnly) {
+  //     return dataItem.filter(
+  //       (packageInfo) => packageInfo.statusPengiriman === "Delivered"
+  //     );
+  //   } else if (search && search != "") {
+  //     return dataItem.filter((item: any) =>
+  //       Object.values(item).some((value: any) =>
+  //         String(value).toLowerCase().includes(search.toLowerCase())
+  //       )
+  //     );
+  //   } else {
+  //     return dataItem;
+  //   }
+  // }, [dataItem, showDeliveredOnly, search]);
 
   return (
     <div className="w-[290px] md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[70vw] overflow-x-hidden mx-auto">
@@ -77,7 +77,7 @@ function Assigned({ header }: { header: any[] }) {
         </thead>
 
         <tbody>
-          {filteredData.map((packageInfo) => {
+          {dataItem.map((packageInfo) => {
             return (
               <tr
                 key={packageInfo.packageID}

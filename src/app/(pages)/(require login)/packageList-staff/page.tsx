@@ -9,7 +9,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { UserSession } from "@/components/UserFetcher";
 
-export default async function packageStaff() {
+export default async function PackageStaff() {
   const session = await getServerSession(authOptions);
 
   if (!session) {
