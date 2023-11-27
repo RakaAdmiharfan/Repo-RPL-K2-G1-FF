@@ -19,7 +19,6 @@ function StafList({ header }: { header: any[] }) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchStafList();
   }, []);
 

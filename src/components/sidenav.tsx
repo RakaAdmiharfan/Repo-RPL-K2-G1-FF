@@ -12,7 +12,8 @@ interface SideNav {
 }
 
 const handleSignOut = async () => {
-  await signOut(); 
+  await signOut();
+  
 };
 
 export default function SideNav({ active }: { active: number }) {
