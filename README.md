@@ -1,8 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Apa Itu Flora Finder ?
+Flora Finder adalah sebuah dashboard yang dirancang khusus untuk mengembangkan efisiensi dan transparansi dalam seluruh proses pengiriman bunga. Dengan tujuan tersebut, diharapkan setiap pengiriman berjalan dengan optimal, efisien, dan dapat terus terlacak secara akurat. Sistem ini disesuaikan untuk dua kelompok pengguna utama, yaitu manajer operasional yang memiliki kendali atas pengelolaan staf pengiriman, serta staf pengiriman yang bertugas untuk mengantarkan bunga kepada pelanggan. 
 
 ## Getting Started
 
-First, run the development server:
+Pertama-tama, run development server:
 
 ```bash
 npm run dev
@@ -14,20 +16,58 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000) dengan browser anda untuk melihat aplikasi Flora Finder.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Daftar Use Case dan Penangggung Jawab
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Daftar Layar-Layar Aplikasi Flora Finder
+### Layar Manajer Operasional
+#### 1. Halaman Login 1
+![Halaman Login 1](snippet-pages/1-manops-login)
+#### 2. Halaman Login 2
+![Halaman Login 2](snippet-pages/2-manops-login2)
+#### 3. Halaman Login 3
+![Halaman Login 3](snippet-pages/3-manops-login3)
+#### 4. Halaman List Packages
+![Halaman List Packages](snippet-pages/4-manops-list_packages)
+#### 5. Halaman Delivered Packages
+![Halaman Delivered Packages](snippet-pages/5-manops-delivered_packages_only)
+#### 6. Halaman Check Laporan Packages
+![Halaman Check Laporan Packages](snippet-pages/6-manops-check_laporan)
+#### 7. Halaman Detail Package
+![Halaman Detail Package](snippet-pages/7-manops-package_detail)
+#### 8. Halaman Not Assigned Package
+![Halaman Not Assigned Package](snippet-pages/8-manops-unassigned_packages)
+#### 9. Halaman Assign Package to Staff
+![Halaman Assign Package](snippet-pages/1-manops-login)
+#### 10. Halaman Staff List
+![Halaman Staff List](snippet-pages/10-manops-staff_list)
+#### 11. Halaman Edit Staff
+![Halaman Edit Staff](snippet-pages/12-manops-edit_staff)
+#### 12. Halaman Create Staff
+![Halaman Create Staff](snippet-pages/13-manops-create_staff)
+#### 13. Halaman Notifikasi
+![Halaman Notifikasi](snippet-pages/14-manops-notif)
 
-To learn more about Next.js, take a look at the following resources:
+### Layar Delivery Staff
+#### 1. Halaman Login 1
+![Halaman Login 1](snippet-pages/15-staff-login)
+#### 2. Halaman Login 2
+![Halaman Login 2](snippet-pages/16-staff-login2)
+#### 3. Halaman Login 3
+![Halaman Login 3](snippet-pages/17-staff-login3)
+#### 4. Halaman List Packages
+![Halaman List Packages](snippet-pages/18-staff-packageList1)
+#### 5. Halaman List Packages (Scrolled)
+![Halaman List Packages 2](snippet-pages/19-staff-packageList2)
+#### 6. Halaman Change Package Status
+![Halaman Change Package Status](snippet-pages/20-staff-change_status)
+#### 7. Halaman Lapor Masalah
+![Halaman Lapor Masalah](snippet-pages/21-staff-lapor_masalah)
+#### 8. Halaman Upload Proof Package
+![Halaman Upload Proof Package](snippet-pages/22-staff-upload_proof)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
