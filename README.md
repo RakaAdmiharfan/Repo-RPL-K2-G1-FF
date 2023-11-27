@@ -69,9 +69,9 @@ Buka [http://localhost:3000](http://localhost:3000) dengan browser anda untuk me
 ![Halaman Upload Proof Package](snippet-pages/22-staff-upload_proof.png)
 
 ## Daftar Tabel Basis Data
-### Tabel ```user```
+### 1. Tabel ```user```
 | user |
-| ---------|
+| --------- |
 | ID: number |
 | username: string |
 | password: string |
@@ -80,6 +80,28 @@ Buka [http://localhost:3000](http://localhost:3000) dengan browser anda untuk me
 | noTelp : number |
 | alamat : string |
 | role : string |
+
+### 2. Tabel ```packageInfo```
+| packageInfo |
+| --------- |
+| packageID: number |
+| namaPelanggan: string |
+| alamatPengiriman: string |
+| noTelp: number |
+| jenisBunga: string |
+| catatanPelanggan: string |
+| tanggalPengiriman: date |
+| stafPengiriman: number |
+| statusPengiriman: string |
+| hasUpdateStatus: boolean |
+| report: string |
+| proof: string |
+
+### 3. Tabel ```capacity```
+| capacity |
+| --------- |
+| staffID: number |
+| dailyCapacity: number |
 
 ## Deploy on Vercel
 
