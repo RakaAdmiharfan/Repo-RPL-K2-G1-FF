@@ -19,7 +19,7 @@ const PackageList: React.FC<PackageListProps> = ({
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
   const router = useRouter();
-  
+
   router.refresh;
 
   useEffect(() => {
@@ -32,17 +32,13 @@ const PackageList: React.FC<PackageListProps> = ({
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchCertainPackage();
   }, []);
-
-  console.log(dataItem);
 
   const assignedPackages = dataItem.filter(
     (packageInfo) => packageInfo.staffPengiriman === staffPengiriman
   );
 
-  console.log(assignedPackages);
   return (
     <div className="mt-[23.54px] lg:mt-[30px] overflow-auto mx-auto">
       <table className="w-full">

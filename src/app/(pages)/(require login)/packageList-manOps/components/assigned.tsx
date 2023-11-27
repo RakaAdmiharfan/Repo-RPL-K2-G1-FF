@@ -6,9 +6,6 @@ import { PiArrowSquareOut } from "react-icons/pi";
 // import Search from "@/components/search";
 
 function Assigned({ header }: { header: any[] }) {
-  const handleClick = (item: any) => {
-    console.log(item);
-  };
   const [dataItem, setDataItem] = useState<any[]>([]);
   const [search, setSearch] = useState<string>("");
   const [showDeliveredOnly, setShowDeliveredOnly] = useState(false); // State for checkbox
@@ -110,7 +107,6 @@ function Assigned({ header }: { header: any[] }) {
                 <td className="w-auto h-auto py-0">
                   <div className="w-full flex justify-center">
                     <Link
-                      onClick={() => handleClick(packageInfo)}
                       href={`/packageList-manOps/packageDetail/${packageInfo.packageID}`}
                     >
                       <PiArrowSquareOut className="text-[24px] lg:text-[36px] hover:text-blue-400" />
