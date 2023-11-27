@@ -6,10 +6,6 @@ import { PiPackage } from "react-icons/pi";
 import { IoIosWarning } from "react-icons/io";
 
 const StatusBox = ({ id }: { id: string }) => {
-  const [packageInfo, setPackage] = useState<any>({
-    statusPengiriman: "",
-  });
-
   const [dataItem, setDataItem] = useState<any[]>([]);
 
   useEffect(() => {
@@ -22,7 +18,6 @@ const StatusBox = ({ id }: { id: string }) => {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchPackageDetail();
   }, []);
 

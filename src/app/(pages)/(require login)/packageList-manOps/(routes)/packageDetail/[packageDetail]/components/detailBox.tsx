@@ -6,7 +6,6 @@ import { useParams } from "next/navigation";
 const DetailBox = ({ id }: { id: string }) => {
   const [dataItem, setDataItem] = useState<any[]>([]);
 
-  //console.log(packageDetail);
   useEffect(() => {
     const fetchPackageDetail = async () => {
       try {
@@ -17,7 +16,6 @@ const DetailBox = ({ id }: { id: string }) => {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchPackageDetail();
   }, []);
 

@@ -6,7 +6,6 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { UserSession } from "@/components/UserFetcher";
 import MarkAsRead from "./components/markAsRead";
-import Image from "next/image";
 
 export default async function notification() {
   const session = await getServerSession(authOptions);

@@ -1,18 +1,10 @@
 "use client";
-import { pid } from "process";
 import { useEffect, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import toast from "react-hot-toast";
-import { FLIGHT_PARAMETERS } from "next/dist/client/components/app-router-headers";
 import { useRouter } from "next/navigation";
 
-const changeStatus = {
-  // packageID,
-  // status,
-};
-
 const ChangeStatus = ({ id }: { id: number }) => {
-  // const toastId = toast.loading("Loading...");
   const [showPopup, setShowPopup] = useState(false);
   const router = useRouter();
 

@@ -7,10 +7,6 @@ function StafList({ header }: { header: any[] }) {
   const [dataUser, setDataUser] = useState<any[]>([]);
   const [search, setSearch] = useState<string>("");
 
-  const handleClick = (item: any) => {
-    console.log(item);
-  };
-
   useEffect(() => {
     const fetchStafList = async () => {
       try {
@@ -85,7 +81,6 @@ function StafList({ header }: { header: any[] }) {
                 </td>
                 <td className="flex justify-center w-[100px] h-auto py-[24px] px-4">
                   <Link
-                    onClick={() => handleClick(staf)}
                     href={`/crud-staf/${staf.id}`}
                     className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] w-[12.77vw] px-[14.29px] py-[4.76px] lg:w-[04.94vw] lg:px-[1px] lg:py-[5px] lg:rounded-[15px] justify-center border-[#6C88CD] border-[3px]"
                   >

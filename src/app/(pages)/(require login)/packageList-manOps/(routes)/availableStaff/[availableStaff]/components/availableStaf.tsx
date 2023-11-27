@@ -14,7 +14,6 @@ function AvailableStaff({ header }: { header: any[] }) {
   console.log(packageID);
 
   const handleSubmit = async (parameter1: any, parameter2: any) => {
-    // console.log(pid);
     try {
       const res = await fetch("/api/assign-package", {
         method: "PATCH",

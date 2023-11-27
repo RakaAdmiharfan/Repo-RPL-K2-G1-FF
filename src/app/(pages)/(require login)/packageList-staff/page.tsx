@@ -1,7 +1,6 @@
 import Link from "next/link";
 // Your client-side code here
 import React, { useState, useEffect } from "react";
-import Navbar from "@/components/navbar";
 import { FaRegUserCircle } from "react-icons/fa";
 import PackageList from "./components/packageList";
 import { getServerSession } from "next-auth";

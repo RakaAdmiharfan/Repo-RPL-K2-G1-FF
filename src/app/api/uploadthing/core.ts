@@ -1,4 +1,3 @@
-import { Satisfy } from "next/font/google";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
  
 const f = createUploadthing();

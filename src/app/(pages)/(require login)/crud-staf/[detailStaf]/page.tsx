@@ -1,7 +1,6 @@
 import Link from "next/link";
 import EditFormComponent from "./components/crudForm";
 import { IoArrowBack } from "react-icons/io5";
-import Image from "next/image";
 
 export default function CrudPage({
   params,

@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 const EditFormComponent = ({ id }: { id: string }) => {
   const [user, setUser] = useState<any>({});
   const [isSave, setIsSave] = useState<boolean>(false);
-  const [indeks, setIndeks] = useState<any>(0);
   const [username, setUsername] = useState<any>("");
   const [password, setPassword] = useState<any>("");
   const [nama, setNama] = useState<any>("");
@@ -16,32 +15,21 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const [alamat, setAlamat] = useState<any>("");
   const [tanggalLahir, setTanggalLahir] = useState<any>("");
   const [dataUser, setDataUser] = useState<any[]>([]);
-  const [largest, setLargest] = useState<any>(0);
-
-  console.log(id);
-
-  const largestID = 1;
-
+  
   useEffect(() => {
     const fetchStafList = async () => {
       try {
         const res = await fetch("/api/all-staf/");
         const res2 = await res.json();
         setDataUser(res2);
-        const largestID = res2.length;
-        setLargest(largestID + 1);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
-    console.log(largestID);
     fetchStafList();
   }, []);
 
-  console.log(dataUser);
   const userByID = dataUser.filter((staf) => staf.id === parseInt(id));
-  console.log(userByID);
 
   const handleSubmit = async () => {
     if (id == "add-staf") {
@@ -49,11 +37,11 @@ const EditFormComponent = ({ id }: { id: string }) => {
         const res3 = await fetch("/api/all-users");
         const res4 = await res3.json();
         setDataUser(res4);
-        const largestID = res4.length;
+        const largest = res4.length;
         const res = await fetch("/api/create-staff", {
           method: "POST",
           body: JSON.stringify({
-            id: largestID + 1,
+            id: largest,
             username: username,
             password: password,
             nama: nama,
@@ -126,33 +114,10 @@ const EditFormComponent = ({ id }: { id: string }) => {
     }
   };
 
-  console.log(userByID[0]?.nama);
-
   return (
     <Formik initialValues={user} onSubmit={handleSubmit}>
       {user && (
-        <Form>
-          <div className="mb-[26px]">
-            <h5
-              className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
-                id === "add-staf" ? "" : "hidden"
-              }`}
-            >
-              ID
-            </h5>
-            <div
-              className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
-                id === "add-staf" ? "" : "hidden"
-              }`}
-            >
-              <InputBox
-                name="id"
-                label="id"
-                placeholder={(largestID + 1).toString() || "ID"}
-                onChange={(e: any) => setIndeks(e.target.value)}
-              />
-            </div>
-          </div>
+        <Form>        
 
           <div className="mb-[26px]">
             <h5

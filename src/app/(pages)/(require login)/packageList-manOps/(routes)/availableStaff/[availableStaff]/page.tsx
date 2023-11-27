@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import SideNav from "@/components/sidenav";
 import AvailableStaff from "./components/availableStaf";
 import { FaRegUserCircle } from "react-icons/fa";
 import Link from "next/link";
 import { IoArrowBack } from "react-icons/io5";
-
-// import axios from "axios";
 
 export default function packageMenu() {
   return (

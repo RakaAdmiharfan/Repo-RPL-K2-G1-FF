@@ -62,7 +62,6 @@ export default async function StaffList() {
                   "Edit",
                 ]}
               />
-              {/* <Pagination current={handlePageChange} totalPages={totalPages} /> */}
             </div>
           </div>
         </div>

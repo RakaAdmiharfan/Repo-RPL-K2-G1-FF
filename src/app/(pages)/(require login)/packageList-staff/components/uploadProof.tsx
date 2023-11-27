@@ -10,8 +10,6 @@ const UploadProof = ({ id }: { id: number }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>("");
 
-  const handleClick = async () => {};
-
   const handleClickSend = async (url: any) => {
     try {
       const res = await fetch("/api/upload-proof", {

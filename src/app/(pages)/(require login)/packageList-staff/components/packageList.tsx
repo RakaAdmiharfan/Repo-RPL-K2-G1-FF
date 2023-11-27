@@ -19,11 +19,7 @@ const PackageList: React.FC<PackageListProps> = ({
   const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
   const router = useRouter();
-
-  const handleClick = (item: any) => {
-    console.log(item);
-  };
-
+  
   router.refresh;
 
   useEffect(() => {
