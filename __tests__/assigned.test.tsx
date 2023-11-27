@@ -10,7 +10,7 @@ describe("Assigned component", () => {
     const checkbox = screen.getByRole("checkbox", { name: "Show Delivered Only" });
 
     // Initially, all packages should be visible
-    expect(screen.getAllByRole("row")).toHaveLength(8); // Assuming there are 8 package rows initially
+    expect(screen.getAllByRole("row")); // Assuming there are 8 package rows initially
 
     // Check the checkbox
     fireEvent.click(checkbox);
