@@ -27,7 +27,6 @@ describe("StafList component", () => {
         alamat: "Some Address",
         noTelp: "1234567890",
       },
-      // Tambah data user lainnya jika diperlukan
     ];
 
     render(<StafList header={[]} />);
@@ -37,6 +36,7 @@ describe("StafList component", () => {
     
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText("johndoe")).toBeInTheDocument();
+    expect(screen.getByText("Some Address")).toBeInTheDocument();
     // Lakukan asserstion untuk data user lainnya jika ada
   });
 });

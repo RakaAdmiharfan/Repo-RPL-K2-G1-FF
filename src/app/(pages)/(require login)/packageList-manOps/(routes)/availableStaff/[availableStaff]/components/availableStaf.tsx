@@ -47,7 +47,6 @@ function AvailableStaff({ header }: { header: any[] }) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchStafAvail();
   }, []);
 
