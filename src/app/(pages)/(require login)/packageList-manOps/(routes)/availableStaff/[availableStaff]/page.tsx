@@ -18,11 +18,11 @@ export default function packageMenu() {
         <SideNav active={1} />
       </nav>
 
-      <div className="flex flex-col w-full h-screen overflow-auto mt-10">
+      <div className="flex flex-col w-full h-screen overflow-auto mt-10 lg:mt-10">
         <Link href="/packageList-manOps">
           <IoArrowBack className="text-[40px] ml-[20px] lg:ml-[40px] mt-[40px] w-[24px] lg:w-[38px] hover:text-blue-500 rounded-[15px]" />
         </Link>
-        <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[28px] lg:mt-[52px] lg:text-[24px] gap-1">
+        <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[28px] lg:mt-[20px] lg:text-[24px] gap-1">
           <h1 className="text-[#3D688E]">Hi ManOps!</h1>
           <FaRegUserCircle />
         </div>

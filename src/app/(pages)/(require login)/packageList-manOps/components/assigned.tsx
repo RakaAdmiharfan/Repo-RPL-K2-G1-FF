@@ -1,13 +1,16 @@
 "use client";
+import Search from "@/components/search";
 import Link from "next/link";
 import React, { useState, useEffect, useMemo } from "react";
 import { PiArrowSquareOut } from "react-icons/pi";
+// import Search from "@/components/search";
 
 function Assigned({ header }: { header: any[] }) {
   const handleClick = (item: any) => {
     console.log(item);
   };
   const [dataItem, setDataItem] = useState<any[]>([]);
+  const [search, setSearch] = useState<string>("");
   const [showDeliveredOnly, setShowDeliveredOnly] = useState(false); // State for checkbox
 
   useEffect(() => {
@@ -29,24 +32,33 @@ function Assigned({ header }: { header: any[] }) {
       return dataItem.filter(
         (packageInfo) => packageInfo.statusPengiriman === "Delivered"
       );
+    } else if (search && search != "") {
+      return dataItem.filter((item: any) =>
+        Object.values(item).some((value: any) =>
+          String(value).toLowerCase().includes(search.toLowerCase())
+        )
+      );
     } else {
       return dataItem;
     }
-  }, [dataItem, showDeliveredOnly]);
+  }, [dataItem, showDeliveredOnly, search]);
 
   return (
     <div className="w-[290px] md:w-[600px] mt-[23.54px] lg:mt-[30px] lg:w-[70vw] overflow-x-hidden mx-auto">
-      <div className="mb-4 ml-1 flex items-center">
+      <div className="mb-4 lg:mb-8 ml-1 flex items-center justify-between">
         {/* Checkbox for delivered packages */}
-        <label className="text-[12px] lg:text-[18px]">
-          <input
-            type="checkbox"
-            checked={showDeliveredOnly}
-            onChange={() => setShowDeliveredOnly(!showDeliveredOnly)}
-            className="text-[8px] lg:text-[24px] w-3 h-3 lg:w-4 lg:h-4"
-          />
-          Show Delivered Only
-        </label>
+        <div>
+          <label className="text-[12px] lg:text-[18px]">
+            <input
+              type="checkbox"
+              checked={showDeliveredOnly}
+              onChange={() => setShowDeliveredOnly(!showDeliveredOnly)}
+              className="text-[8px] lg:text-[24px] w-3 h-3 lg:w-4 lg:h-4"
+            />
+            Show Delivered Only
+          </label>
+        </div>
+        <Search onSearch={(e) => setSearch(e)} />
       </div>
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
@@ -116,104 +128,3 @@ function Assigned({ header }: { header: any[] }) {
 }
 
 export default Assigned;
-
-export const packageInfos = [
-  {
-    packageId: "abc123",
-    namaPelanggan: "Customer A",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-10",
-    statusPengiriman: "shipped",
-    hasUpdateStatus: true,
-    report: "Delivered on time",
-    proofOfDelivery: "https://example.com/delivery-proof/abc123.jpg",
-    stafPengirim: 1,
-  },
-  {
-    packageId: "def456",
-    namaPelanggan: "Customer B",
-    alamatPengirim: "456 Pine St, City, Country",
-    noTelp: "555-987-6543",
-    jenisBunga: "Tulips",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-12",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 2,
-  },
-  {
-    packageId: "ghi789",
-    namaPelanggan: "Customer C",
-    alamatPengirim: "789 Elm St, City, Country",
-    noTelp: "555-555-5555",
-    jenisBunga: "Lilies",
-    catatanPelanggan: "Handle with care",
-    tanggalPengiriman: "2023-11-14",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 3,
-  },
-  {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 4,
-  },
-  {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: 4,
-  },
-  {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: "",
-  },
-  {
-    packageId: "jkl012",
-    namaPelanggan: "Customer D",
-    alamatPengirim: "123 Oak St, City, Country",
-    noTelp: "555-123-4567",
-    jenisBunga: "Roses",
-    catatanPelanggan: "Fragile items inside",
-    tanggalPengiriman: "2023-11-16",
-    statusPengiriman: "processing",
-    hasUpdateStatus: false,
-    report: "",
-    proofOfDelivery: "",
-    stafPengirim: "",
-  },
-];

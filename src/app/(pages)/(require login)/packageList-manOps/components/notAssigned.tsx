@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import Search from "@/components/search";
 
 function NotAssigned({ header }: { header: any[] }) {
   const handleClick = (item: any) => {
@@ -9,6 +10,7 @@ function NotAssigned({ header }: { header: any[] }) {
   };
 
   const [dataItem, setDataItem] = useState<any[]>([]);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     const fetchUnassigned = async () => {
@@ -28,8 +30,24 @@ function NotAssigned({ header }: { header: any[] }) {
       packageInfo.staffPengiriman === null || packageInfo.staffPengiriman === ""
   );
 
+  // Filter data based on status and checkbox state
+  const filteredData = useMemo(() => {
+    if (search && search != "") {
+      return unassignedPackages.filter((item: any) =>
+        Object.values(item).some((value: any) =>
+          String(value).toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    } else {
+      return unassignedPackages;
+    }
+  }, [unassignedPackages, search]);
+
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw]">
+      <div className="flex justify-end mb-5">
+        <Search onSearch={(e) => setSearch(e)} />
+      </div>
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
           <tr>
@@ -47,7 +65,7 @@ function NotAssigned({ header }: { header: any[] }) {
         </thead>
 
         <tbody>
-          {unassignedPackages.map((packageInfo) => {
+          {filteredData.map((packageInfo) => {
             return (
               <tr
                 key={packageInfo.packageId}

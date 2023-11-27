@@ -8,6 +8,8 @@ import { IoPeopleSharp } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
 import { signOut } from "next-auth/react";
+import { redirect } from "next/navigation";
+import Router from "next/router";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -18,7 +20,7 @@ const Navbar = () => {
   };
 
   const handleSignOut = async () => {
-    await signOut(); 
+    await signOut();
   };
 
   console.log(nav);
@@ -72,11 +74,13 @@ const Navbar = () => {
               </Link>
             </li>
             <li onClick={handleNav} className="p-4">
-              <button 
+              <button
                 onClick={() => {
                   handleSignOut();
+                  Router.push("/");
                 }}
-                className="flex flex-row text-red-600 items-center gap-2 md:text-[20px]">
+                className="flex flex-row text-red-600 items-center gap-2 md:text-[20px]"
+              >
                 <TbLogout2 />
                 <p>Logout</p>
               </button>
