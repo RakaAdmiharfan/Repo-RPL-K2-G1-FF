@@ -15,6 +15,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const [alamat, setAlamat] = useState<any>("");
   const [tanggalLahir, setTanggalLahir] = useState<any>("");
   const [dataUser, setDataUser] = useState<any[]>([]);
+  const [indeks, setIndeks] = useState<any>(0);
 
   useEffect(() => {
     const fetchStafList = async () => {
@@ -41,7 +42,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
         const res = await fetch("/api/create-staff", {
           method: "POST",
           body: JSON.stringify({
-            id: largest,
+            id: largest+1,
             username: username,
             password: password,
             nama: nama,
@@ -118,6 +119,27 @@ const EditFormComponent = ({ id }: { id: string }) => {
     <Formik initialValues={user} onSubmit={handleSubmit}>
       {user && (
         <Form>
+          <div className="mb-[26px]">
+            <h5
+              className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
+                id === "add-staf" ? "hidden" : "hidden"
+              }`}
+            >
+              ID
+            </h5>
+            <div
+              className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
+                id === "add-staf" ? "hidden" : "hidden"
+              }`}
+            >
+              <InputBox
+                name="id"
+                label="id"
+                placeholder={"ID"}
+                onChange={(e: any) => setIndeks(e.target.value)}
+              />
+            </div>
+          </div>
           <div className="mb-[26px]">
             <h5
               className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
