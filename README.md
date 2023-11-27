@@ -68,6 +68,18 @@ Buka [http://localhost:3000](http://localhost:3000) dengan browser anda untuk me
 #### 8. Halaman Upload Proof Package
 ![Halaman Upload Proof Package](snippet-pages/22-staff-upload_proof.png)
 
+## Daftar Tabel Basis Data
+### Tabel ```user```
+| user |
+| ---------|
+| ID: number |
+| username: string |
+| password: string |
+| nama : string |
+| tanggalLahir : date |
+| noTelp : number |
+| alamat : string |
+| role : string |
 
 ## Deploy on Vercel
 
