@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import Search from "@/components/search";
 
 function StafList({ header }: { header: any[] }) {
   const [dataUser, setDataUser] = useState<any[]>([]);
+  const [search, setSearch] = useState<string>("");
 
   const handleClick = (item: any) => {
     console.log(item);
@@ -22,9 +24,24 @@ function StafList({ header }: { header: any[] }) {
     fetchStafList();
   }, []);
 
-  // console.log(dataItem);
+  // Filter data based on status and checkbox state
+  const filteredData = useMemo(() => {
+    if (search && search != "") {
+      return dataUser.filter((item: any) =>
+        Object.values(item).some((value: any) =>
+          String(value).toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    } else {
+      return dataUser;
+    }
+  }, [dataUser, search]);
+
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw] mx-auto">
+      <div className="flex justify-end mb-4">
+        <Search onSearch={(e) => setSearch(e)} />
+      </div>
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
           <tr>
@@ -42,7 +59,7 @@ function StafList({ header }: { header: any[] }) {
         </thead>
 
         <tbody>
-          {dataUser.map((staf) => {
+          {filteredData.map((staf) => {
             return (
               <tr
                 key={staf.id}

@@ -8,7 +8,6 @@ import { IoPeopleSharp } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
 import { signOut } from "next-auth/react";
-import { redirect } from "next/navigation";
 import Router from "next/router";
 
 const Navbar = () => {

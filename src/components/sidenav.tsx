@@ -4,7 +4,6 @@ import { TbPackages } from "react-icons/tb";
 import { IoPeopleSharp } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
-import Image from "next/image";
 import { signOut } from "next-auth/react";
 import Router from "next/router";
 
