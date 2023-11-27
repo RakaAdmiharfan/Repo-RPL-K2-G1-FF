@@ -24,7 +24,7 @@ Buka [http://localhost:3000](http://localhost:3000) dengan browser anda untuk me
 ## Daftar Layar-Layar Aplikasi Flora Finder
 ### Layar Manajer Operasional
 #### 1. Halaman Login 1
-![Halaman Login 1](snippet-pages/1-manops-login)
+![Halaman Login 1](snippet-pages/1-manops-login.png)
 #### 2. Halaman Login 2
 ![Halaman Login 2](snippet-pages/2-manops-login2)
 #### 3. Halaman Login 3
