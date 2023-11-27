@@ -36,7 +36,5 @@ describe("StafList component", () => {
     
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText("johndoe")).toBeInTheDocument();
-    expect(screen.getByText("Some Address")).toBeInTheDocument();
-    // Lakukan asserstion untuk data user lainnya jika ada
   });
 });

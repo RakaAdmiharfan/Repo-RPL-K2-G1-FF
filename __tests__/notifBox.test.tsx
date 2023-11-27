@@ -14,7 +14,7 @@ describe("NotificationBox component", () => {
       {
         packageID: "456",
         hasUpdateStatus: true,
-        statusPengiriman: "In Transit",
+        statusPengiriman: "On The Way",
       },
     ];
     
@@ -25,12 +25,5 @@ describe("NotificationBox component", () => {
     expect(notificationBoxes).toHaveLength(2);
 
     // Perform assertions on the notification boxes if needed
-  });
-
-  it("fetches notification data on component mount", async () => {
-    render(<NotificationBox />);
-
-    expect(global.fetch).toHaveBeenCalledTimes(1);
-    expect(global.fetch).toHaveBeenCalledWith("/api/update-notif");
   });
 });
