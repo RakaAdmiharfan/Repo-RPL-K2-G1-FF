@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Selamat Datang di Aplikasi Flora Finder
+
 ## Apa Itu Flora Finder ?
 Flora Finder adalah sebuah dashboard yang dirancang khusus untuk mengembangkan efisiensi dan transparansi dalam seluruh proses pengiriman bunga. Dengan tujuan tersebut, diharapkan setiap pengiriman berjalan dengan optimal, efisien, dan dapat terus terlacak secara akurat. Sistem ini disesuaikan untuk dua kelompok pengguna utama, yaitu manajer operasional yang memiliki kendali atas pengelolaan staf pengiriman, serta staf pengiriman yang bertugas untuk mengantarkan bunga kepada pelanggan. 
 
