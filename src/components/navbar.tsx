@@ -14,7 +14,6 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
-    console.log("kepencet");
     setNav(!nav);
   };
 
@@ -22,7 +21,6 @@ const Navbar = () => {
     await signOut();
   };
 
-  console.log(nav);
   return (
     <div>
       <div className="bg-[#ffffff] w-full flex justify-between items-center fixed border-b border-black z-10">

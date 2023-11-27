@@ -18,7 +18,6 @@ export default async function LoginForm({ roleAccess }: LoginFormProps) {
   const router = useRouter();
   const handleSubmit = async (val: Values) => {
     try {
-      console.log(val);
       // Perform login authentication logic here
       const res = await signIn("credentials", {
         redirect: false,

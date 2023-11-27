@@ -7,11 +7,9 @@ import toast from "react-hot-toast";
 function AvailableStaff({ header }: { header: any[] }) {
   const [dataUser, setDataUser] = useState<any[]>([]);
   const ID = useParams();
-  console.log(ID);
   const packageID = Array.isArray(ID.availableStaff)
     ? parseInt(ID.availableStaff[0])
     : parseInt(ID.availableStaff || "");
-  console.log(packageID);
 
   const handleSubmit = async (parameter1: any, parameter2: any) => {
     try {
