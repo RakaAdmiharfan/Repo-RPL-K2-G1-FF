@@ -1,14 +1,12 @@
-import Link from "next/link";
-// Your client-side code here
-import React, { useState, useEffect } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import PackageList from "./components/packageList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { UserSession } from "@/components/UserFetcher";
+import Logout from "./components/logout";
 
-export default async function PackageStaff() {
+export default async function packageStaff() {
   const session = await getServerSession(authOptions);
 
   if (!session) {
@@ -26,9 +24,14 @@ export default async function PackageStaff() {
   return (
     <div className="flex flex-row bg-gradient-to-b from-[#EFF6FD] to-white relative overflow-hidden w-full h-full min-h-[100vh]">
       <div className="flex flex-col w-full h-screen overflow-auto">
-        <div className="flex flex-row justify-end items-center mr-[20px] lg:mr-[60px] mt-[40px] lg:mt-[100px] lg:text-[24px] gap-2">
-          <h1 className="text-[#3D688E]">Hi Staff!</h1>
-          <FaRegUserCircle />
+        <div className="flex justify-between mr-[20px] lg:mr-[40px] ml-[20px] lg:ml-[20px] mt-[40px] lg:mt-[100px] lg:text-[24px] gap-2">
+          <div>
+            <Logout />
+          </div>
+          <div className="flex justify-center items-center gap-2">
+            <FaRegUserCircle />
+            <h1 className="text-[#3D688E]">Hi Staff!</h1>
+          </div>
         </div>
 
         <div className="flex flex-col justify-center items-center w-full">

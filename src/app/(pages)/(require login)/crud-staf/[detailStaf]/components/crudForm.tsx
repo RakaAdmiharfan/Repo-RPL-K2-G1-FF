@@ -15,7 +15,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const [alamat, setAlamat] = useState<any>("");
   const [tanggalLahir, setTanggalLahir] = useState<any>("");
   const [dataUser, setDataUser] = useState<any[]>([]);
-  
+
   useEffect(() => {
     const fetchStafList = async () => {
       try {
@@ -117,8 +117,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
   return (
     <Formik initialValues={user} onSubmit={handleSubmit}>
       {user && (
-        <Form>        
-
+        <Form>
           <div className="mb-[26px]">
             <h5
               className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
@@ -172,14 +171,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="Nama"
                 label="Nama"
                 placeholder={userByID[0]?.nama || "Nama"}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.value === null || e.target.value === "") {
-                    e.target.value = userByID[0]?.nama;
-                    setNama(e.target.value);
-                  } else {
-                    setNama(e.target.value);
-                  }
-                }}
+                onChange={(e: any) => setNama(e.target.value)}
               />
             </div>
           </div>
@@ -193,14 +185,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="No.Telp"
                 label="No.Telp"
                 placeholder={userByID[0]?.noTelp || "No.Telp"}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.value.trim() !== null) {
-                    setNoTelp(e.target.value);
-                  } else {
-                    // Handle the case when the input value is empty
-                    setNoTelp(userByID[0]?.noTelp);
-                  }
-                }}
+                onChange={(e: any) => setNoTelp(e.target.value)}
               />
             </div>
           </div>
@@ -214,14 +199,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="Alamat"
                 label="Alamat"
                 placeholder={userByID[0]?.alamat || "Alamat"}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.value.trim() !== null) {
-                    setAlamat(e.target.value);
-                  } else {
-                    // Handle the case when the input value is empty
-                    setAlamat(userByID[0]?.alamat);
-                  }
-                }}
+                onChange={(e: any) => setAlamat(e.target.value)}
               />
             </div>
           </div>
