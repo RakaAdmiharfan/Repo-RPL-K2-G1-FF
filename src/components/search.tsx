@@ -24,14 +24,14 @@ export default function Search(props: SearchProps) {
 
   return (
     <div className="relative w-[40vw] lg:w-[20vw] lg:h-8 text-gray-600 flex items-center flex-row bg-white rounded-[5px] lg:rounded-[10px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] text-poppins">
-      <button className="relative mx-[2vw] lg:mx-[1vw] z-10 flex justify-center items-center">
+      <button className="relative mx-[2vw] lg:mx-[1vw] z-10 flex justify-center items-center text-[10px] lg:text-[16px]">
         <IoSearch />
       </button>
       <input
         type={"search"}
         name={"search"}
         placeholder={"Search..."}
-        className="bg-white flex w-full rounded-[5px] lg:rounded-[10px] absolute aspect-[278/21] lg:aspect-[1450/60] pl-[6vw] lg:pl-[3vw] pr-3 focus:outline-none"
+        className="bg-white flex w-full rounded-[5px] lg:rounded-[10px] absolute aspect-[278/21] lg:aspect-[1450/60] text-[10px] lg:text-[16px] pl-[8vw] lg:pl-[3vw] pr-3 focus:outline-none"
         onChange={searchHandler}
         // onKeyDown={handleKeyDown}
       />
