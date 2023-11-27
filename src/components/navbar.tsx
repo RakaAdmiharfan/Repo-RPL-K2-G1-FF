@@ -6,7 +6,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { TbPackages } from "react-icons/tb";
 import { IoPeopleSharp } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
-import Image from "next/image";
+import { TbLogout2 } from "react-icons/tb";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -65,6 +65,12 @@ const Navbar = () => {
                 <IoIosNotifications />
                 <p>Notification</p>
               </Link>
+            </li>
+            <li onClick={handleNav} className="p-4">
+              <button className="flex flex-row text-red-600 items-center gap-2 md:text-[20px]">
+                <TbLogout2 />
+                <p>Logout</p>
+              </button>
             </li>
           </ul>
         </div>
