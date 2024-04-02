@@ -6,23 +6,18 @@ import { PiPackage } from "react-icons/pi";
 import { IoIosWarning } from "react-icons/io";
 
 const StatusBox = ({ id }: { id: string }) => {
-  const [packageInfo, setPackage] = useState<any>({
-    statusPengiriman: "",
-  });
-
   const [dataItem, setDataItem] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchPackageDetail = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/package-detail?");
+        const res = await fetch("/api/package-detail?");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchPackageDetail();
   }, []);
 

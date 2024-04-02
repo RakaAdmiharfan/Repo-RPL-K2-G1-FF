@@ -15,38 +15,28 @@ const PackageList: React.FC<PackageListProps> = ({
   header,
   staffPengiriman,
 }) => {
-  const [fetchError, setFetchError] = useState(null);
-  const [stafPengiriman, setStafPengiriman] = useState(null);
   const [dataItem, setDataItem] = useState<any[]>([]);
   const router = useRouter();
-
-  const handleClick = (item: any) => {
-    console.log(item);
-  };
 
   router.refresh;
 
   useEffect(() => {
     const fetchCertainPackage = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/certain-staff");
+        const res = await fetch("/api/certain-staff");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchCertainPackage();
   }, []);
-
-  console.log(dataItem);
 
   const assignedPackages = dataItem.filter(
     (packageInfo) => packageInfo.staffPengiriman === staffPengiriman
   );
 
-  console.log(assignedPackages);
   return (
     <div className="mt-[23.54px] lg:mt-[30px] overflow-auto mx-auto">
       <table className="w-full">

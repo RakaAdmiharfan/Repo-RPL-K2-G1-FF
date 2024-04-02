@@ -6,17 +6,21 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { TbPackages } from "react-icons/tb";
 import { IoPeopleSharp } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
-import Image from "next/image";
+import { TbLogout2 } from "react-icons/tb";
+import { signOut } from "next-auth/react";
+import Router from "next/router";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
-    console.log("kepencet");
     setNav(!nav);
   };
 
-  console.log(nav);
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
   return (
     <div>
       <div className="bg-[#ffffff] w-full flex justify-between items-center fixed border-b border-black z-10">
@@ -65,6 +69,18 @@ const Navbar = () => {
                 <IoIosNotifications />
                 <p>Notification</p>
               </Link>
+            </li>
+            <li onClick={handleNav} className="p-4">
+              <button
+                onClick={() => {
+                  handleSignOut();
+                  Router.push("/");
+                }}
+                className="flex flex-row text-red-600 items-center gap-2 md:text-[20px]"
+              >
+                <TbLogout2 />
+                <p>Logout</p>
+              </button>
             </li>
           </ul>
         </div>

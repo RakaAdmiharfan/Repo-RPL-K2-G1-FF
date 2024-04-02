@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
 import StatusBox from "./components/statusBox";
 import DetailBox from "./components/detailBox";
 import { IoArrowBack } from "react-icons/io5";
-import Image from "next/image";
 
 export default function PackageDetail({
   params,

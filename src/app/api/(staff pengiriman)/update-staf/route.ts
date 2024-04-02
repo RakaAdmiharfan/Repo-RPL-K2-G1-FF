@@ -2,7 +2,6 @@ import prisma from "@/app/lib/prismadb";
 import { NextResponse } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-import { UserSession } from "@/components/UserFetcher";
 
 export async function PATCH(req: any) {
   const session = await getServerSession(authOptions);

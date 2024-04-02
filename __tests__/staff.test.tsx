@@ -7,10 +7,6 @@ import {
   act,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import LoginForm from "@/app/(pages)/login/components/loginform";
-import userEvent from "@testing-library/user-event";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 describe("StafList component", () => {
   it("renders table headers correctly", () => {
     const headers: string[] = ["ID", "Name", "Username", "Birth Date", "Address", "Phone", "Actions"];
@@ -31,7 +27,6 @@ describe("StafList component", () => {
         alamat: "Some Address",
         noTelp: "1234567890",
       },
-      // Tambah data user lainnya jika diperlukan
     ];
 
     render(<StafList header={[]} />);
@@ -41,6 +36,5 @@ describe("StafList component", () => {
     
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText("johndoe")).toBeInTheDocument();
-    // Lakukan asserstion untuk data user lainnya jika ada
   });
 });

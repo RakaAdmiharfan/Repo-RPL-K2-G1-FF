@@ -1,24 +1,16 @@
 "use client";
-import { pid } from "process";
 import { useEffect, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import toast from "react-hot-toast";
-import { FLIGHT_PARAMETERS } from "next/dist/client/components/app-router-headers";
 import { useRouter } from "next/navigation";
 
-const changeStatus = {
-  // packageID,
-  // status,
-};
-
 const ChangeStatus = ({ id }: { id: number }) => {
-  // const toastId = toast.loading("Loading...");
   const [showPopup, setShowPopup] = useState(false);
   const router = useRouter();
 
   const handleClickStatus = async (parameter: any) => {
     try {
-      const res = await fetch("http://localhost:3000/api/update-status", {
+      const res = await fetch("/api/update-status", {
         method: "PATCH",
         body: JSON.stringify({
           packageID: id,

@@ -6,7 +6,7 @@ const createJestConfig = nextJest({ dir: './' })
  
 // Any custom config you want to pass to Jest
 const customJestConfig = {
-  setupFilesAfterEnv: ['</Users/auva/Documents/GitHub/Repo-RPL-K2-G1-FF>/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testEnvironment: 'jest-environment-jsdom'
 }
  

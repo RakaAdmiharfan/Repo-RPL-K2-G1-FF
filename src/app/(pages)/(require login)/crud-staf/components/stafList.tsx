@@ -1,31 +1,43 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import Search from "@/components/search";
 
 function StafList({ header }: { header: any[] }) {
   const [dataUser, setDataUser] = useState<any[]>([]);
-
-  const handleClick = (item: any) => {
-    console.log(item);
-  };
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     const fetchStafList = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/all-staf");
+        const res = await fetch("/api/all-staf");
         const res2 = await res.json();
         setDataUser(res2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchStafList();
   }, []);
 
-  // console.log(dataItem);
+  // Filter data based on status and checkbox state
+  const filteredData = useMemo(() => {
+    if (search && search != "") {
+      return dataUser.filter((item: any) =>
+        Object.values(item).some((value: any) =>
+          String(value).toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    } else {
+      return dataUser;
+    }
+  }, [dataUser, search]);
+
   return (
     <div className="w-full mt-[23.54px] lg:mt-[30px] lg:w-[70vw] mx-auto">
+      <div className="flex justify-end mb-4">
+        <Search onSearch={(e) => setSearch(e)} />
+      </div>
       <table className="w-full">
         <thead className="border-b-[1px] border-black">
           <tr>
@@ -43,7 +55,7 @@ function StafList({ header }: { header: any[] }) {
         </thead>
 
         <tbody>
-          {dataUser.map((staf) => {
+          {filteredData.map((staf) => {
             return (
               <tr
                 key={staf.id}
@@ -69,7 +81,6 @@ function StafList({ header }: { header: any[] }) {
                 </td>
                 <td className="flex justify-center w-[100px] h-auto py-[24px] px-4">
                   <Link
-                    onClick={() => handleClick(staf)}
                     href={`/crud-staf/${staf.id}`}
                     className="hover:shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] flex rounded-[7.145px] w-[12.77vw] px-[14.29px] py-[4.76px] lg:w-[04.94vw] lg:px-[1px] lg:py-[5px] lg:rounded-[15px] justify-center border-[#6C88CD] border-[3px]"
                   >

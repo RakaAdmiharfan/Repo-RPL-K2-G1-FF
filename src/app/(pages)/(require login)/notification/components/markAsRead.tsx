@@ -9,7 +9,7 @@ export default function MarkAsRead() {
   useEffect(() => {
     const fetchNotification = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/update-notif");
+        const res = await fetch("/api/update-notif");
         const res2 = await res.json();
         setDataItem(res2);
         console.log(dataItem.length);
@@ -30,15 +30,12 @@ export default function MarkAsRead() {
 
   const handleMarkAsRead = async () => {
     try {
-      const res = await fetch(
-        "http://localhost:3000/api/change-update-status",
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch("/api/change-update-status", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (res.status === 200) {
         toast.success("Notification reset!");

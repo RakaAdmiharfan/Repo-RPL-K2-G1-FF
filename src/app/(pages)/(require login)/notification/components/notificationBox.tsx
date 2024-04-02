@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 
 interface NotificationBoxProps {
   packageId: string;
@@ -10,21 +9,16 @@ interface NotificationBoxProps {
 const NotificationBox = () => {
   const [dataItem, setDataItem] = useState<any[]>([]);
 
-  const handleClick = (item: any) => {
-    console.log(item);
-  };
-
   useEffect(() => {
     const fetchNotification = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/update-notif");
+        const res = await fetch("/api/update-notif");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchNotification();
   }, []);
 

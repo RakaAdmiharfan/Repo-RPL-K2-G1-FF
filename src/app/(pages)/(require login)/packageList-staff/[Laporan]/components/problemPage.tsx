@@ -12,7 +12,6 @@ export default function ProblemPage({ id }: { id: number }) {
   const [Laporan, setLaporan] = useState("");
 
   const ID = useParams();
-  //const packageID = parseInt(ID.Laporan);
 
   const packageID = Array.isArray(ID.Laporan)
     ? parseInt(ID.Laporan[0])
@@ -20,8 +19,7 @@ export default function ProblemPage({ id }: { id: number }) {
   console.log(packageID);
 
   const handleSubmit = async (req1: any, req2: any) => {
-    // e.preventDefault();
-    const res = await fetch("http://localhost:3000/api/package-report", {
+    const res = await fetch("/api/package-report", {
       method: "PATCH",
       body: JSON.stringify({
         pid: req1,

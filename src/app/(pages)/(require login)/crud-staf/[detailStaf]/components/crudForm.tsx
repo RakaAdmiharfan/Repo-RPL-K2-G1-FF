@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 const EditFormComponent = ({ id }: { id: string }) => {
   const [user, setUser] = useState<any>({});
   const [isSave, setIsSave] = useState<boolean>(false);
-  const [indeks, setIndeks] = useState<any>(0);
   const [username, setUsername] = useState<any>("");
   const [password, setPassword] = useState<any>("");
   const [nama, setNama] = useState<any>("");
@@ -16,44 +15,34 @@ const EditFormComponent = ({ id }: { id: string }) => {
   const [alamat, setAlamat] = useState<any>("");
   const [tanggalLahir, setTanggalLahir] = useState<any>("");
   const [dataUser, setDataUser] = useState<any[]>([]);
-  const [largest, setLargest] = useState<any>(0);
-
-  console.log(id);
-
-  const largestID = 1;
+  const [indeks, setIndeks] = useState<any>(0);
 
   useEffect(() => {
     const fetchStafList = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/all-staf/");
+        const res = await fetch("/api/all-staf/");
         const res2 = await res.json();
         setDataUser(res2);
-        const largestID = res2.length;
-        setLargest(largestID + 1);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
-    console.log(largestID);
     fetchStafList();
   }, []);
 
-  console.log(dataUser);
   const userByID = dataUser.filter((staf) => staf.id === parseInt(id));
-  console.log(userByID);
 
   const handleSubmit = async () => {
     if (id == "add-staf") {
       try {
-        const res3 = await fetch("http://localhost:3000/api/all-users");
+        const res3 = await fetch("/api/all-users");
         const res4 = await res3.json();
         setDataUser(res4);
-        const largestID = res4.length;
-        const res = await fetch("http://localhost:3000/api/create-staff", {
+        const largest = res4.length;
+        const res = await fetch("/api/create-staff", {
           method: "POST",
           body: JSON.stringify({
-            id: largestID + 1,
+            id: largest+1,
             username: username,
             password: password,
             nama: nama,
@@ -78,7 +67,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
       if (isSave) {
         try {
           const idInt = parseInt(id);
-          const res = await fetch("http://localhost:3000/api/update-staf", {
+          const res = await fetch("/api/update-staf", {
             method: "PATCH",
             body: JSON.stringify({
               id: idInt,
@@ -104,7 +93,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
         console.log(isSave);
         try {
           const idInt = parseInt(id);
-          const res = await fetch("http://localhost:3000/api/delete-staff", {
+          const res = await fetch("/api/delete-staff", {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
@@ -125,28 +114,6 @@ const EditFormComponent = ({ id }: { id: string }) => {
       }
     }
   };
-  // const supabase = createClient();
-  // if (id == "add-staf") {
-  //   //add
-  //   const { data: users, error } = await supabase.from("user").insert({
-  //     // id: indeks,
-  //     username: username,
-  //     password: password,
-  //     nama: nama,
-  //     noTelp: noTelp,
-  //     alamat: alamat,
-  //     tanggalLahir: tanggalLahir,
-  //   });
-  // } else {
-  //   if (isSave) {
-  //     //update
-  //     const { data: users, error } = await supabase.from("user").update({});
-  //   } else {
-  //     //delete
-  //   }
-  // }
-
-  console.log(userByID[0]?.nama);
 
   return (
     <Formik initialValues={user} onSubmit={handleSubmit}>
@@ -155,25 +122,24 @@ const EditFormComponent = ({ id }: { id: string }) => {
           <div className="mb-[26px]">
             <h5
               className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
-                id === "add-staf" ? "" : "hidden"
+                id === "add-staf" ? "hidden" : "hidden"
               }`}
             >
               ID
             </h5>
             <div
               className={`w-[82.22vw] lg:w-[68.75vw] h-[27px] lg:h-[50px] ${
-                id === "add-staf" ? "" : "hidden"
+                id === "add-staf" ? "hidden" : "hidden"
               }`}
             >
               <InputBox
                 name="id"
                 label="id"
-                placeholder={(largestID + 1).toString() || "ID"}
+                placeholder={"ID"}
                 onChange={(e: any) => setIndeks(e.target.value)}
               />
             </div>
           </div>
-
           <div className="mb-[26px]">
             <h5
               className={`text-poppins text-[11px] lg:text-[24px] mb-[8px] lg:mb-[26px] font-bold ${
@@ -227,14 +193,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="Nama"
                 label="Nama"
                 placeholder={userByID[0]?.nama || "Nama"}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.value === null || e.target.value === "") {
-                    e.target.value = userByID[0]?.nama;
-                    setNama(e.target.value);
-                  } else {
-                    setNama(e.target.value);
-                  }
-                }}
+                onChange={(e: any) => setNama(e.target.value)}
               />
             </div>
           </div>
@@ -248,14 +207,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="No.Telp"
                 label="No.Telp"
                 placeholder={userByID[0]?.noTelp || "No.Telp"}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.value.trim() !== null) {
-                    setNoTelp(e.target.value);
-                  } else {
-                    // Handle the case when the input value is empty
-                    setNoTelp(userByID[0]?.noTelp);
-                  }
-                }}
+                onChange={(e: any) => setNoTelp(e.target.value)}
               />
             </div>
           </div>
@@ -269,14 +221,7 @@ const EditFormComponent = ({ id }: { id: string }) => {
                 name="Alamat"
                 label="Alamat"
                 placeholder={userByID[0]?.alamat || "Alamat"}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  if (e.target.value.trim() !== null) {
-                    setAlamat(e.target.value);
-                  } else {
-                    // Handle the case when the input value is empty
-                    setAlamat(userByID[0]?.alamat);
-                  }
-                }}
+                onChange={(e: any) => setAlamat(e.target.value)}
               />
             </div>
           </div>

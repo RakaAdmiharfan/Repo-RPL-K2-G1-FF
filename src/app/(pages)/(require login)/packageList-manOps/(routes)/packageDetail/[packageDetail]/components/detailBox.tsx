@@ -6,18 +6,16 @@ import { useParams } from "next/navigation";
 const DetailBox = ({ id }: { id: string }) => {
   const [dataItem, setDataItem] = useState<any[]>([]);
 
-  //console.log(packageDetail);
   useEffect(() => {
     const fetchPackageDetail = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/package-detail?");
+        const res = await fetch("/api/package-detail?");
         const res2 = await res.json();
         setDataItem(res2);
       } catch (error: any) {
         console.error("Error fetching data:", error.message);
       }
     };
-    console.log("hallo");
     fetchPackageDetail();
   }, []);
 
